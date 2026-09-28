@@ -1,0 +1,102 @@
+# Arquitetura — Interview Deck (v1)
+
+Complementa o [PRD](interview-deck-prd/PRD.md). As regras do dia a dia estão em [AGENTS.md](../AGENTS.md); aqui fica o porquê.
+
+## Visão geral
+
+```
+Browser (Nuxt/Vue)
+  ├─ UI: design system (ui/) + componentes do produto
+  ├─ Estado da sessão (Pinia): deck, ordem embaralhada, posição, timer
+  ├─ MediaRecorder → áudio da resposta (Premium / crédito grátis)
+  └─ $fetch → server/api
+                 │
+Nuxt server (Nitro)
+  ├─ Decide o plano (Free/Premium) a partir da sessão Supabase
+  ├─ Entrega cartas (com hint só para Premium)
+  ├─ Controla créditos de feedback grátis
+  └─ Áudio → transcrição → LLM → JSON validado (Zod)
+                 │
+Supabase: Auth (anônimo + magic link), Postgres com RLS
+```
+
+## Decisões
+
+### D1. Nuxt como app full-stack
+Um repositório, um deploy. As rotas de servidor do Nuxt (Nitro) guardam as chaves de IA e o acesso privilegiado ao banco, então não precisamos de backend separado. A maior parte do app é interação no cliente, mas o SSR da Home ajuda no primeiro carregamento e em link previews.
+
+### D2. Design system em duas camadas
+- `components/ui/`: primitivos com Tailwind. É o único lugar em que a aparência se decide em utilitários.
+- Produto: só componentes `Ui*` e classes semânticas com tokens em `<style scoped>`.
+
+Por quê: os templates do produto ficam legíveis (dizem *o que* é, não *como* se parece), trocar o visual vira mexer em tokens e primitivos, e evitamos o "tailwind soup" espalhado pelo app. O custo é ter que criar um primitivo quando faltar algo, o que é intencional.
+
+Para garantir: regra de lint que proíbe classes utilitárias fora de `components/ui/` (ex.: `eslint-plugin-better-tailwindcss` ou uma regra custom simples). Configurar junto com o scaffold.
+
+### D3. Tokens como fonte única
+Tailwind v4 com `@theme` em `main.css`. Cada token vira CSS var, usada pelo `ui/` (via utilitário) e pelo produto (via `var()`). Paleta, fonte, raios, sombras e cores de deck vêm da seção 7 do PRD e do screenshot `08-deck-system.png`.
+
+### D4. Premium é decidido no servidor
+Hints e feedback de IA são o que o Premium vende. Se forem para o cliente Free e forem só escondidos na UI, o paywall não existe. Por isso:
+- A tabela de cartas não é lida direto pelo cliente. O endpoint `GET /api/decks/:slug/cards` devolve `hint` só quando a sessão é Premium.
+- Decks Premium só são listados como "bloqueados" para o Free.
+
+### D5. Identidade: anônima no Free, magic link no Premium (proposta)
+- **Free sem cadastro**: Supabase Anonymous Sign-in cria um usuário invisível no primeiro acesso. Isso mantém "abrir e tirar uma carta em 1 toque" e ainda dá um `user_id` no servidor para contar créditos de feedback grátis (contar só no `localStorage` seria fácil de burlar, e cada feedback custa dinheiro).
+- **Premium**: magic link por e-mail. O e-mail precisa estar em `premium_members` (lista importada/sincronizada dos membros do Skool). O usuário anônimo pode ser convertido, preservando o histórico.
+- Resolve as perguntas "precisa de login no Free?" e "como saber que é Premium?" do PRD 9, mas **precisa da sua validação**.
+
+### D6. Pipeline de feedback de IA
+`POST /api/feedback` (multipart: áudio + `card_id`):
+1. Autentica, checa o plano; se Free, consome crédito (ou responde `locked` sem chamar a IA).
+2. Transcreve o áudio (provedor a definir; não armazenamos o áudio).
+3. Chama o LLM com pergunta + hint + transcrição, pedindo o JSON do PRD 6.4.
+4. Valida com Zod; se inválido, tenta de novo uma vez e depois retorna erro tratado.
+5. Registra o evento (para créditos/métricas) sem guardar a transcrição completa, salvo decisão contrária.
+
+O follow-up ("Answer follow-up") reusa o mesmo endpoint, com o `follow_up` anterior como pergunta.
+
+### D7. Estado da sessão no cliente
+Pinia `usePracticeStore`: deck atual, ordem embaralhada (Fisher–Yates, sem repetir até o fim), posição, carta atual. Persistido em `sessionStorage` para sobreviver a um refresh. O timer (`useTimer`) e a gravação (`useRecorder`) são composables separados, testáveis sem UI.
+
+### D8. Rotas (proposta)
+| Rota | Tela |
+|---|---|
+| `/` | Home (01 / 04) |
+| `/play/[deck]` | Carta (02 / 05). "Respondendo" (03) é um estado desta página com layout `focus`, para não recarregar a carta |
+| `/play/[deck]/feedback` | AI feedback (06) |
+| `/about` | About |
+
+## Modelo de dados (rascunho)
+
+```sql
+decks            (slug pk, name, tagline, color_token, is_free bool, sort int)
+cards            (id uuid pk, deck_slug fk, number int, category text, question text, hint text)
+premium_members  (email pk, source text, granted_at, revoked_at)
+feedback_events  (id, user_id fk auth.users, card_id fk, kind 'full'|'locked', created_at)
+saved_cards      (user_id, card_id, created_at)   -- opcional v1
+```
+
+- RLS em tudo. `cards` sem acesso direto do cliente; o servidor lê e filtra o `hint`.
+- Conteúdo das cartas versionado em `supabase/seed/` (é conteúdo editorial; revisar em PR).
+
+## Configuração (env)
+
+| Variável | Onde |
+|---|---|
+| `NUXT_PUBLIC_SKOOL_FREE_URL`, `NUXT_PUBLIC_SKOOL_PREMIUM_URL`, `NUXT_PUBLIC_SKOOL_LIVE_URL` | público |
+| `SUPABASE_URL`, `SUPABASE_KEY` (anon) | público via módulo |
+| `SUPABASE_SERVICE_KEY` | só servidor |
+| `NUXT_AI_*` (chaves de transcrição e LLM) | só servidor |
+
+## Em aberto
+
+| # | Decisão | Proposta |
+|---|---|---|
+| 1 | Identificação do Premium | D5: lista de e-mails do Skool + magic link |
+| 2 | Free precisa de login? | Não. Usuário anônimo do Supabase |
+| 3 | Provedor de transcrição | Avaliar custo/latência (ex.: Whisper, Deepgram, ElevenLabs Scribe) |
+| 4 | LLM do feedback | Claude (ex.: Sonnet) com saída estruturada; validar custo por resposta |
+| 5 | Hospedagem | Vercel ou Netlify (Nuxt roda nos dois sem ajuste) |
+| 6 | Guardar transcrições? | Padrão: não. Só se houver uso claro (histórico do usuário) |
+| 7 | Decks e nº de cartas no lançamento | Conteúdo, fora da arquitetura |

@@ -1,0 +1,31 @@
+{
+  "slug": "general",
+  "name": "General Deck",
+  "shortName": "General",
+  "tagline": "Start here",
+  "color": "general",
+  "isFree": true,
+  "sort": 0,
+  "cards": [
+    { "category": "Tell me about yourself", "question": "Tell me about yourself.", "hint": "Present, past, future: what you do now, one or two proof points that got you here, and why this role is the next step. Keep it under two minutes." },
+    { "category": "Motivation", "question": "Why do you want to work here?", "hint": "Connect something specific about the company (product, mission, team) to something specific about you. Avoid generic praise." },
+    { "category": "Motivation", "question": "Why are you looking for a new role?", "hint": "Stay positive and forward-looking: what you want to grow into, not what you are running from." },
+    { "category": "Strengths & Weaknesses", "question": "What is your greatest strength?", "hint": "Pick one strength that matters for this role and prove it with a short, concrete example and its result." },
+    { "category": "Strengths & Weaknesses", "question": "What is a weakness you are working on?", "hint": "Name a real but non-critical weakness, then show what you are doing about it and the progress so far." },
+    { "category": "Behavioral", "question": "Tell me about a time you disagreed with someone on your team.", "hint": "Use STAR: Situation, Task, Action, Result. Focus on how you handled it, not who was right." },
+    { "category": "Behavioral", "question": "Tell me about a time you failed.", "hint": "Own the mistake in one sentence, spend most of the time on what you learned and what you do differently now." },
+    { "category": "Behavioral", "question": "Tell me about a project you are proud of.", "hint": "Explain the goal, your specific part (say \"I\", not \"we\"), and a measurable result." },
+    { "category": "Behavioral", "question": "Describe a time you had to meet a tight deadline.", "hint": "Show how you prioritized and communicated trade-offs, not just that you worked late." },
+    { "category": "Behavioral", "question": "Tell me about a time you received difficult feedback.", "hint": "Show that you listened, what you changed, and how you know the change worked." },
+    { "category": "Career", "question": "Where do you see yourself in five years?", "hint": "Show ambition that fits the company: the skills and scope you want to grow into, not a job title." },
+    { "category": "Career", "question": "Walk me through your resume.", "hint": "Tell it as a story with a thread. One sentence per step, more detail on the most recent and relevant role." },
+    { "category": "Career", "question": "What are you looking for in your next role?", "hint": "Name two or three concrete things (scope, team, problems) and tie them to this role." },
+    { "category": "Motivation", "question": "What do you know about our company?", "hint": "Show you did your homework: product, customers, a recent change. Then one sentence on why it matters to you." },
+    { "category": "Leadership", "question": "Tell me about a time you took the lead without being asked.", "hint": "Explain the gap you noticed, why it mattered, what you did and what changed because of it." },
+    { "category": "Behavioral", "question": "Describe a situation where you had to learn something quickly.", "hint": "Explain your learning approach (sources, people, practice) and the result, not only that you learned it." },
+    { "category": "Behavioral", "question": "Tell me about a time you worked with someone from a different culture.", "hint": "Show curiosity and adaptation: what was different, what you adjusted, and the outcome for the work." },
+    { "category": "Strengths & Weaknesses", "question": "How would your colleagues describe you?", "hint": "Pick two or three traits and back each one with a quick example or something a colleague actually said." },
+    { "category": "Career", "question": "Why should we hire you?", "hint": "Summarize the match: their top needs, your matching proof points, and what you would bring in the first months." },
+    { "category": "Motivation", "question": "Do you have any questions for us?", "hint": "Always say yes. Ask about the team's challenges, how success is measured, or what the first 90 days look like." }
+  ]
+}

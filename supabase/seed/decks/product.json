@@ -1,0 +1,23 @@
+{
+  "slug": "product",
+  "name": "Product Management Deck",
+  "shortName": "Product",
+  "tagline": "Tech roles",
+  "color": "product",
+  "isFree": false,
+  "sort": 3,
+  "cards": [
+    { "category": "Product sense", "question": "What is your favorite product and how would you improve it?", "hint": "Pick a user segment, name one real problem they have, and propose a change with how you would measure success." },
+    { "category": "Product sense", "question": "Tell me about a product you launched from zero.", "hint": "Cover the problem discovery, how you defined the MVP, launch, and what the data showed afterwards." },
+    { "category": "Prioritization", "question": "How do you decide what goes into the roadmap?", "hint": "Explain your framework with a real example, including something important you chose not to do." },
+    { "category": "Prioritization", "question": "Tell me about a time you had to cut scope.", "hint": "Show how you identified the must-haves and aligned stakeholders on the trade-off." },
+    { "category": "Metrics", "question": "How do you measure the success of a feature?", "hint": "Name a primary metric tied to user value, guardrail metrics, and when you would call it a failure." },
+    { "category": "Metrics", "question": "Tell me about a time data changed your mind.", "hint": "Explain what you believed, what the data showed, and the decision that followed." },
+    { "category": "Stakeholders", "question": "Describe a time you aligned teams with conflicting goals.", "hint": "Show how you found the shared goal and made the trade-offs explicit." },
+    { "category": "Stakeholders", "question": "How do you work with engineering when estimates slip?", "hint": "Talk about transparency, re-scoping options and protecting the team's trust." },
+    { "category": "Users", "question": "How do you talk to users?", "hint": "Describe your research habits and one insight that changed a product decision." },
+    { "category": "Users", "question": "Tell me about a time you had to say no to a big customer.", "hint": "Explain how you weighed their request against the strategy and how you kept the relationship." },
+    { "category": "Strategy", "question": "How would you grow our product in a new market?", "hint": "Start with the user and market differences, propose a small experiment, and define what success looks like." },
+    { "category": "Leadership", "question": "How do you lead without authority?", "hint": "Give an example where you used context, data and trust to get people to move." }
+  ]
+}

@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — the only place for literal colors, sizes, radii, shadows and motion.
+ * `static` makes Tailwind always emit these as CSS vars, so product components can use
+ * `var(--token)` in <style scoped> even when no utility references the token.
+ */
+@theme static {
+  /* Palette (PRD §7) */
+  --color-bg: #FAFAF9;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F4F4F2;
+  --color-border: #E7E7E4;
+  --color-ink: #111111;
+  --color-ink-muted: #5F6368;
+  --color-ink-inverse: #FFFFFF;
+  --color-accent: #2D5BE3;
+  --color-accent-soft: #F2F5FE;
+  --color-accent-on-dark: #4A74F0;
+  --color-accent-soft-on-dark: #8FA8F5;
+  --color-highlight: #FFF4CC;
+  --color-danger: #D93025;
+  --color-scrim: rgb(17 17 17 / 0.04);
+
+  /* Focus mode (answering screen) */
+  --color-focus-bg: #111111;
+  --color-focus-surface: #1A1A1A;
+  --color-focus-border: #2A2A2A;
+  --color-focus-ink: #FFFFFF;
+  --color-focus-ink-muted: #B8B8B8;
+
+  /* Skool CTA */
+  --color-cta-bg: #FFF4CC;
+  --color-cta-ink: #111111;
+
+  /* Deck colors (screenshot 08). Components read them through --deck-accent. */
+  --color-deck-general: #2D5BE3;
+  --color-deck-behavioral: #A58BF0;
+  --color-deck-software-engineering: #3FBF8F;
+  --color-deck-product: #F2A65A;
+  --color-deck-design: #EF7FB0;
+  --color-deck-data: #5BB8E8;
+  --color-deck-sales: #E8C547;
+  --color-deck-leadership: #D9D4C7;
+
+  /* Typography */
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-caption: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-title: 1.75rem;
+  --text-question: 1.875rem;
+  --text-question-lg: 2.5rem;
+  --text-display: 4rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-body: 1.5;
+  --tracking-tight: -0.02em;
+  --tracking-label: 0.3em;
+  --tracking-badge: 0.12em;
+
+  /* Spacing scale */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Component sizes */
+  --size-dot: 0.5rem;
+  --size-icon: 1.25rem;
+  --size-icon-sm: 1rem;
+  --size-touch: 2.75rem;
+  --size-button: 3.375rem;
+  --size-accent-bar-w: 1.75rem;
+  --size-accent-bar-h: 0.1875rem;
+  --size-score-bar-h: 0.375rem;
+  --size-ring: 16rem;
+  --size-ring-stroke: 0.375rem;
+  --size-card-max: 38.75rem;
+  --size-card-min-h: 28rem;
+  --size-stack-w: 15.5rem;
+  --size-stack-h: 21.75rem;
+  --size-page-max: 38.75rem;
+  --size-logo: 1.75rem;
+  --size-blur: 0.375rem;
+  --size-screen: 100dvh;
+
+  /* Radii */
+  --radius-card: 1.5rem;
+  --radius-panel: 1.25rem;
+  --radius-inner: 1rem;
+  --radius-sm: 0.5rem;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(17 17 17 / 0.04), 0 12px 32px rgb(17 17 17 / 0.06);
+  --shadow-stack: 0 24px 48px rgb(17 17 17 / 0.18);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-card: 350ms;
+  --ease-card: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --rotate-stack-left: -4deg;
+  --rotate-stack-right: 3deg;
+}
+
+@layer base {
+  :root {
+    /* Overridden per deck on a container: style="--deck-accent: var(--color-deck-behavioral)". */
+    --deck-accent: var(--color-deck-general);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
