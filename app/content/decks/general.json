@@ -1,0 +1,213 @@
+{
+  "slug": "general",
+  "name": "General Deck",
+  "shortName": "General",
+  "tagline": "Start here",
+  "color": "general",
+  "sort": 0,
+  "cards": [
+    {
+      "category": "Strengths & Weaknesses",
+      "question": "What is your greatest strength?",
+      "hint": "Pick one strength that matters for this role and prove it with a concrete example and its result. Avoid vague claims like \"I'm dedicated\".",
+      "example": "My greatest strength is solving complex problems quickly. At a startup we had serious scalability issues, and after digging into the code and the infrastructure I improved the platform's performance by 30%, which made the product noticeably faster for our users. That kind of fast, careful analysis is something I can bring here as you keep scaling.",
+      "followUp": {
+        "question": "What is one situation where this strength made a measurable difference?",
+        "hint": "Give the context, your specific action and the result. Keep it concrete rather than repeating the strength.",
+        "example": "During a checkout incident, I traced the problem to a slow database query, rewrote it and added monitoring. Checkout time dropped by 40%, and the team could spot similar issues earlier."
+      },
+      "source": "50-questions"
+    },
+    {
+      "category": "Strengths & Weaknesses",
+      "question": "What is a weakness you are working on?",
+      "hint": "Name a real but non-critical weakness, say what you are doing about it, and show progress. Don't pick a fake one like \"I'm a perfectionist\".",
+      "example": "My biggest weakness has been delegating. At startups I often took on more than I could handle because it was hard for me to fully trust others with the work. Over the last few months I've been working on it: I took a leadership course and started using a task board to hand off work with clear expectations. The team has become more autonomous, and I have more time for the strategic work.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Behavioral",
+      "question": "Tell me about a time you disagreed with someone on your team.",
+      "hint": "Use STAR: Situation, Task, Action, Result. Focus on how you handled it, not who was right."
+    },
+    {
+      "category": "Behavioral",
+      "question": "Tell me about a time you failed.",
+      "hint": "Own the mistake in one sentence, spend most of the time on what you learned and what you do differently now.",
+      "example": "On one project I misconfigured an API integration, which broke a service for some of our customers. As soon as I found the problem, I fixed the configuration, added automated tests to catch it in the future and documented the process for the team. The service was back to normal quickly, and I learned to double-check before critical releases.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Behavioral",
+      "question": "Tell me about a project you are proud of.",
+      "hint": "Explain the goal, your specific part (say \"I\", not \"we\"), and a measurable result."
+    },
+    {
+      "category": "Behavioral",
+      "question": "Describe a time you had to meet a tight deadline.",
+      "hint": "Show how you prioritized and communicated trade-offs, not just that you worked late.",
+      "example": "I handle tight deadlines by breaking the work down and prioritizing, usually on a Trello board. On my last project we had one week to ship an important update, so with the team I cut the scope to the essentials and ran quick daily check-ins to stay on track. We delivered on time, with good quality and without dropping key features.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Behavioral",
+      "question": "Tell me about a time you received difficult feedback.",
+      "hint": "Show that you listened, what you changed, and how you know the change worked.",
+      "example": "On one project I got feedback that my reports were too detailed and hard to follow. I was surprised at first, but I realized it was costing the team time. I changed the format to be shorter and clearer, and after that the team started making decisions faster. It taught me to adapt my work to what the team actually needs.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Leadership",
+      "question": "Tell me about a time you took the lead without being asked.",
+      "hint": "Explain the gap you noticed, why it mattered, what you did and what changed because of it.",
+      "example": "On a project at a tech startup, I noticed that poor communication between development and marketing was causing delays. I proposed a short weekly meeting to align goals and tasks. After we started it, development time dropped by about 15% and our launches got smoother. The two teams started working as one.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Behavioral",
+      "question": "Describe a situation where you had to learn something quickly.",
+      "hint": "Explain your learning approach (sources, people, practice) and the result, not only that you learned it.",
+      "example": "At a previous startup I had to learn a new programming language to integrate a critical API into our system. I had only a few days, so I studied the basics and leaned on colleagues who knew it well. I delivered the integration successfully, which improved communication between our platforms, and proved to myself that I can learn fast under pressure.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Behavioral",
+      "question": "Tell me about a time you worked with someone from a different culture.",
+      "hint": "Show curiosity and adaptation: what was different, what you adjusted, and the outcome for the work."
+    },
+    {
+      "category": "Strengths & Weaknesses",
+      "question": "How would your colleagues describe you?",
+      "hint": "Pick two or three traits and back each one with a quick example or something a colleague actually said."
+    },
+    {
+      "category": "Strengths & Weaknesses",
+      "question": "What are your key skills?",
+      "hint": "Pick two or three skills that match the role, technical and interpersonal, and back each one with a real example. Then connect them to what the company needs.",
+      "example": "My key skills are full-stack development, problem solving and communication in agile teams. At a SaaS startup, I built and integrated APIs with the interface using React and Node.js, which made the product much smoother to use. I'm also comfortable with Scrum, which helps me work well with cross-functional teams. Since you're scaling your product quickly, I could help both with code quality and with shipping new features fast.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Work style",
+      "question": "How do you handle pressure?",
+      "hint": "Admit pressure is real, then show how you stay productive: prioritize, communicate, and give one concrete example with its result.",
+      "example": "I usually handle pressure well; short deadlines and quick decisions are normal in startups. At my last job I had to ship a new feature on a very tight deadline. I prioritized the tasks, organized short sprints and kept the team updated. We delivered on time without cutting quality. Pressure actually helps me focus.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Work style",
+      "question": "Do you prefer working in a team or on your own?",
+      "hint": "Don't pick just one. Show you collaborate well and also work independently, with a short example of each.",
+      "example": "I enjoy both. Working as a team is essential to share ideas and stay aligned, and on my last project our collaborative sprints led to great results. But I'm also very self-sufficient on focused work like coding or debugging. A good balance of both is what makes a team work well.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "What motivates you to do your best work?",
+      "hint": "Name a genuine motivator (challenges, learning, impact), prove it with an example and connect it to this company. Don't lead with money.",
+      "example": "I'm motivated by challenges and by seeing the impact of my work. At a previous startup I worked on a product launch with a very short deadline. Knowing I was directly contributing to the company's growth pushed me to do my best, and we delivered on time with great feedback from customers. I'm excited to bring that same energy to your team.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Company & market",
+      "question": "What do you think are the main trends in our industry?",
+      "hint": "Pick one or two trends that really affect the company's market, explain why, and show how you could help the company take advantage of them.",
+      "example": "I think personalization and AI are transforming the SaaS market, and adopting AI is becoming essential for companies that want to offer more efficient, tailored solutions. At my last job I took part in implementing AI algorithms to optimize processes, which increased user retention. I'd love to help turn those trends into results for you.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Company & market",
+      "question": "How do you see our company compared to its competitors?",
+      "hint": "Mention one or two real strengths versus competitors, one honest challenge, and how your experience could help. Research the competitors first.",
+      "example": "I think personalization and fast customer support are big differentiators for you. While others in the space compete mostly on price, you create value with a customer-centered experience. One challenge I see is scaling that level of service as your customer base grows. With my experience in process automation and CRM tools, I could help keep that quality while improving efficiency.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Company & market",
+      "question": "What do you think are the biggest challenges our company is facing?",
+      "hint": "Name one or two real challenges from your research, why they matter, and how you could help. Don't just criticize.",
+      "example": "One big challenge I see is growing your customer base while keeping the personalized support that defines you. Another is keeping up with fast changes in technology so the platform stays competitive. With my experience in process automation and workflow optimization, I could help build solutions that improve efficiency without losing that quality.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Company & market",
+      "question": "What would you do to improve our product?",
+      "hint": "Start with something that already works well, point out one realistic opportunity and its impact, and connect the idea to your skills.",
+      "example": "What I like most about your product is how easy and friendly the interface is. One opportunity I see is personalization: configurable dashboards for advanced users could increase engagement and retention. With my experience building features based on customer feedback, I'd be glad to help make that happen.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Company & market",
+      "question": "How do you see yourself contributing to our mission?",
+      "hint": "Say which part of the mission resonates with you, connect it to your experience, and show genuine enthusiasm.",
+      "example": "What inspires me most in your mission is making technology accessible to small businesses. At previous startups I worked on projects that automated processes for smaller companies, saving them time and money. I can bring practical, accessible solutions that fit your vision, and I'm excited about the impact you have.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Self-assessment",
+      "question": "What skills would you like to develop in the future?",
+      "hint": "Pick a skill that matters for the role, explain why, and show you have already started working on it.",
+      "example": "I'd like to go deeper into data analysis to spot trends and support strategic decisions. It would complement my product development skills and help me align features with what the market needs. I've already started learning SQL and Power BI, and I'm excited to use them to create more impact.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Self-assessment",
+      "question": "What is the most difficult decision you have had to make at work?",
+      "hint": "Choose a decision with real stakes, explain how you weighed the options, and share the outcome and what you learned.",
+      "example": "At a previous startup I had to choose between shipping a new feature or fixing critical stability issues. After looking at the data and discussing it with the team, we prioritized stability because it directly affected our customers. It delayed the launch, but the system became more reliable, which helped us keep users and avoid bigger problems later.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Self-assessment",
+      "question": "What have you learned from your previous jobs?",
+      "hint": "Pick one or two lessons that shaped how you work today, and connect them to this role.",
+      "example": "My time at startups taught me to be resilient and to adapt my plans quickly when things change. I learned to prioritize under pressure and to work with cross-functional teams toward shared results. Those lessons fit really well in a fast-moving environment like yours.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "How do you define professional success?",
+      "hint": "Balance personal achievement with impact on the team, the company and customers, and give a short example.",
+      "example": "For me, professional success means reaching goals that have a positive impact on both the company and its customers. On a recent project, my team launched a feature that increased engagement by 20%. Seeing how my work helps the company grow and makes users' lives easier is what I find most rewarding.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Work style",
+      "question": "How do you balance your personal and professional life?",
+      "hint": "Show it's a conscious practice: planning, boundaries, and why balance makes you more productive. Don't promise to be available 24/7.",
+      "example": "For me, balance means managing my time well so I can give my best in both areas. I plan my week and organize my priorities so work gets done without sacrificing my health or my relationships. That balance keeps me productive and motivated, and it's what lets me deliver consistently for the team.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "What legacy would you like to leave in your career?",
+      "hint": "Describe the impact you want to have beyond your own results, what you're already doing toward it, and how it connects to the company.",
+      "example": "I'd like to be remembered as someone who drove innovation and helped teams reach their full potential. I want to work on projects that really improve people's lives by making technology accessible and effective. Being part of your company would let me keep building that while supporting the team's growth.",
+      "source": "50-questions"
+    },
+    { "category": "Motivation", "question": "Why are you interested in this role now?", "hint": "Connect the role to your experience, your next development goal and the specific problems this company is solving." },
+    { "category": "Motivation", "question": "What kind of work gives you energy?", "hint": "Name the work conditions and problems that bring out your best, then support it with a recent example." },
+    { "category": "Motivation", "question": "What would make you leave a job?", "hint": "Focus on constructive conditions such as lack of learning, trust or meaningful impact rather than criticizing past employers." },
+    { "category": "Career", "question": "Where do you want your career to go next?", "hint": "Share a direction rather than a rigid title, and explain how this role fits the next step." },
+    { "category": "Career", "question": "What is a career decision you are proud of?", "hint": "Explain the options, the criteria you used and what the decision taught you." },
+    { "category": "Career", "question": "Tell me about a career risk you took.", "hint": "Describe why you took it, how you managed the downside and what happened afterward." },
+    { "category": "Self-assessment", "question": "What do you need from a manager to do your best work?", "hint": "Be specific about context, feedback and autonomy while showing that you own your results." },
+    { "category": "Self-assessment", "question": "What is a skill people often underestimate in you?", "hint": "Choose a real strength and prove it with a result rather than making an unsupported claim." },
+    { "category": "Self-assessment", "question": "What is something you changed your mind about at work?", "hint": "Show intellectual honesty: what you believed, what changed it and how you act differently now." },
+    { "category": "Work style", "question": "How do you organize a busy week?", "hint": "Explain how you choose priorities, reserve focus time and communicate when trade-offs appear." },
+    { "category": "Work style", "question": "How do you protect your focus?", "hint": "Mention practical habits and how you remain available for genuinely urgent collaboration." },
+    { "category": "Work style", "question": "How do you work across time zones?", "hint": "Discuss written context, overlap hours, handoffs and how you avoid making remote colleagues invisible." },
+    { "category": "Work style", "question": "How do you handle repetitive work?", "hint": "Show reliability first, then explain how you improve the process without losing attention to detail." },
+    { "category": "Behavioral", "question": "Tell me about a time you had to ask for help.", "hint": "Explain how you recognized the limit, made the request useful and what you learned." },
+    { "category": "Behavioral", "question": "Tell me about a time you helped someone succeed.", "hint": "Focus on what you noticed, the support you provided and the person's outcome." },
+    { "category": "Behavioral", "question": "Describe a time you had to make an unpopular choice.", "hint": "Explain the reasoning, how you communicated it and how you handled the reaction." },
+    { "category": "Behavioral", "question": "Tell me about a time you had to start over.", "hint": "Show how you assessed what was still useful, reset expectations and moved forward." },
+    { "category": "Company & market", "question": "What did you learn from researching our company?", "hint": "Mention a specific observation, why it matters and one thoughtful question it raises." },
+    { "category": "Company & market", "question": "What would you want to understand in your first month here?", "hint": "Choose questions about customers, priorities, team ways of working or success measures." },
+    { "category": "Company & market", "question": "Who do you think our customers are?", "hint": "Name a primary user, their problem and the value they likely expect from the company." },
+    { "category": "Company & market", "question": "What makes a company a good place to work?", "hint": "Describe observable behaviors such as trust, clarity, growth and accountability." },
+    { "category": "Strengths & Weaknesses", "question": "What feedback have you heard more than once?", "hint": "Choose a pattern, explain how you responded and show the change with evidence." },
+    { "category": "Strengths & Weaknesses", "question": "What part of your work do you overthink?", "hint": "Be honest about the cost and explain the habit you use to make timely decisions." },
+    { "category": "Strengths & Weaknesses", "question": "What would your manager say you should improve?", "hint": "Name a real development area and the concrete steps already underway." }
+  ]
+}

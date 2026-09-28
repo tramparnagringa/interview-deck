@@ -8,7 +8,6 @@
         />
         {{ card.category }}
       </span>
-      <span class="card-face-number">{{ copy.card.number(card.number) }}</span>
     </template>
 
     <h1 class="card-face-question">
@@ -16,8 +15,12 @@
     </h1>
     <UiAccentBar />
     <CardHint
-      v-if="hasHint(card)"
+      v-if="card.hint"
       :hint="card.hint"
+    />
+    <CardExample
+      v-if="card.example"
+      :example="card.example"
     />
 
     <template #footer>
@@ -29,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-import { hasHint, type Card } from '#shared/schemas/card'
+import type { Card } from '#shared/schemas/deck'
 import { copy } from '~/content/copy'
 
-/** The white question card (screens 02 and 05). The hint only exists on Premium responses. */
+/** The white question card (screens 02 and 05). Hint and example answer only exist on Premium pages. */
 defineProps<{ card: Card }>()
 </script>
 
@@ -49,10 +52,6 @@ defineProps<{ card: Card }>()
   height: var(--size-dot);
   border-radius: var(--radius-pill);
   background: var(--deck-accent);
-}
-
-.card-face-number {
-  color: var(--color-ink-muted);
 }
 
 .card-face-question {

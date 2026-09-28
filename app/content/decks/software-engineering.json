@@ -1,0 +1,152 @@
+{
+  "slug": "software-engineering",
+  "name": "Software Engineering Deck",
+  "shortName": "Software Eng.",
+  "tagline": "Tech roles",
+  "color": "software-engineering",
+  "sort": 2,
+  "cards": [
+    {
+      "category": "Technical depth",
+      "question": "Tell me about the most complex system you have worked on.",
+      "hint": "Draw the big picture first (components, scale), then zoom into the part you owned and one hard decision you made.",
+      "example": "I led the redesign of a SaaS application that slowed down during peak usage. The challenge was moving it to a scalable cloud setup without downtime. I analyzed the API bottlenecks, added caching and set up load balancing, and coordinated the team in agile sprints. We finished the migration in two months, with 40% faster response times and much better stability at peak hours.",
+      "followUp": {
+        "question": "What trade-off did you make, and what would you revisit today?",
+        "hint": "Explain the constraint, the option you chose and what evidence would make you choose differently now."
+      },
+      "source": "50-questions"
+    },
+    {
+      "category": "Technical depth",
+      "question": "Describe a hard bug you tracked down.",
+      "hint": "Walk through your debugging process: hypotheses, how you narrowed it down, the root cause and the fix that prevented repeats."
+    },
+    {
+      "category": "Trade-offs",
+      "question": "Tell me about a technical decision you would make differently today.",
+      "hint": "Explain the constraints at the time, what you learned since, and what you would choose now and why."
+    },
+    {
+      "category": "Trade-offs",
+      "question": "How do you balance shipping fast with code quality?",
+      "hint": "Give a concrete example of where you drew the line and how you paid back the debt later."
+    },
+    {
+      "category": "Collaboration",
+      "question": "Tell me about a time you disagreed with a code review.",
+      "hint": "Show that you sought to understand the reviewer's concern and resolved it with data or a quick experiment."
+    },
+    {
+      "category": "Collaboration",
+      "question": "How do you work with product managers and designers?",
+      "hint": "Mention how you get involved early, push back on scope with alternatives, and keep them updated."
+    },
+    {
+      "category": "Ownership",
+      "question": "Tell me about a production incident you handled.",
+      "hint": "Cover detection, mitigation, communication during the incident, and the postmortem actions."
+    },
+    {
+      "category": "Ownership",
+      "question": "Describe a time you improved a process for your team.",
+      "hint": "Explain the pain, the change you proposed, how you got buy-in, and a metric that improved."
+    },
+    {
+      "category": "Growth",
+      "question": "How do you keep your technical skills up to date?",
+      "hint": "Give specific habits and one recent example of something you learned and applied at work.",
+      "example": "I read blogs like Dev.to and Medium and follow online conferences such as JSConf. Recently I took a course on micro frontends and applied it at work to make our code more modular. I'm also active in developer communities on Discord and Slack. That habit helps me bring practical new ideas to my projects.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Growth",
+      "question": "Tell me about a time you mentored another engineer.",
+      "hint": "Describe how you adapted to their level and how you know they grew."
+    },
+    {
+      "category": "System design",
+      "question": "How would you explain your current system's architecture to a new hire?",
+      "hint": "Start from the user request and follow it through the system. Mention the main trade-offs, not every service."
+    },
+    {
+      "category": "Tools",
+      "question": "What tools have you used in your previous projects?",
+      "hint": "Name the tools most relevant to the role and show how you used them to solve a problem. Never claim tools you don't really know.",
+      "example": "I've used Jira, Trello and Git a lot for project management and version control. At my last job I used Jira to run our sprints and track progress so we could deliver on time. I also set up GitLab pipelines for automated tests, which cut our deploy time by 20%. I'd be glad to bring that experience to your workflows.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Technical depth",
+      "question": "What are the biggest technical challenges you have faced?",
+      "hint": "Pick a real, relevant challenge. Spend less time on the problem and more on your solution, its impact and what you learned. Go easy on the jargon.",
+      "example": "At a previous startup we had critical latency in our real-time data processing, and it was hurting the customer experience. I found bottlenecks in our database queries and introduced better indexing and replication. With the team, we tested and monitored the changes, and latency dropped by 60%, which made the product much smoother for users.",
+      "source": "50-questions"
+    },
+    {
+      "category": "System design",
+      "question": "How would you design a service that handles traffic spikes?",
+      "hint": "Clarify the workload, then discuss scaling, queues, caching, failure modes and how you would observe the system."
+    },
+    {
+      "category": "System design",
+      "question": "How do you decide between a monolith and microservices?",
+      "hint": "Use team boundaries, deployment needs, operational cost and domain complexity rather than treating architecture as fashion."
+    },
+    {
+      "category": "Reliability",
+      "question": "What does a reliable service mean to you?",
+      "hint": "Discuss user-facing objectives, error budgets, graceful degradation and how reliability work competes with feature work."
+    },
+    {
+      "category": "Reliability",
+      "question": "Tell me about a time you improved observability.",
+      "hint": "Describe the blind spot, the signals you added and how they changed detection or debugging time."
+    },
+    {
+      "category": "Testing",
+      "question": "How do you decide what to test?",
+      "hint": "Balance risk, business impact, change frequency and test maintenance. Give examples across unit, integration and end-to-end tests."
+    },
+    {
+      "category": "Security",
+      "question": "How do you include security in everyday engineering work?",
+      "hint": "Mention threat thinking, dependency hygiene, access control, secrets and how you make secure choices practical for the team."
+    },
+    {
+      "category": "Collaboration",
+      "question": "Tell me about a time you helped a non-technical partner make a technical decision.",
+      "hint": "Translate the options into user impact, risk and cost, then explain how you reached a shared decision."
+    },
+    { "category": "System design", "question": "How would you design an API for a growing product?", "hint": "Clarify consumers, resource boundaries, versioning, errors, authentication and observability." },
+    { "category": "System design", "question": "How do you choose a data store?", "hint": "Start with access patterns, consistency, scale, availability, operational cost and team expertise." },
+    { "category": "System design", "question": "Tell me about an architecture decision you influenced.", "hint": "Explain the alternatives, the evidence and the trade-off the team accepted." },
+    { "category": "Reliability", "question": "How do you prepare for a risky release?", "hint": "Discuss testing, rollout strategy, monitoring, rollback and communication." },
+    { "category": "Reliability", "question": "Tell me about a reliability incident that changed your process.", "hint": "Focus on the system lesson, not blame, and the concrete prevention work." },
+    { "category": "Reliability", "question": "How do you prioritize reliability work?", "hint": "Use user impact, frequency, severity, operational cost and the risk of waiting." },
+    { "category": "Testing", "question": "What makes a test valuable?", "hint": "Connect it to a meaningful risk, clear behavior, useful feedback and reasonable maintenance cost." },
+    { "category": "Testing", "question": "Tell me about a test suite you improved.", "hint": "Describe the pain, the change and how feedback speed or defect detection improved." },
+    { "category": "Testing", "question": "How do you test a system you did not build?", "hint": "Learn the contracts, observe current behavior, identify risk and add tests around valuable boundaries." },
+    { "category": "Security", "question": "Tell me about a security risk you addressed.", "hint": "Explain the threat, the mitigation and how you verified that the risk was reduced." },
+    { "category": "Security", "question": "How do you protect sensitive data in an application?", "hint": "Cover collection, access, transport, storage, logging, retention and deletion." },
+    { "category": "Performance", "question": "How do you investigate a slow application?", "hint": "Measure first, isolate the bottleneck, form a hypothesis and verify the fix under realistic load." },
+    { "category": "Performance", "question": "Tell me about a performance improvement you made.", "hint": "State the baseline, intervention, measurement and user or business impact." },
+    { "category": "Collaboration", "question": "How do you make code reviews effective?", "hint": "Keep changes focused, explain context, prioritize important feedback and use automation for routine checks." },
+    { "category": "Collaboration", "question": "Tell me about helping resolve tension on an engineering team.", "hint": "Describe the technical or interpersonal issue and how you returned the group to a shared goal." },
+    { "category": "Ownership", "question": "How do you decide when to refactor?", "hint": "Compare current pain, risk, frequency of change, opportunity cost and a safe incremental path." },
+    { "category": "Ownership", "question": "Tell me about code you inherited and improved.", "hint": "Explain how you learned it, chose the first change and avoided breaking existing users." },
+    { "category": "Growth", "question": "How do you learn an unfamiliar codebase?", "hint": "Describe the paths, tests, documentation, people and small changes you use to build understanding." },
+    { "category": "Growth", "question": "Tell me about a technical concept you recently learned.", "hint": "Explain why you learned it, how you practiced and where you applied it." },
+    { "category": "Tools", "question": "How do you choose a tool or library?", "hint": "Consider the problem, maturity, maintenance, security, fit and total cost rather than popularity alone." },
+    { "category": "Tools", "question": "Tell me about removing a tool from a system.", "hint": "Explain why it no longer fit, the migration risk and the result." },
+    { "category": "Technical depth", "question": "How do you explain a technical trade-off to engineers?", "hint": "Make constraints and consequences explicit, invite challenge and record the decision." },
+    { "category": "Technical depth", "question": "Tell me about a time you chose simplicity over flexibility.", "hint": "Describe the current need, the option you avoided and how you preserved a sensible path forward." },
+    { "category": "System design", "question": "How do you design for partial failure?", "hint": "Discuss timeouts, retries, idempotency, isolation, fallback behavior and clear user impact." },
+    { "category": "System design", "question": "How do you decide what belongs in a service boundary?", "hint": "Use domain ownership, data consistency, change patterns and team responsibility." },
+    { "category": "Reliability", "question": "What makes a good postmortem?", "hint": "It is blameless, concrete about impact and contributing factors, and produces owned follow-up actions." },
+    { "category": "Security", "question": "How do you handle a dependency with a critical vulnerability?", "hint": "Assess exposure, mitigate quickly, communicate risk and complete the durable upgrade or replacement." },
+    { "category": "Performance", "question": "When is performance optimization not worth doing?", "hint": "Compare measured user impact, cost, risk and opportunity against the actual bottleneck." },
+    { "category": "Ownership", "question": "Tell me about an engineering decision you documented.", "hint": "Explain the context, alternatives, decision and why recording it helped future contributors." },
+    { "category": "Ownership", "question": "How do you balance local improvements with system-wide needs?", "hint": "Consider the immediate user or team benefit, dependencies, long-term cost and the smallest safe change." }
+  ]
+}

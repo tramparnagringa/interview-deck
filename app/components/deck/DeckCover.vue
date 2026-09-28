@@ -2,6 +2,7 @@
   <UiPlayingCard
     face="back"
     tag="div"
+    size="sm"
     fill
   >
     <template #header>

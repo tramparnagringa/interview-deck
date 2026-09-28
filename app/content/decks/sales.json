@@ -1,0 +1,144 @@
+{
+  "slug": "sales",
+  "name": "Sales Deck",
+  "shortName": "Sales",
+  "tagline": "Revenue roles",
+  "color": "sales",
+  "sort": 7,
+  "cards": [
+    {
+      "category": "Discovery",
+      "question": "How do you run a first discovery call?",
+      "hint": "Explain how you prepare, ask about business impact, understand the buying process and agree on a useful next step.",
+      "followUp": {
+        "question": "What do you do when the prospect gives short or vague answers?",
+        "hint": "Show how you use a specific example, an observation or a respectful pause to invite more detail."
+      }
+    },
+    {
+      "category": "Prospecting",
+      "question": "How do you decide which accounts to prospect?",
+      "hint": "Combine fit, trigger events, potential value, access and evidence that the problem exists."
+    },
+    {
+      "category": "Prospecting",
+      "question": "Tell me about a prospecting campaign that worked.",
+      "hint": "Describe the hypothesis, audience, message, channel, iteration and measurable result."
+    },
+    {
+      "category": "Qualification",
+      "question": "How do you qualify an opportunity?",
+      "hint": "Cover problem, impact, urgency, authority, process, competition and whether your solution can genuinely help."
+    },
+    {
+      "category": "Qualification",
+      "question": "Tell me about a deal you disqualified.",
+      "hint": "Explain what evidence showed it was not a good fit and how you handled the relationship professionally."
+    },
+    {
+      "category": "Value",
+      "question": "How do you communicate value without leading with features?",
+      "hint": "Connect the customer's problem to business impact, then use only the capabilities that support the outcome."
+    },
+    {
+      "category": "Value",
+      "question": "Tell me about a time you quantified customer value.",
+      "hint": "Show the baseline, assumptions, calculation and how the customer used the result in the buying decision."
+    },
+    {
+      "category": "Objections",
+      "question": "How do you handle a price objection?",
+      "hint": "Clarify what the objection means, return to value and explore budget or scope without discounting reflexively."
+    },
+    {
+      "category": "Objections",
+      "question": "Tell me about an objection you could not overcome.",
+      "hint": "Be honest about what you missed, what you learned and how it changed your qualification or messaging."
+    },
+    {
+      "category": "Negotiation",
+      "question": "How do you prepare for a negotiation?",
+      "hint": "Know the customer's value, your boundaries, tradeable terms, alternatives and the outcome you are trying to protect."
+    },
+    {
+      "category": "Negotiation",
+      "question": "Tell me about a difficult negotiation.",
+      "hint": "Explain the competing priorities, how you kept trust and the agreement you reached."
+    },
+    {
+      "category": "Closing",
+      "question": "How do you know when to ask for the close?",
+      "hint": "Look for confirmed value, a clear process, unresolved risks and a specific next commitment rather than relying on a feeling."
+    },
+    {
+      "category": "Closing",
+      "question": "Tell me about a deal you lost late in the process.",
+      "hint": "Identify the signal you missed, the decision process and the change you made afterward."
+    },
+    {
+      "category": "Forecasting",
+      "question": "How do you build a reliable forecast?",
+      "hint": "Use evidence from buyer actions, stage criteria, close timing and risks instead of optimism or activity alone."
+    },
+    {
+      "category": "Forecasting",
+      "question": "Tell me about a time your forecast was wrong.",
+      "hint": "Own the miss, explain the assumption that failed and describe the process change that improved accuracy."
+    },
+    {
+      "category": "Account management",
+      "question": "How do you grow an existing customer account?",
+      "hint": "Start with outcomes already achieved, identify adjacent problems and build a plan with the customer's champions."
+    },
+    {
+      "category": "Account management",
+      "question": "Tell me about a customer relationship you saved.",
+      "hint": "Explain the risk, how you listened and what concrete action rebuilt confidence."
+    },
+    {
+      "category": "Collaboration",
+      "question": "How do you work with marketing and customer success?",
+      "hint": "Discuss shared definitions, feedback loops, handoffs and how you prevent the customer from hearing conflicting messages."
+    },
+    {
+      "category": "Collaboration",
+      "question": "Tell me about a disagreement with a sales leader.",
+      "hint": "Use evidence and shared goals, then show how you committed to the decision once it was made."
+    },
+    {
+      "category": "Performance",
+      "question": "What sales skill are you working to improve?",
+      "hint": "Choose a real skill, describe your practice routine and show how you measure progress."
+    },
+    { "category": "Discovery", "question": "How do you prepare for a discovery conversation?", "hint": "Research the account, form hypotheses and prepare questions that test business impact rather than reciting a script." },
+    { "category": "Discovery", "question": "Tell me about a discovery call that changed your approach.", "hint": "Explain the insight, the adjustment and how it affected the opportunity." },
+    { "category": "Prospecting", "question": "How do you personalize outreach at scale?", "hint": "Use relevant account context and a clear hypothesis without pretending to know more than you do." },
+    { "category": "Prospecting", "question": "Tell me about a prospect who ignored you.", "hint": "Explain what you tested, when you stopped and what the experience taught you." },
+    { "category": "Qualification", "question": "How do you identify the real decision maker?", "hint": "Map the buying process, roles, influence and criteria without treating one contact as the whole account." },
+    { "category": "Qualification", "question": "Tell me about a qualification mistake.", "hint": "Own the signal you missed and the change you made to improve future opportunities." },
+    { "category": "Value", "question": "How do you build a business case with a customer?", "hint": "Establish the current cost or risk, desired outcome, assumptions and a credible measurement plan." },
+    { "category": "Value", "question": "Tell me about selling a solution with an unclear ROI.", "hint": "Explain how you made value tangible and handled uncertainty honestly." },
+    { "category": "Objections", "question": "How do you respond when a prospect says they are happy with the current solution?", "hint": "Respect the status quo, explore its limits and look for a meaningful reason to change." },
+    { "category": "Objections", "question": "Tell me about an objection that revealed a product gap.", "hint": "Explain how you responded without overpromising and how you shared the learning internally." },
+    { "category": "Negotiation", "question": "What can you trade in a negotiation besides price?", "hint": "Consider scope, timing, terms, support, commitment, volume and mutual risk." },
+    { "category": "Negotiation", "question": "Tell me about holding a pricing boundary.", "hint": "Explain the value, the pressure and how you protected the relationship." },
+    { "category": "Closing", "question": "How do you create a clear next step?", "hint": "Confirm value, name the action, owner and date, and surface remaining blockers." },
+    { "category": "Closing", "question": "Tell me about a deal you accelerated.", "hint": "Describe the real trigger, the coordinated actions and how you avoided manufactured urgency." },
+    { "category": "Forecasting", "question": "How do you distinguish activity from deal progress?", "hint": "Look for buyer actions, confirmed criteria, access to the process and commitments rather than meetings alone." },
+    { "category": "Forecasting", "question": "Tell me about improving forecast accuracy.", "hint": "Explain the old signal, the new qualification or inspection habit and the measured improvement." },
+    { "category": "Account management", "question": "How do you run a customer business review?", "hint": "Review outcomes, adoption, goals, risks and a shared plan for the next period." },
+    { "category": "Account management", "question": "Tell me about finding expansion potential ethically.", "hint": "Start with a real customer problem and only propose expansion when it improves their outcome." },
+    { "category": "Collaboration", "question": "How do you give useful feedback to marketing?", "hint": "Share patterns from real conversations, distinguish evidence from opinion and suggest a testable change." },
+    { "category": "Collaboration", "question": "Tell me about a difficult handoff to customer success.", "hint": "Explain the missing context, the repair and the process improvement." },
+    { "category": "Performance", "question": "How do you plan your selling week?", "hint": "Balance prospecting, active opportunities, follow-up, preparation and account work against goals." },
+    { "category": "Performance", "question": "Tell me about recovering after a weak quarter.", "hint": "Diagnose the funnel, choose focused actions and show the result without blaming external factors." },
+    { "category": "Communication", "question": "How do you sell to different communication styles?", "hint": "Adapt structure and detail while keeping the business case and next step consistent." },
+    { "category": "Communication", "question": "Tell me about a presentation that did not land.", "hint": "Explain what you learned about the audience and how you changed the next presentation." },
+    { "category": "Customer empathy", "question": "How do you keep a customer conversation from becoming a pitch?", "hint": "Stay with the customer's context, ask follow-ups and earn the right to connect your solution." },
+    { "category": "Customer empathy", "question": "Tell me about a time you chose the customer's interest over a quick deal.", "hint": "Explain the trade-off and the long-term outcome." },
+    { "category": "Strategy", "question": "How do you decide which market segment to pursue?", "hint": "Compare pain, fit, access, economics, competition and the ability to win repeatedly." },
+    { "category": "Strategy", "question": "Tell me about changing your sales strategy.", "hint": "Describe the evidence, the new focus and how you measured whether it worked." },
+    { "category": "Performance", "question": "What does excellent sales preparation look like?", "hint": "Connect research, hypotheses, objectives, questions, likely objections and a clear next step." },
+    { "category": "Performance", "question": "How do you use call reviews to improve?", "hint": "Review a specific behavior, identify one change to practice and measure whether it improves future conversations." }
+  ]
+}

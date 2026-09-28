@@ -1,0 +1,136 @@
+{
+  "durationSeconds": 60,
+  "cards": [
+    {
+      "category": "Your questions",
+      "question": "Do you have any questions for us?",
+      "hint": "Always say yes. Ask about the team's challenges, how success is measured, or what the first 90 days look like.",
+      "example": "Yes, I have a few! What are the company's main goals for the next six months, and how can this role help reach them? How would you describe the team's culture, and how is collaboration encouraged? And are there training or development opportunities to help people grow in their roles?",
+      "source": "50-questions"
+    },
+    {
+      "category": "Your questions",
+      "question": "We have a few minutes left. What would you like to know about the team?",
+      "hint": "Ask something you truly want to know: how the team works, how decisions are made, what a typical week looks like."
+    },
+    {
+      "category": "Your questions",
+      "question": "Is there anything about the role that is still unclear to you?",
+      "hint": "Use it: ask about expectations for the first months or the biggest challenge of the role."
+    },
+    {
+      "category": "Your questions",
+      "question": "Is there anything else you would like us to know about you?",
+      "hint": "Add one strength or example you didn't get to mention, and restate your interest in one sentence."
+    },
+    {
+      "category": "Your questions",
+      "question": "Anything you'd like to ask me about my experience at the company?",
+      "hint": "Ask the interviewer what they enjoy about working there, or what surprised them when they joined."
+    },
+    {
+      "category": "Salary",
+      "question": "What are your salary expectations?",
+      "hint": "Give a researched range for the role and location, in the right currency, and say you are open to discussing the full package.",
+      "example": "Based on my research for this role and my experience, I believe a range between $X and $Y per year would be fair. That said, I'm most interested in a role where I can make a real contribution and keep growing, so I'm open to discussing the full package within your budget.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Salary",
+      "question": "What is your current salary?",
+      "hint": "You can redirect politely to your expectations: \"I'd rather focus on the range for this role, which I understand is around…\""
+    },
+    {
+      "category": "Salary",
+      "question": "Our budget for this role is a bit lower than your range. Would that work for you?",
+      "hint": "Don't answer yes or no right away. Ask about the full package (bonus, equity, benefits) and show flexibility with care."
+    },
+    {
+      "category": "Salary",
+      "question": "Would you prefer to be paid in USD or in your local currency?",
+      "hint": "Know your answer before the call, including taxes and how you will receive the payment."
+    },
+    {
+      "category": "Contract",
+      "question": "Would you be working as an employee or as a contractor?",
+      "hint": "Show you understand both models and what you need (e.g. a company to invoice from). Be clear and calm."
+    },
+    {
+      "category": "Contract",
+      "question": "Are you comfortable working as an independent contractor?",
+      "hint": "Say yes if it is true, and show you know what it involves: invoices, taxes, no local benefits."
+    },
+    {
+      "category": "Contract",
+      "question": "Do you need visa sponsorship to work with us?",
+      "hint": "Be direct and honest. If the role is remote from your country, make that clear."
+    },
+    {
+      "category": "Logistics",
+      "question": "When could you start?",
+      "hint": "Give a realistic date, including your notice period. Leaving your current job well is a good sign.",
+      "example": "I could start in two weeks, respecting my notice period at my current company. If needed, I'm open to discussing a shorter timeline to match the team's priorities. I'm really excited about the chance to start contributing as soon as possible.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Logistics",
+      "question": "What is your notice period?",
+      "hint": "State it clearly. If it can be shorter, say so, but don't promise what you can't do."
+    },
+    {
+      "category": "Logistics",
+      "question": "Our team is mostly in Eastern Time. How many hours of overlap could you have?",
+      "hint": "Give a concrete window: \"I can work from 10 a.m. to 7 p.m. Eastern.\" Flexibility is valuable, but be realistic."
+    },
+    {
+      "category": "Logistics",
+      "question": "Would you be open to relocating in the future?",
+      "hint": "Answer honestly. If you are open, say under which conditions; if not, say so kindly."
+    },
+    {
+      "category": "Logistics",
+      "question": "Are you interviewing with other companies?",
+      "hint": "Be honest without details: \"Yes, a few processes, but this role is my priority.\" It can speed things up."
+    },
+    {
+      "category": "Logistics",
+      "question": "Do you have any upcoming offers or deadlines we should know about?",
+      "hint": "If you have one, say it now politely. Companies prefer to know early."
+    },
+    {
+      "category": "Logistics",
+      "question": "Could you share two references from previous managers?",
+      "hint": "Say yes and tell them you will send names after checking with your references."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "Is there anything that would stop you from accepting an offer?",
+      "hint": "Be honest about deal-breakers (salary floor, hours, contract), with a positive tone."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "How interested are you in this role, from 1 to 10?",
+      "hint": "Give a high, honest number and one reason. If it is not a 10, say what would make it one."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "What did you think of the interview today?",
+      "hint": "Be positive and specific: mention one thing you learned about the team or the role."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "Our next step is a technical interview. Any questions about the process?",
+      "hint": "Ask what to prepare, how long it takes and who you will meet. Then thank them."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "That's all from my side. Any final thoughts?",
+      "hint": "Thank them, restate your interest in one sentence and say you look forward to the next steps."
+    },
+    {
+      "category": "Wrap-up",
+      "question": "Thanks for your time today. We will get back to you within a week. Does that work?",
+      "hint": "Thank them warmly and ask the best way to follow up if you don't hear back."
+    }
+  ]
+}

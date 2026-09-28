@@ -1,8 +1,11 @@
+/** Return `false` when the key was not handled, so other listeners (and the browser) still get it. */
+type ShortcutHandler = () => unknown
+
 export interface KeyboardShortcutHandlers {
   /** `Space`: start / pause the timer. */
-  onToggle?: () => void
+  onToggle?: ShortcutHandler
   /** `→`: next card. */
-  onNext?: () => void
+  onNext?: ShortcutHandler
 }
 
 /** True when the key event should be left to the focused element (typing, native controls). */
@@ -19,14 +22,12 @@ export function useKeyboardShortcuts(handlers: KeyboardShortcutHandlers) {
     if (isTypingTarget(event.target)) return
 
     if (event.code === 'Space' && handlers.onToggle) {
-      // A focused button or link already reacts to Space natively.
-      if (event.target instanceof HTMLElement && event.target.closest('button, a, [role="button"]')) return
-      event.preventDefault()
-      handlers.onToggle()
+      // A focused button, link or disclosure already reacts to Space natively.
+      if (event.target instanceof HTMLElement && event.target.closest('button, a, summary, [role="button"]')) return
+      if (handlers.onToggle() !== false) event.preventDefault()
     }
     else if (event.key === 'ArrowRight' && handlers.onNext) {
-      event.preventDefault()
-      handlers.onNext()
+      if (handlers.onNext() !== false) event.preventDefault()
     }
   }
 

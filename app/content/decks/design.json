@@ -1,0 +1,144 @@
+{
+  "slug": "design",
+  "name": "Design Deck",
+  "shortName": "Design",
+  "tagline": "Product designers",
+  "color": "design",
+  "sort": 5,
+  "cards": [
+    {
+      "category": "Process",
+      "question": "Walk me through your design process.",
+      "hint": "Start with the problem and users, then cover exploration, decisions, validation and how you learn after launch.",
+      "followUp": {
+        "question": "Which part of that process do you adapt most often?",
+        "hint": "Give a real constraint that changed your approach and explain why the adaptation was useful."
+      }
+    },
+    {
+      "category": "Research",
+      "question": "Tell me about a user insight that changed your design.",
+      "hint": "Explain what you expected, what you observed and how the design changed because of the evidence."
+    },
+    {
+      "category": "Research",
+      "question": "How do you choose a research method?",
+      "hint": "Connect the method to the question, decision stage, available time and confidence needed."
+    },
+    {
+      "category": "Problem framing",
+      "question": "How do you turn a vague request into a design problem?",
+      "hint": "Clarify the user, need, context and desired outcome before jumping to screens."
+    },
+    {
+      "category": "Problem framing",
+      "question": "Tell me about a time you reframed the problem.",
+      "hint": "Show what the original request missed and how the new framing created a better direction."
+    },
+    {
+      "category": "Interaction design",
+      "question": "How do you design for an edge case?",
+      "hint": "Explain how you identify it, assess its impact and keep the main experience understandable."
+    },
+    {
+      "category": "Interaction design",
+      "question": "What makes an interaction feel intuitive?",
+      "hint": "Discuss user expectations, feedback, consistency and how you would test whether the interaction works."
+    },
+    {
+      "category": "Visual design",
+      "question": "How do you use visual hierarchy?",
+      "hint": "Explain how type, spacing, contrast and grouping guide attention toward the user's next decision."
+    },
+    {
+      "category": "Accessibility",
+      "question": "How do you include accessibility in your design work?",
+      "hint": "Mention inclusive research, keyboard use, contrast, semantics and how accessibility is checked throughout the process."
+    },
+    {
+      "category": "Accessibility",
+      "question": "Tell me about an accessibility issue you found or prevented.",
+      "hint": "Describe the user impact, the design change and how you verified the improvement."
+    },
+    {
+      "category": "Systems",
+      "question": "How have you used a design system?",
+      "hint": "Explain when you used existing patterns, when you extended them and how you kept consistency."
+    },
+    {
+      "category": "Systems",
+      "question": "When should a team create a new component?",
+      "hint": "Consider repetition, meaningful variation, accessibility, maintenance cost and whether an existing pattern can be improved."
+    },
+    {
+      "category": "Collaboration",
+      "question": "How do you collaborate with engineers?",
+      "hint": "Talk about early alignment, constraints, handoff quality and staying involved through implementation."
+    },
+    {
+      "category": "Collaboration",
+      "question": "Tell me about a design disagreement with a teammate.",
+      "hint": "Show how you moved from opinions to user needs, evidence or a small test."
+    },
+    {
+      "category": "Trade-offs",
+      "question": "Tell me about a design trade-off you made.",
+      "hint": "Name the competing goals, the decision and what you monitored afterward."
+    },
+    {
+      "category": "Trade-offs",
+      "question": "How do you design when you have very little time?",
+      "hint": "Describe how you reduce uncertainty, focus on the riskiest decisions and leave a path for iteration."
+    },
+    {
+      "category": "Metrics",
+      "question": "How do you know whether a design is successful?",
+      "hint": "Combine usability evidence, product outcomes and qualitative feedback rather than relying on a single metric."
+    },
+    {
+      "category": "Metrics",
+      "question": "Tell me about a time data changed your design.",
+      "hint": "Explain the signal, your initial interpretation and the design decision that followed."
+    },
+    {
+      "category": "Critique",
+      "question": "How do you give and receive design critique?",
+      "hint": "Keep critique tied to goals and users, make the feedback specific and separate the work from the person."
+    },
+    {
+      "category": "Portfolio",
+      "question": "Which project best represents how you work?",
+      "hint": "Choose a project that shows decisions and learning, not just polished screens. Be clear about your contribution."
+    },
+    { "category": "Research", "question": "How do you recruit the right users for research?", "hint": "Define the behavior or context that matters, screen for it and avoid recruiting only convenient participants." },
+    { "category": "Research", "question": "Tell me about research that produced an unexpected result.", "hint": "Explain how you checked the signal and translated it into a design decision." },
+    { "category": "Problem framing", "question": "How do you prioritize problems to explore?", "hint": "Consider user impact, frequency, business importance, confidence and the cost of learning." },
+    { "category": "Interaction design", "question": "How do you design a useful empty state?", "hint": "Set expectations, explain value and give the user a clear next action without adding noise." },
+    { "category": "Interaction design", "question": "How do you decide between a modal and a full page?", "hint": "Use task importance, context, interruption cost, navigation and accessibility." },
+    { "category": "Interaction design", "question": "Tell me about simplifying a complex flow.", "hint": "Describe the source of complexity, the design change and how you validated it." },
+    { "category": "Visual design", "question": "How do you create a consistent visual language?", "hint": "Discuss principles, reusable patterns, tokens and how you handle meaningful exceptions." },
+    { "category": "Visual design", "question": "Tell me about a visual design choice you defended.", "hint": "Connect it to user understanding, brand or product goals and evidence." },
+    { "category": "Accessibility", "question": "How do you design for keyboard users?", "hint": "Consider focus order, visible focus, shortcuts, semantic controls and completion of the whole task." },
+    { "category": "Accessibility", "question": "How do you test a design with assistive technology?", "hint": "Combine automated checks, manual keyboard testing and feedback from people with lived experience." },
+    { "category": "Systems", "question": "How do you contribute to a design system?", "hint": "Share how you identify patterns, document decisions and collaborate on adoption and maintenance." },
+    { "category": "Systems", "question": "Tell me about a design system limitation.", "hint": "Explain the user or product need, the constraint and whether you improved or extended the system." },
+    { "category": "Collaboration", "question": "How do you prepare a design handoff?", "hint": "Include intent, states, behavior, accessibility, content and open questions, not just dimensions." },
+    { "category": "Collaboration", "question": "Tell me about a time engineering changed your design.", "hint": "Show how the constraint improved the solution or clarified the essential user value." },
+    { "category": "Trade-offs", "question": "How do you balance user needs and business constraints?", "hint": "Make both visible, identify the minimum valuable experience and name what you would learn next." },
+    { "category": "Trade-offs", "question": "Tell me about a design you shipped before it felt perfect.", "hint": "Explain the risk you accepted, the quality bar you protected and the iteration plan." },
+    { "category": "Metrics", "question": "How do you measure usability?", "hint": "Use task success, time, errors, confidence and qualitative evidence appropriate to the experience." },
+    { "category": "Metrics", "question": "Tell me about a metric you interpreted incorrectly.", "hint": "Own the assumption, explain the correction and what you now check before concluding." },
+    { "category": "Critique", "question": "What makes a design critique productive?", "hint": "Set context, ask focused questions, separate intent from execution and finish with decisions or experiments." },
+    { "category": "Critique", "question": "Tell me about critique that changed your work.", "hint": "Explain the feedback, why it was useful and how the design improved." },
+    { "category": "Portfolio", "question": "How do you tell a strong portfolio story?", "hint": "Focus on problem, role, decisions, collaboration, outcomes and learning rather than a screen tour." },
+    { "category": "Portfolio", "question": "Which design decision would you change in your portfolio project?", "hint": "Be specific about what you know now and how the change would affect the user or business." },
+    { "category": "Process", "question": "How do you work when the problem is still unclear?", "hint": "Create a small learning plan, expose assumptions and avoid polishing an unvalidated direction." },
+    { "category": "Process", "question": "Tell me about a project where you had to move quickly.", "hint": "Explain what you simplified, what you kept rigorous and what you learned afterward." },
+    { "category": "Research", "question": "How do you avoid leading questions in interviews?", "hint": "Ask about past behavior, use neutral language and let users describe their context before showing solutions." },
+    { "category": "Interaction design", "question": "How do you design for errors?", "hint": "Prevent where possible, explain what happened, preserve user work and offer a recoverable next step." },
+    { "category": "Visual design", "question": "How do you choose what deserves emphasis on a screen?", "hint": "Start with the user's decision and use hierarchy to make the important path obvious." },
+    { "category": "Process", "question": "What design practice are you improving right now?", "hint": "Name a concrete practice, how you are developing it and how you will know it is improving." },
+    { "category": "Process", "question": "How do you decide when a design is ready to ship?", "hint": "Balance user understanding, accessibility, implementation quality, risk and the value of learning from real use." },
+    { "category": "Research", "question": "Tell me about a research question you could not answer.", "hint": "Explain the limitation, how you communicated it and what safe next step you recommended." }
+  ]
+}

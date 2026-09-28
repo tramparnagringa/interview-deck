@@ -19,14 +19,6 @@
       :question="question"
     />
 
-    <p
-      v-if="micNotice"
-      class="answer-focus-notice"
-      role="alert"
-    >
-      {{ copy.answer.micDenied }}
-    </p>
-
     <div class="answer-focus-ring">
       <UiProgressRing :progress="timer.progress.value">
         <span
@@ -49,12 +41,11 @@
         :label="timer.status.value === 'paused' ? copy.answer.resume : copy.answer.pause"
         tone="dark"
         size="lg"
-        @click="toggle"
+        @click="timer.toggle"
       />
       <UiButton
         variant="inverse"
         block
-        :loading="finishing"
         @click="finish"
       >
         {{ copy.answer.done }}
@@ -73,26 +64,26 @@
 <script setup lang="ts">
 import { copy } from '~/content/copy'
 import { formatDuration } from '~/utils/deck'
+import { DEFAULT_ANSWER_SECONDS } from '~/composables/useTimer'
 
-/** Screen 03: countdown, optional recording, pause / done / restart. */
-const props = defineProps<{
+/** Screen 03: countdown with pause / done / restart. `Space` pauses and resumes. */
+const props = withDefaults(defineProps<{
   question: string
   meta: string
-  /** Record the answer for AI feedback. */
-  record: boolean
-}>()
+  durationSeconds?: number
+}>(), {
+  durationSeconds: DEFAULT_ANSWER_SECONDS,
+})
 
 const emit = defineEmits<{
-  finish: [audio: Blob | null]
+  finish: []
   cancel: []
 }>()
 
 const TIME_UP_DELAY_MS = 1200
 
-const timer = useTimer()
-const recorder = useRecorder()
-const finishing = ref(false)
-const micNotice = computed(() => props.record && recorder.error.value !== null)
+const timer = useTimer(props.durationSeconds)
+let finished = false
 
 const time = computed(() => formatDuration(timer.remainingSeconds.value))
 const statusText = computed(() => {
@@ -102,39 +93,20 @@ const statusText = computed(() => {
 })
 const statusTone = computed(() => (timer.status.value === 'running' ? 'accent' : 'muted'))
 
-async function begin() {
-  if (props.record) await recorder.start()
+function restart() {
+  timer.reset()
   timer.start()
 }
 
-function toggle() {
-  if (timer.status.value === 'running') {
-    timer.pause()
-    recorder.pause()
-  }
-  else if (timer.status.value === 'paused') {
-    timer.resume()
-    recorder.resume()
-  }
-}
-
-async function restart() {
-  await recorder.cancel()
-  timer.reset()
-  await begin()
-}
-
-async function finish() {
-  if (finishing.value) return
-  finishing.value = true
+function finish() {
+  if (finished) return
+  finished = true
   timer.pause()
-  const audio = await recorder.stop()
-  emit('finish', audio)
+  emit('finish')
 }
 
-async function cancel() {
+function cancel() {
   timer.reset()
-  await recorder.cancel()
   emit('cancel')
 }
 
@@ -143,9 +115,9 @@ watch(() => timer.status.value, (status) => {
   if (status === 'done') timeUpTimeout = setTimeout(finish, TIME_UP_DELAY_MS)
 })
 
-useKeyboardShortcuts({ onToggle: toggle })
+useKeyboardShortcuts({ onToggle: timer.toggle })
 
-onMounted(begin)
+onMounted(timer.start)
 onBeforeUnmount(() => clearTimeout(timeUpTimeout))
 </script>
 
@@ -155,13 +127,6 @@ onBeforeUnmount(() => clearTimeout(timeUpTimeout))
   flex: 1;
   flex-direction: column;
   gap: var(--space-6);
-}
-
-.answer-focus-notice {
-  margin: 0;
-  color: var(--color-focus-ink-muted);
-  font-size: var(--text-sm);
-  text-align: center;
 }
 
 .answer-focus-ring {

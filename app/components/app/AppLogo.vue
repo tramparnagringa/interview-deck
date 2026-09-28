@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    to="/"
+    :to="basePath || '/'"
     class="app-logo"
   >
     <span
@@ -16,6 +16,8 @@
 
 <script setup lang="ts">
 import { copy } from '~/content/copy'
+
+const { basePath } = useLevel()
 </script>
 
 <style scoped>

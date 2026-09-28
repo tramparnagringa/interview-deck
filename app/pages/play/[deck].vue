@@ -1,0 +1,3 @@
+<template>
+  <PlayScreen />
+</template>

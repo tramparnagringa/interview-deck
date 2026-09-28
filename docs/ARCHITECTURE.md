@@ -2,6 +2,28 @@
 
 Complementa o [PRD](interview-deck-prd/PRD.md). As regras do dia a dia estão em [AGENTS.md](../AGENTS.md); aqui fica o porquê.
 
+## Fase 1 (atual): site estático, só o deck
+
+Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um site estático (`nuxt generate`) com todos os decks abertos, timer e CTA do Skool.
+
+- **Conteúdo no repositório.** `app/content/decks/*.json` e `app/content/stages/*.json` são a fonte editorial (revisada em PR). O módulo `modules/decks/` valida com Zod e gera no build, **escolhendo campo a campo**, dois arquivos: `#build/decks` (decks e etapas, sem conteúdo Premium) e `#build/premium` (hint e resposta modelo por id de carta). A base do conteúdo é o ebook "As 50 Perguntas Mais Comuns em Entrevistas" (TNG), traduzido e adaptado para o mercado internacional (USD, "company" em vez de "startup"); as cartas vindas dele têm `"source": "50-questions"`.
+- **Níveis por página, um app só.** `/` é Free e `/premium` é Premium: as páginas só montam as telas (`HomeScreen`, `PlayScreen`) com `definePageMeta({ level })`, e `useLevel()` entrega o nível, o que ele libera e o prefixo dos links. O Free expõe apenas o General; decks específicos são Premium. Premium hoje = hints + follow-ups + selo PREMIUM + CTA do Skool apontando para as salas ao vivo. Um build, um deploy.
+- **Hints só onde o nível pede.** O `PlayScreen` carrega `#build/premium` com `import()` dinâmico quando o nível libera hints; as páginas Free nunca baixam esse arquivo (coberto por teste e2e). Decidido em 28/09/2026, aceitando o limite: sem login não existe paywall, os hints estão publicados e quem achar `/premium` vê. Para proteger de verdade: voltar ao modelo com servidor (`premium-ai`).
+- **Sessão = uma entrevista.** As perguntas são organizadas pelo momento da entrevista (`STAGES`: opening, intro, core, closing), não só por tema. Opening, intro e closing ficam em `app/content/stages/` e valem para todos os decks; o deck é o core. A ordem da sessão é montada por `buildSessionOrder` (store): uma pergunta de cada etapa compartilhada em volta do core embaralhado.
+- **Modos por nível.** Treino livre (todos): o deck inteiro, com follow-up Premium ocasional, e ao fim do closing começa outra sessão. Mock interview (Premium, rota própria `/premium/mock/:deck`): opening → intro → 4 perguntas core → 1 follow-up contextual → closing e uma tela de fim. O mock é Premium por decisão de produto (28/09/2026); como o resto do Premium, não há bloqueio técnico sem login.
+- **Estado só no navegador.** Ordem embaralhada e posição no `sessionStorage` (D7). A restauração acontece em `openDeck` (no `onMounted`), porque a página é pré-renderizada e o Pinia sobrescreveria na hidratação um estado lido durante o setup.
+- **Modo foco sem trocar de layout.** Trocar de layout remonta a página e perde o estado da resposta; a tela escura é um estado (`useFocusMode`) lido pelo layout `default`.
+- **Deploy.** `vercel.json` usa `pnpm generate` e publica `.output/public`. Os links do Skool entram no build (validados em `modules/skool-links.ts`).
+- **Versão completa guardada** no branch `premium-ai` (D4–D6 abaixo, com Supabase, ElevenLabs Scribe e Claude). Para voltar: reaproveitar `server/`, `supabase/` e as telas de feedback desse branch.
+
+### Próximos passos (ideias, não decididas)
+
+- **Mais conteúdo.** Os oito decks atuais têm 50 perguntas cada; o próximo trabalho editorial é revisar as perguntas de follow-up com base no uso das salas de prática.
+- **Perguntas técnicas de repositórios conhecidos.** Importar de repositórios públicos de perguntas de entrevista. Antes, checar a licença de cada fonte: MIT/CC permitem usar com atribuição; sem licença, só como inspiração, reescrevendo. Guardar a origem no JSON do deck (campo `source`, a criar no schema).
+- **Ferramentas técnicas.** Um modo de system design (desenhar/explicar uma arquitetura) e um de código online. São produtos diferentes do baralho; avaliar se entram no app ou são links para ferramentas existentes.
+
+O resto deste documento descreve a arquitetura completa (fase com Premium).
+
 ## Visão geral
 
 ```
@@ -84,7 +106,7 @@ saved_cards      (user_id, card_id, created_at)   -- opcional v1
 
 | Variável | Onde |
 |---|---|
-| `NUXT_PUBLIC_SKOOL_FREE_URL`, `NUXT_PUBLIC_SKOOL_PREMIUM_URL`, `NUXT_PUBLIC_SKOOL_LIVE_URL` | público |
+| `NUXT_PUBLIC_SKOOL_URL` | público |
 | `SUPABASE_URL`, `SUPABASE_KEY` (anon) | público via módulo |
 | `SUPABASE_SERVICE_KEY` | só servidor |
 | `NUXT_AI_*` (chaves de transcrição e LLM) | só servidor |

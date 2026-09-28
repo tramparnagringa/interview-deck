@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <AppLogo />
-    <UiBadge v-if="isPremium">
+    <UiBadge v-if="level === 'premium'">
       {{ copy.brand.premium }}
     </UiBadge>
     <AppMenu />
@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { copy } from '~/content/copy'
 
-const { isPremium } = usePlan()
+const { level } = useLevel()
 </script>
 
 <style scoped>

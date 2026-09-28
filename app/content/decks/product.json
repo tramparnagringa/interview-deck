@@ -1,0 +1,144 @@
+{
+  "slug": "product",
+  "name": "Product Management Deck",
+  "shortName": "Product",
+  "tagline": "Tech roles",
+  "color": "product",
+  "sort": 3,
+  "cards": [
+    {
+      "category": "Product sense",
+      "question": "What is your favorite product and how would you improve it?",
+      "hint": "Pick a user segment, name one real problem they have, and propose a change with how you would measure success.",
+      "followUp": {
+        "question": "How would you validate that this improvement solved the user problem?",
+        "hint": "Name a specific signal, experiment or user conversation and what result would change your mind."
+      }
+    },
+    {
+      "category": "Product sense",
+      "question": "Tell me about a product you launched from zero.",
+      "hint": "Cover the problem discovery, how you defined the MVP, launch, and what the data showed afterwards."
+    },
+    {
+      "category": "Prioritization",
+      "question": "How do you decide what goes into the roadmap?",
+      "hint": "Explain your framework with a real example, including something important you chose not to do."
+    },
+    {
+      "category": "Prioritization",
+      "question": "Tell me about a time you had to cut scope.",
+      "hint": "Show how you identified the must-haves and aligned stakeholders on the trade-off."
+    },
+    {
+      "category": "Metrics",
+      "question": "How do you measure the success of a feature?",
+      "hint": "Name a primary metric tied to user value, guardrail metrics, and when you would call it a failure."
+    },
+    {
+      "category": "Metrics",
+      "question": "Tell me about a time data changed your mind.",
+      "hint": "Explain what you believed, what the data showed, and the decision that followed."
+    },
+    {
+      "category": "Stakeholders",
+      "question": "Describe a time you aligned teams with conflicting goals.",
+      "hint": "Show how you found the shared goal and made the trade-offs explicit."
+    },
+    {
+      "category": "Stakeholders",
+      "question": "How do you work with engineering when estimates slip?",
+      "hint": "Talk about transparency, re-scoping options and protecting the team's trust."
+    },
+    {
+      "category": "Users",
+      "question": "How do you talk to users?",
+      "hint": "Describe your research habits and one insight that changed a product decision."
+    },
+    {
+      "category": "Users",
+      "question": "Tell me about a time you had to say no to a big customer.",
+      "hint": "Explain how you weighed their request against the strategy and how you kept the relationship."
+    },
+    {
+      "category": "Strategy",
+      "question": "How would you grow our product in a new market?",
+      "hint": "Start with the user and market differences, propose a small experiment, and define what success looks like."
+    },
+    {
+      "category": "Leadership",
+      "question": "How do you lead without authority?",
+      "hint": "Give an example where you used context, data and trust to get people to move."
+    },
+    {
+      "category": "Discovery",
+      "question": "How do you decide which customer problem to solve first?",
+      "hint": "Combine user pain, reach, strategic fit and confidence. Explain what evidence you would collect before committing."
+    },
+    {
+      "category": "Discovery",
+      "question": "Tell me about a research insight that challenged the roadmap.",
+      "hint": "Describe the original assumption, what users showed you and how you changed the decision."
+    },
+    {
+      "category": "Experimentation",
+      "question": "Design an experiment for a new product idea.",
+      "hint": "State the hypothesis, target users, smallest test, success signal and what you would do with an ambiguous result."
+    },
+    {
+      "category": "Experimentation",
+      "question": "Tell me about a product experiment that failed.",
+      "hint": "Focus on what you learned, whether the test was well designed and how the result affected the next decision."
+    },
+    {
+      "category": "Metrics",
+      "question": "What is a metric you would never optimize in isolation?",
+      "hint": "Choose a common metric, explain its failure mode and name the guardrail metrics you would pair with it."
+    },
+    {
+      "category": "Strategy",
+      "question": "How would you evaluate whether to build or partner for a capability?",
+      "hint": "Compare user value, differentiation, speed, cost, risk and long-term control."
+    },
+    {
+      "category": "Stakeholders",
+      "question": "Tell me about a time you changed an executive's mind.",
+      "hint": "Show preparation, the evidence you used and how you preserved the relationship if the answer was still no."
+    },
+    {
+      "category": "Execution",
+      "question": "How do you keep a product team focused during delivery?",
+      "hint": "Explain the decisions that stay fixed, the decisions that remain open and how you remove distractions."
+    },
+    { "category": "Discovery", "question": "How do you know when you have learned enough from users?", "hint": "Define the decision you need to make, the confidence required and the remaining uncertainty." },
+    { "category": "Discovery", "question": "Tell me about a customer request you did not build.", "hint": "Explain the underlying need, the strategic trade-off and what alternative you offered." },
+    { "category": "Discovery", "question": "How do you balance qualitative and quantitative research?", "hint": "Use qualitative evidence to understand why and quantitative evidence to understand scale or change." },
+    { "category": "Product sense", "question": "Design a product for a new user segment.", "hint": "Clarify the segment and need, propose a focused solution and define how you would validate it." },
+    { "category": "Product sense", "question": "What makes a product feel trustworthy?", "hint": "Discuss expectations, transparency, reliability, control and the signals you would measure." },
+    { "category": "Product sense", "question": "Tell me about a product decision you made with no perfect option.", "hint": "Explain the trade-offs, the choice and what you learned after launch." },
+    { "category": "Prioritization", "question": "How do you compare a new feature with technical debt?", "hint": "Make user impact, risk, cost of delay and future flexibility explicit." },
+    { "category": "Prioritization", "question": "Tell me about a roadmap trade-off you defended.", "hint": "Explain the competing requests, the decision framework and the stakeholder alignment." },
+    { "category": "Prioritization", "question": "How do you handle an urgent request that is not strategic?", "hint": "Assess the real urgency, protect focus and offer a transparent alternative or time-box." },
+    { "category": "Metrics", "question": "How do you choose a primary metric for an experiment?", "hint": "Tie it to the intended user behavior and define guardrails before seeing the result." },
+    { "category": "Metrics", "question": "Tell me about a metric that improved for the wrong reason.", "hint": "Explain the misleading behavior and the diagnostic you used to uncover it." },
+    { "category": "Metrics", "question": "How do you use metrics without losing the user story?", "hint": "Combine behavioral data with direct user evidence and keep the decision context visible." },
+    { "category": "Stakeholders", "question": "How do you align stakeholders before a launch?", "hint": "Clarify goals, roles, risks, decision rights and the communication rhythm." },
+    { "category": "Stakeholders", "question": "Tell me about a time a stakeholder changed scope late.", "hint": "Show how you understood the reason, assessed impact and made a deliberate trade-off." },
+    { "category": "Stakeholders", "question": "How do you handle a stakeholder who skips discovery?", "hint": "Connect discovery to their goal, make it lightweight and use evidence rather than process arguments." },
+    { "category": "Strategy", "question": "How would you evaluate a competitor's new feature?", "hint": "Understand the customer problem, strategic intent, adoption risk and your differentiated response." },
+    { "category": "Strategy", "question": "Tell me about a strategy you changed.", "hint": "Describe the new evidence, the implication and how you helped the organization move." },
+    { "category": "Strategy", "question": "How do you decide where not to compete?", "hint": "Use strengths, customer value, economics and the cost of splitting focus." },
+    { "category": "Execution", "question": "How do you write a useful product requirement?", "hint": "Make the problem, user, outcome, constraints and open questions clear without prescribing every implementation detail." },
+    { "category": "Execution", "question": "Tell me about a launch that did not go as planned.", "hint": "Explain the signal, the response and the process improvement that followed." },
+    { "category": "Execution", "question": "How do you manage dependencies across teams?", "hint": "Map the dependency, assign ownership, agree on interfaces and surface risk early." },
+    { "category": "Leadership", "question": "How do you create alignment when you are not the decision maker?", "hint": "Build shared context, clarify the decision and make your recommendation easy to evaluate." },
+    { "category": "Leadership", "question": "Tell me about a time you made a team more effective.", "hint": "Identify the working problem and the change that improved decisions or delivery." },
+    { "category": "Leadership", "question": "How do you give a product team autonomy?", "hint": "Set clear outcomes and guardrails, then let the team choose the path and learn from results." },
+    { "category": "Product sense", "question": "How do you decide what a product should not do?", "hint": "Use positioning, customer value, constraints and strategic focus to define boundaries." },
+    { "category": "Users", "question": "Tell me about a user you initially misunderstood.", "hint": "Explain the assumption, the evidence that corrected it and the product change." },
+    { "category": "Users", "question": "How do you include underserved users in product decisions?", "hint": "Consider recruitment, accessibility, different constraints and how aggregate metrics can hide gaps." },
+    { "category": "Experimentation", "question": "When would you not run an experiment?", "hint": "Discuss ethical, practical, low-risk or low-sample situations and what evidence you would use instead." },
+    { "category": "Strategy", "question": "What makes a product strategy credible?", "hint": "Connect customer insight, choices, capabilities, measurable outcomes and a clear reason to believe." },
+    { "category": "Execution", "question": "How do you decide whether to iterate or move on?", "hint": "Use the evidence, remaining user value, opportunity cost and the learning still needed to make the decision." }
+  ]
+}

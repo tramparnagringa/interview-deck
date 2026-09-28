@@ -27,9 +27,5 @@ logs
 test-results
 playwright-report
 
-# Supabase
-supabase/.temp
-supabase/.branches
-
 # Vercel
 .vercel

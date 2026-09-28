@@ -1,0 +1,164 @@
+{
+  "slug": "behavioral",
+  "name": "Behavioral Deck",
+  "shortName": "Behavioral",
+  "tagline": "STAR stories",
+  "color": "behavioral",
+  "sort": 1,
+  "cards": [
+    {
+      "category": "Conflict",
+      "question": "Tell me about a time you had a conflict with your manager.",
+      "hint": "STAR. Show respect for their position, how you raised your view with data, and how you moved forward together.",
+      "followUp": {
+        "question": "What did you learn about handling disagreement from that situation?",
+        "hint": "Name one change in your communication or decision-making, and explain how you use it now."
+      }
+    },
+    {
+      "category": "Conflict",
+      "question": "Describe a time you had to work with a difficult stakeholder.",
+      "hint": "Explain what they cared about, how you adapted your communication, and the result for the project."
+    },
+    {
+      "category": "Ownership",
+      "question": "Tell me about a time you went beyond your responsibilities.",
+      "hint": "Make the extra step clear: what was expected, what you did on top, and the impact."
+    },
+    {
+      "category": "Ownership",
+      "question": "Describe a mistake you made that affected others.",
+      "hint": "Own it early, explain how you fixed it and communicated, then the process you changed so it does not happen again."
+    },
+    {
+      "category": "Prioritization",
+      "question": "Tell me about a time you had too many priorities at once.",
+      "hint": "Show your criteria (impact, urgency, dependencies) and how you aligned with others on what to drop.",
+      "example": "I organize my work by priority and break it into smaller steps, using Trello and Google Calendar to track deadlines and avoid overlaps. On a recent project that let me handle several deliveries at the same time. I agreed with my manager on what came first, kept the quality, and met every deadline.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Influence",
+      "question": "Tell me about a time you convinced others to adopt your idea.",
+      "hint": "Show how you understood their concerns and used evidence, not only persistence."
+    },
+    {
+      "category": "Influence",
+      "question": "Describe a time you had to say no to someone.",
+      "hint": "Explain the reason, how you said it, and what alternative you offered."
+    },
+    {
+      "category": "Adaptability",
+      "question": "Tell me about a time a project changed direction halfway through.",
+      "hint": "Show how you reacted, what you salvaged, and how you kept the team moving."
+    },
+    {
+      "category": "Adaptability",
+      "question": "Describe a time you worked with incomplete information.",
+      "hint": "Explain the assumptions you made, how you reduced risk, and how you validated along the way."
+    },
+    {
+      "category": "Teamwork",
+      "question": "Tell me about a time you helped a struggling teammate.",
+      "hint": "Focus on what you noticed, how you offered help without taking over, and how they did afterwards."
+    },
+    {
+      "category": "Teamwork",
+      "question": "Describe your best experience working in a team.",
+      "hint": "Name what made it work (roles, communication, trust) and your specific contribution."
+    },
+    {
+      "category": "Results",
+      "question": "Tell me about your biggest professional achievement.",
+      "hint": "Give context on why it was hard, your specific actions, and a number that shows the result.",
+      "example": "My biggest achievement was leading the launch of a new feature in a SaaS product that increased user retention by 25%. The project had technical challenges, but I worked with the team to remove the bottlenecks and improve the customer experience. It had a direct impact on the company's results and showed I can lead critical initiatives.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Results",
+      "question": "Tell me about a goal you did not reach.",
+      "hint": "Be honest about the gap, what you learned, and how you applied it to the next goal."
+    },
+    {
+      "category": "Communication",
+      "question": "Describe a time you had to explain something complex to a non-expert.",
+      "hint": "Show how you checked what they already knew and used an analogy or example to bridge the gap."
+    },
+    {
+      "category": "Communication",
+      "question": "Tell me about a time you had to deliver bad news.",
+      "hint": "Explain timing, how you framed it with a plan, and how the other person reacted."
+    },
+    {
+      "category": "Problem solving",
+      "question": "Tell me about a challenge you faced at work. How did you handle it?",
+      "hint": "STAR: set the context and urgency, spend most of the time on your actions, and finish with the result and what you learned.",
+      "example": "At my last startup, a sudden spike in users overloaded our application and we started losing critical data. I took the initiative to review the architecture, find the bottlenecks and optimize the code. Working with the team, we shipped fixes in real time and stabilized the system within 48 hours, without users being affected. It taught me to act fast under pressure and to think about scalability from day one.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Conflict",
+      "question": "Describe a time you had to work with a difficult colleague.",
+      "hint": "Describe the situation without blaming them, then focus on how you kept the conversation open and what changed.",
+      "example": "I worked with a colleague who often missed deadlines, which slowed the whole team down. Instead of complaining, I had an open conversation with him and offered to help adjust his schedule. Our communication improved and he started organizing his deliveries better. It taught me how much empathy and a direct conversation can solve.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Culture",
+      "question": "How do you contribute to a positive work environment?",
+      "hint": "Give concrete actions, not adjectives: how you support colleagues, share feedback or improve communication, and what it changed for the team.",
+      "example": "I try to support my colleagues, whether that's helping with a task or giving constructive feedback. At a previous startup I organized short brainstorming sessions to get more ideas on the table and improve communication. It strengthened collaboration, and some of those ideas helped us speed up critical deliveries.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Conflict",
+      "question": "What is your approach to resolving conflicts in a team?",
+      "hint": "Show you address conflicts early and fairly: listen to each side, refocus on shared goals, and share a real example with the outcome.",
+      "example": "At a previous startup, two colleagues disagreed about task priorities in a sprint. I talked to each of them separately to understand their views, then proposed a meeting to align priorities with the project goals. The tension went down and the team moved forward without more friction. It showed me the value of listening and mediating fairly.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Adaptability",
+      "question": "How do you adapt to change?",
+      "hint": "Show you see change as normal: give an example of a real change, how you adjusted quickly, and the result.",
+      "example": "At my last startup there was a sudden change in product strategy. It created some uncertainty at first, but I adapted quickly: I reorganized my tasks around the team's new focus and learned a new tool to speed up delivery. We launched the new product on time, and it taught me to keep an open mind and treat change as an opportunity.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Feedback",
+      "question": "How do you handle negative feedback?",
+      "hint": "Show you treat it as input, not a personal attack: give an example of feedback you got, what you changed and the result.",
+      "example": "Once a teammate told me in a code review that my pull requests were too big and hard to review. My first reaction was to defend them, but I saw the point. I started splitting my work into smaller pull requests with clear descriptions. Reviews got faster, and we started catching bugs earlier.",
+      "source": "50-questions"
+    },
+    { "category": "Ownership", "question": "Tell me about a time you prevented a problem.", "hint": "Explain the early signal, the action you took and the impact of avoiding the problem." },
+    { "category": "Ownership", "question": "Describe a time you inherited a difficult situation.", "hint": "Show how you assessed the facts, built trust and created a practical recovery plan." },
+    { "category": "Communication", "question": "Tell me about a time you had to simplify a complex idea.", "hint": "Explain who needed to understand it, how you adapted the message and what happened next." },
+    { "category": "Communication", "question": "Describe a time a message was misunderstood.", "hint": "Own your part, explain how you clarified it and what communication habit changed afterward." },
+    { "category": "Teamwork", "question": "Tell me about a time you supported a teammate under pressure.", "hint": "Describe what you noticed, how you helped without taking over and the result." },
+    { "category": "Teamwork", "question": "Describe a time you had to build trust quickly.", "hint": "Explain the context, the behaviors that created credibility and how you knew trust improved." },
+    { "category": "Teamwork", "question": "Tell me about a time you worked with a new team.", "hint": "Show how you learned the team's norms, contributed early and built relationships." },
+    { "category": "Adaptability", "question": "Tell me about a time a plan failed.", "hint": "Focus on your response, the revised plan and what you changed to reduce the chance of repetition." },
+    { "category": "Adaptability", "question": "Describe a time you had to learn from someone junior to you.", "hint": "Show curiosity and explain how their perspective improved the work." },
+    { "category": "Adaptability", "question": "Tell me about a time you had to work outside your comfort zone.", "hint": "Explain the gap, how you prepared and the result." },
+    { "category": "Prioritization", "question": "Tell me about a time priorities changed suddenly.", "hint": "Explain how you reassessed impact, aligned stakeholders and protected the most important outcome." },
+    { "category": "Prioritization", "question": "How do you decide what not to do?", "hint": "Give a real example and make your criteria explicit." },
+    { "category": "Prioritization", "question": "Describe a time you delivered with limited resources.", "hint": "Show the trade-offs, how you asked for support and what you achieved." },
+    { "category": "Results", "question": "Tell me about a result you achieved despite setbacks.", "hint": "Spend most of the answer on the actions that changed the outcome." },
+    { "category": "Results", "question": "Describe a goal you missed.", "hint": "Be accountable, explain the causes without excuses and state what you do differently now." },
+    { "category": "Results", "question": "Tell me about a result that was better than expected.", "hint": "Explain the original target, the behavior that drove the outcome and what you learned." },
+    { "category": "Influence", "question": "Tell me about a time you influenced a decision without authority.", "hint": "Show how you understood concerns, built the case and earned commitment." },
+    { "category": "Influence", "question": "Describe a time you had to persuade a skeptical person.", "hint": "Focus on their perspective, the evidence you used and the final result." },
+    { "category": "Feedback", "question": "Tell me about feedback you gave that was difficult to hear.", "hint": "Be specific about the behavior, impact and support you offered." },
+    { "category": "Feedback", "question": "Describe a time feedback improved your work.", "hint": "Explain your first reaction, the change and the evidence that it worked." },
+    { "category": "Conflict", "question": "Tell me about a disagreement that ended well.", "hint": "Show the process that moved the conversation from positions to a shared solution." },
+    { "category": "Conflict", "question": "Describe a time you had to set a boundary.", "hint": "Explain why it mattered, how you communicated it respectfully and what changed." },
+    { "category": "Culture", "question": "Tell me about a time you challenged a team norm.", "hint": "Explain the reason, how you raised it and what happened after the discussion." },
+    { "category": "Culture", "question": "How do you make sure quieter voices are heard?", "hint": "Give concrete meeting or collaboration habits and their effect." },
+    { "category": "Problem solving", "question": "Tell me about a problem with no obvious owner.", "hint": "Show how you created clarity, involved the right people and moved it forward." },
+    { "category": "Problem solving", "question": "Describe a time you solved the wrong problem first.", "hint": "Explain how you discovered it and what helped you reframe the work." },
+    { "category": "Growth", "question": "Tell me about a professional habit you changed.", "hint": "Name the old pattern, the trigger for change and the evidence that the new habit helps." },
+    { "category": "Growth", "question": "What is the most useful lesson from a failure?", "hint": "Tie the lesson to a behavior you now use in real work." },
+    { "category": "Culture", "question": "Tell me about a time you made a team more inclusive.", "hint": "Describe a specific barrier, the action you took and how you measured improvement." }
+  ]
+}

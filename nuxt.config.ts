@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/test-utils/module',
-    '@nuxtjs/supabase',
     '@pinia/nuxt',
   ],
   devtools: { enabled: true },
@@ -27,18 +26,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
-    ai: {
-      mock: false,
-      elevenlabsKey: '',
-      anthropicKey: '',
-      anthropicModel: 'claude-sonnet-5',
-      elevenlabsModel: 'scribe_v2',
-    },
     public: {
       skool: {
-        freeUrl: '',
-        premiumUrl: '',
-        liveUrl: '',
+        url: '',
       },
     },
   },
@@ -63,12 +53,8 @@ export default defineNuxtConfig({
   },
 
   icon: {
+    // Static site: icons are bundled, no icon API at runtime.
+    clientBundle: { scan: true },
     serverBundle: { collections: ['lucide'] },
-  },
-
-  supabase: {
-    // Auth is anonymous by default; pages never force a login.
-    redirect: false,
-    types: false,
   },
 })

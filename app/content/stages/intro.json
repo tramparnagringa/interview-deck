@@ -1,0 +1,151 @@
+{
+  "durationSeconds": 120,
+  "cards": [
+    {
+      "category": "Tell me about yourself",
+      "question": "Tell me about yourself.",
+      "hint": "Present, past, future: what you do now, one or two proof points that got you here, and why this role is the next step. Keep it under two minutes.",
+      "example": "I'm a software engineer with five years of experience building digital products, mostly at startups. For the last two years I've been a full-stack developer at a fintech, where I helped launch two versions of a payments platform that grew from 5,000 to 50,000 users in six months. I owned our APIs and front-end performance, working in an agile team to ship fast without losing quality. Now I'm looking for a place where I can keep building products that scale, and that's what caught my attention here.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "Walk me through your resume.",
+      "hint": "Tell it as a story with a thread. One sentence per step, more detail on the most recent and relevant role."
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "Give me a quick overview of your background.",
+      "hint": "The 60-second version of \"tell me about yourself\": current role, main strength, why you are here."
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "How would you describe your career so far?",
+      "hint": "Name the thread that connects your jobs (a skill, a domain, a type of problem) and where it is taking you."
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "What do you do in your current role?",
+      "hint": "Scope, team and impact: what you own, who you work with and one result you are proud of."
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "Tell me something about you that is not on your resume.",
+      "hint": "Pick something human that still says something about how you work: a hobby, a side project, a habit."
+    },
+    {
+      "category": "Tell me about yourself",
+      "question": "How did you get into this field?",
+      "hint": "A short origin story, then connect it to what still motivates you today."
+    },
+    {
+      "category": "Motivation",
+      "question": "Why do you want to work here?",
+      "hint": "Connect something specific about the company (mission, product, market) to something specific about you. Avoid generic praise, and never lead with salary or benefits.",
+      "example": "I really admire how you're using AI to make financial services accessible to more people. I worked at a SaaS startup before and saw how technology can change a whole market. My experience with scalable architecture would be useful at this stage of fast growth, and I'd love to be part of a team that's leading innovation in finance.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "Why are you looking for a new role?",
+      "hint": "Stay positive and forward-looking: what you want to grow into, not what you are running from."
+    },
+    {
+      "category": "Motivation",
+      "question": "Why are you interested in this position?",
+      "hint": "Link two or three requirements of the role to your experience, then say what excites you about it.",
+      "example": "What interested me most is the chance to work on automation and innovation projects, which I have experience in and really enjoy. My background at startups prepared me for fast-changing environments and creative problem solving. I'm excited about using those skills to help the team reach its goals.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "What do you know about our company?",
+      "hint": "Show you did your homework: product, customers, a recent change. Then one sentence on why it matters to you.",
+      "example": "I know you're leading the edtech space with your adaptive learning platform, and I saw you recently raised a Series B to expand internationally. I like how you combine AI with personalized education, and with my machine learning background I think I could help improve your content recommendations.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "Why do you want to work for an international company?",
+      "hint": "Talk about the work, the team and what you will learn. Money can be part of it, but don't lead with it."
+    },
+    {
+      "category": "Motivation",
+      "question": "Why did you leave your previous job?",
+      "hint": "Frame it as moving toward something: new challenges and growth. Never criticize your last employer, and don't make salary the only reason.",
+      "example": "I left to take on bigger challenges and grow as a full-stack developer. I learned a lot about backend systems there, but I felt it was time for a faster, more product-driven environment. I'm excited to join an agile team where I can use what I know, learn new technologies and help scale a product that's growing quickly.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "What attracted you to this job description?",
+      "hint": "Quote one or two concrete items from the posting and explain why they match what you want next."
+    },
+    {
+      "category": "Motivation",
+      "question": "Have you used our product?",
+      "hint": "If yes, share one thing you like and one idea. If no, say what you learned about it and what you would try first."
+    },
+    {
+      "category": "Career",
+      "question": "What are you looking for in your next role?",
+      "hint": "Name two or three concrete things (scope, team, problems) and tie them to this role."
+    },
+    {
+      "category": "Career",
+      "question": "Where do you see yourself in five years?",
+      "hint": "Show ambition that fits the company: the skills and scope you want to grow into, not a job title.",
+      "example": "In five years I see myself as a senior engineer or tech lead, leading a team on challenging projects. I'm very interested in learning more about scalability and leading agile teams, which I think this role offers given how fast you're growing. I'd love to help build products that take the company global, and grow together with the team.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Career",
+      "question": "What do you value most in a job?",
+      "hint": "Pick one value and give a short example of a time it made a difference for you.",
+      "example": "What I value most are learning opportunities and a collaborative environment. I like places where I face challenges that help me grow and where ideas are shared to find the best solutions. That's what creates real impact, and I see it as part of your culture.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Career",
+      "question": "What kind of team do you work best in?",
+      "hint": "Describe the environment and give an example. Show you can adapt to other styles too."
+    },
+    {
+      "category": "Career",
+      "question": "What are you most proud of in your career so far?",
+      "hint": "One achievement with context, your part and the result. Save the details for follow-up questions."
+    },
+    {
+      "category": "Remote work",
+      "question": "Have you worked remotely before?",
+      "hint": "Show the habits that make remote work: async communication, clear updates, managing your own time."
+    },
+    {
+      "category": "Remote work",
+      "question": "Have you worked with people from other countries?",
+      "hint": "Give a concrete example: time zones, cultural differences you noticed, and how you adapted."
+    },
+    {
+      "category": "Remote work",
+      "question": "How comfortable are you communicating in English at work?",
+      "hint": "Be confident and honest. Mention where you use English today (meetings, docs, clients)."
+    },
+    {
+      "category": "Strengths",
+      "question": "What would your current manager say about you?",
+      "hint": "Two or three traits, each with a quick example. If possible, quote real feedback you received."
+    },
+    {
+      "category": "Strengths",
+      "question": "Why should we hire you?",
+      "hint": "Summarize the match: their top needs, your matching proof points, and what you would bring in the first months."
+    },
+    {
+      "category": "Career",
+      "question": "What do you hope to learn in this role?",
+      "hint": "Name something specific that matters for the role, and show how learning it also benefits the company.",
+      "example": "I hope to learn more about integrating systems at large scale and optimizing processes to scale products. That would complement my full-stack experience and let me contribute even more to your projects. I'm excited to bring my skills to the team and grow with the company.",
+      "source": "50-questions"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "slug": "data",
+  "name": "Data & Analytics Deck",
+  "shortName": "Data",
+  "tagline": "Data roles",
+  "color": "data",
+  "sort": 6,
+  "cards": [
+    {
+      "category": "Analysis",
+      "question": "Tell me about a complex analysis you delivered.",
+      "hint": "Start with the decision the analysis supported, then explain your approach, assumptions and impact.",
+      "followUp": {
+        "question": "What would you improve if you ran that analysis again?",
+        "hint": "Name a limitation in the data or method and explain how addressing it could change the decision."
+      }
+    },
+    {
+      "category": "Analysis",
+      "question": "How do you approach an ambiguous data question?",
+      "hint": "Clarify the decision, define the metric, identify the available evidence and state what you cannot conclude."
+    },
+    {
+      "category": "Metrics",
+      "question": "How do you choose a north-star metric?",
+      "hint": "Connect it to durable user value and pair it with guardrails that prevent harmful optimization."
+    },
+    {
+      "category": "Metrics",
+      "question": "Tell me about a metric that was misleading.",
+      "hint": "Explain why it looked useful, what it failed to capture and which metric or context replaced it."
+    },
+    {
+      "category": "Experimentation",
+      "question": "How would you design an A/B test?",
+      "hint": "Cover the hypothesis, population, primary metric, sample considerations, guardrails and stopping rule."
+    },
+    {
+      "category": "Experimentation",
+      "question": "What can make an experiment result unreliable?",
+      "hint": "Discuss power, bias, contamination, novelty, multiple comparisons and implementation quality."
+    },
+    {
+      "category": "Statistics",
+      "question": "How do you explain statistical significance to a non-technical partner?",
+      "hint": "Use plain language, distinguish uncertainty from business importance and avoid treating a p-value as the whole answer."
+    },
+    {
+      "category": "Statistics",
+      "question": "When is correlation not enough for a decision?",
+      "hint": "Give an example of confounding or selection bias and explain what additional evidence you would seek."
+    },
+    {
+      "category": "Data quality",
+      "question": "How do you check whether a dataset is trustworthy?",
+      "hint": "Mention completeness, freshness, consistency, lineage, outliers and checks against a known source."
+    },
+    {
+      "category": "Data quality",
+      "question": "Tell me about a time you found a data quality issue.",
+      "hint": "Explain how you detected it, assessed the impact, communicated the risk and prevented recurrence."
+    },
+    {
+      "category": "Communication",
+      "question": "How do you present an analysis to executives?",
+      "hint": "Lead with the decision and recommendation, support it with a few relevant signals and make uncertainty explicit."
+    },
+    {
+      "category": "Communication",
+      "question": "Tell me about a time someone disagreed with your analysis.",
+      "hint": "Show how you listened, checked the assumptions and either strengthened the conclusion or changed your mind."
+    },
+    {
+      "category": "Product analytics",
+      "question": "How would you investigate a drop in user retention?",
+      "hint": "Segment the change, check data integrity, identify when it started and form hypotheses before recommending action."
+    },
+    {
+      "category": "Product analytics",
+      "question": "How would you measure the success of a new feature?",
+      "hint": "Define the intended behavior, adoption, value and guardrails, then explain the comparison you would use."
+    },
+    {
+      "category": "SQL",
+      "question": "What makes a SQL query maintainable?",
+      "hint": "Discuss clear naming, tested logic, sensible structure, documented assumptions and performance awareness."
+    },
+    {
+      "category": "SQL",
+      "question": "Tell me about a query or pipeline you optimized.",
+      "hint": "Describe the bottleneck, how you measured it, the change and the impact on reliability or cost."
+    },
+    {
+      "category": "Stakeholders",
+      "question": "How do you prioritize requests from different stakeholders?",
+      "hint": "Use decision impact, urgency, effort and strategic fit, then make trade-offs visible."
+    },
+    {
+      "category": "Stakeholders",
+      "question": "Tell me about a time you said no to an analysis request.",
+      "hint": "Explain the opportunity cost, how you offered an alternative and what happened next."
+    },
+    {
+      "category": "Ethics",
+      "question": "How do you handle an analysis that could harm users?",
+      "hint": "Discuss privacy, fairness, consent, risk assessment and when you would escalate or refuse the work."
+    },
+    {
+      "category": "Career",
+      "question": "What data skill are you developing right now?",
+      "hint": "Name a specific skill, how you practice it and where it could create more value in your work."
+    },
+    { "category": "Analysis", "question": "How do you separate signal from noise?", "hint": "Define the decision, inspect relevant segments and test whether the pattern is stable and meaningful." },
+    { "category": "Analysis", "question": "Tell me about an analysis that led to no action.", "hint": "Explain what you learned, why action was not justified and how you communicated that conclusion." },
+    { "category": "Metrics", "question": "How do you define a good KPI?", "hint": "It should be connected to an outcome, understandable, actionable and difficult to game." },
+    { "category": "Metrics", "question": "Tell me about a dashboard you designed.", "hint": "Describe the audience, decisions, selected metrics and how you kept it useful over time." },
+    { "category": "Experimentation", "question": "How do you decide whether a test is worth running?", "hint": "Compare decision value, uncertainty, cost, risk and whether a credible comparison is possible." },
+    { "category": "Experimentation", "question": "Tell me about an experiment you stopped early.", "hint": "Explain the evidence, the stopping reason and how you avoided drawing an unsupported conclusion." },
+    { "category": "Statistics", "question": "How do you think about confidence intervals?", "hint": "Use them to describe uncertainty around an estimate and explain what range matters for the decision." },
+    { "category": "Statistics", "question": "Tell me about a statistical assumption you checked.", "hint": "Name the assumption, the diagnostic and what you changed when it did not hold." },
+    { "category": "Data quality", "question": "How do you monitor data freshness?", "hint": "Define expected arrival, detect delays, communicate impact and provide a safe fallback." },
+    { "category": "Data quality", "question": "Tell me about reconciling two conflicting data sources.", "hint": "Trace definitions and lineage, identify the source of truth and document the resolution." },
+    { "category": "Data modeling", "question": "How do you design a useful analytical data model?", "hint": "Start with business questions, clear grain, consistent definitions, lineage and maintainable transformations." },
+    { "category": "Data modeling", "question": "Tell me about a data model you improved.", "hint": "Describe the user pain, the structural change and the effect on accuracy or speed." },
+    { "category": "SQL", "question": "How do you debug a wrong SQL result?", "hint": "Check grain, joins, filters, nulls, duplicates and intermediate results before changing the query blindly." },
+    { "category": "SQL", "question": "What SQL pattern do you use often and why?", "hint": "Choose a real pattern and explain the business problem, readability and performance trade-off." },
+    { "category": "Product analytics", "question": "How would you analyze a conversion funnel?", "hint": "Define steps, check event quality, segment users and locate the largest meaningful drop." },
+    { "category": "Product analytics", "question": "Tell me about an insight that improved a product decision.", "hint": "Explain the question, analysis, recommendation and what changed after the decision." },
+    { "category": "Communication", "question": "How do you communicate uncertainty without losing trust?", "hint": "State what is known, what is estimated, what could change and the decision you can still make." },
+    { "category": "Communication", "question": "Tell me about a time you changed your audience's mind with data.", "hint": "Show the original belief, the evidence and how you made the story credible." },
+    { "category": "Stakeholders", "question": "How do you clarify a stakeholder's data request?", "hint": "Translate the request into a decision, user, metric, timing and acceptable level of confidence." },
+    { "category": "Stakeholders", "question": "Tell me about a stakeholder who wanted a different answer.", "hint": "Stay curious, check the method and explain the conclusion without bending the evidence." },
+    { "category": "Ethics", "question": "How do you protect privacy in analytics?", "hint": "Discuss minimization, access, aggregation, retention, consent and appropriate use." },
+    { "category": "Ethics", "question": "Tell me about an ethical concern in a data project.", "hint": "Explain the potential harm, how you raised it and the safer decision or mitigation." },
+    { "category": "Machine learning", "question": "How do you decide whether machine learning is appropriate?", "hint": "Start with the decision and baseline, then compare data quality, complexity, benefit and operational cost." },
+    { "category": "Machine learning", "question": "How would you monitor a model after launch?", "hint": "Track performance, drift, data quality, fairness, latency and business outcomes." },
+    { "category": "Career", "question": "What makes a data professional effective beyond technical skill?", "hint": "Discuss judgment, communication, curiosity, business context and responsible use of evidence." },
+    { "category": "Career", "question": "Tell me about a time you learned a new data tool quickly.", "hint": "Explain the need, learning approach, application and result." },
+    { "category": "Analysis", "question": "How do you validate an important conclusion?", "hint": "Reproduce the work, challenge assumptions, compare sources and seek an independent sanity check." },
+    { "category": "Data quality", "question": "What would you do if the data needed for a decision did not exist?", "hint": "State the limitation, find a reasonable proxy, assess risk and propose how to collect better evidence." },
+    { "category": "Data quality", "question": "How do you document a data definition?", "hint": "Record the business meaning, grain, calculation, owner, source and known limitations so others can use it safely." },
+    { "category": "Analysis", "question": "Tell me about a time you had to make a recommendation quickly.", "hint": "Explain the minimum evidence you used, the uncertainty you stated and how you followed up." }
+  ]
+}

@@ -7,6 +7,18 @@ Instruções para qualquer agente de código (Claude Code, Codex, Cursor etc.) e
 
 Leia o PRD antes de construir qualquer tela. Em caso de conflito, o PRD manda no *o quê*; este arquivo manda no *como*.
 
+## Fase atual: só o deck (site estático)
+
+A primeira versão é só o baralho: todos os decks abertos, tirar carta, responder com o timer, próxima carta, CTA do Skool. **Sem IA, sem banco, sem login.** O site é gerado estático (`pnpm generate`) e publicado na Vercel.
+
+- Conteúdo: `app/content/decks/<slug>.json` (perguntas do miolo, por tema/função) e `app/content/stages/{opening,intro,closing}.json` (momentos da entrevista, comuns a todos os decks, cada um com seu timer). O módulo local `modules/decks/` valida os arquivos (Zod) e gera `#build/decks`. Nunca importe os JSON direto no app. Um teste barra pergunta repetida em qualquer arquivo.
+- **Etapas:** toda sessão segue uma entrevista: opening (small talk, 30s) → intro ("Tell me about yourself"…) → core (o deck) → closing (salário, contrato, fuso, "questions for us?").
+- **Modos:** treino livre (`practice`, todos os níveis) passa pelo deck inteiro e recomeça; mock interview (`mock`, só Premium, `/premium/mock/:deck`) tem opening, intro, `MOCK_CORE_QUESTIONS` perguntas e closing, e termina. Os modos de cada nível estão em `LEVEL_FEATURES`.
+- Componentes auto-importados levam o nome da pasta como prefixo (`components/play/PlayMockComplete.vue` → `<PlayMockComplete>`). Nomeie o arquivo com o nome completo, senão o componente não resolve.
+- **Níveis de acesso:** um app só, as mesmas telas montadas por páginas diferentes. `/` e `/play/:deck` são Free; `/premium` e `/premium/play/:deck` montam `HomeScreen`/`PlayScreen` com `definePageMeta({ level: 'premium' })`. `useLevel()` dá o nível, o que ele libera (`LEVEL_FEATURES` em `shared/schemas/deck.ts`) e o `basePath` para os links. Páginas são finas: a lógica fica nas telas.
+- **Conteúdo Premium:** hint e resposta modelo (`example`) ficam em `#build/premium`, um arquivo separado que só as páginas de nível Premium carregam (`import()` dinâmico no `PlayScreen`). Nunca importe `#build/premium` estaticamente. O campo `source` do JSON é editorial (ex.: `"50-questions"` = ebook da TNG) e nunca vai para o app. Limite aceito: sem login, os hints estão publicados no site e quem achar `/premium` vê.
+- A versão completa (Supabase, feedback de IA, Premium por magic link) está no branch `premium-ai`. As seções abaixo sobre Supabase, `server/api` e IA valem quando ela voltar.
+
 ## Stack
 
 - **Nuxt 4+** (Vue 3, `<script setup lang="ts">`, Composition API). Nada de Options API.
@@ -34,7 +46,7 @@ app/
     app/                  # Header, menu, selo Premium
   composables/            # useTimer, useRecorder, useKeyboardShortcuts, usePlan, useSkoolLinks…
   stores/                 # Pinia: sessão de prática (deck atual, ordem embaralhada, posição)
-  layouts/                # default (fundo claro) e focus (fundo #111, tela de resposta)
+  layouts/                # default; o modo foco (fundo #111) é um estado (useFocusMode), não outro layout
   pages/                  # rotas finas: montam componentes, não têm lógica de negócio
 server/
   api/                    # Única porta para dados Premium (hints) e para a IA
@@ -96,16 +108,19 @@ Se você está num componente de produto e sente falta de uma classe Tailwind, �
 
 ## Comandos
 
-> Preencher quando o projeto for inicializado.
+Node e pnpm vêm do `mise.toml` (`mise install`). Copie `.env.example` para `.env` (links do Skool; o build falha sem eles).
 
 ```bash
 pnpm install
-pnpm dev          # servidor local
-pnpm lint         # eslint
-pnpm typecheck    # nuxi typecheck
-pnpm test         # vitest
-pnpm test:e2e     # playwright
+pnpm dev          # servidor local (http://localhost:3000)
+pnpm lint         # eslint, inclui as regras de estilo (eslint/interview-deck-plugin.mjs)
+pnpm typecheck    # nuxt typecheck
+pnpm test         # vitest (test/unit e test/nuxt)
+pnpm test:e2e     # playwright em 390px e 1280px, contra o build estático
+pnpm generate     # site estático em .output/public (é o que vai para a Vercel)
 ```
+
+A regra "sem Tailwind fora de `ui/`" e "só tokens no `<style>`" é verificada pelo lint: toda classe usada no template de um componente de produto precisa estar declarada no `<style>` do próprio arquivo, e o `<style>` não aceita cor nem tamanho literal (exceto `0`, `1px` e condições de `@media`).
 
 ## Antes de dizer que terminou
 

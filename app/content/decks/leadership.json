@@ -1,0 +1,154 @@
+{
+  "slug": "leadership",
+  "name": "Leadership Deck",
+  "shortName": "Leadership",
+  "tagline": "Senior roles",
+  "color": "leadership",
+  "sort": 4,
+  "cards": [
+    {
+      "category": "Leadership style",
+      "question": "How would you describe your leadership style?",
+      "hint": "Name your style in a few words, then prove it with a real situation and its result. Avoid sounding authoritarian.",
+      "example": "My leadership style is collaborative. On a critical project I worked side by side with the team, delegating based on each person's strengths, and I ran regular check-ins to track progress and offer support. We delivered before the deadline and trust in the team grew. I believe motivation and open dialogue are what drive results.",
+      "followUp": {
+        "question": "How do you adapt that style when someone on the team needs more direction?",
+        "hint": "Explain how you diagnose the need, set expectations and gradually return ownership to the person."
+      },
+      "source": "50-questions"
+    },
+    {
+      "category": "Motivation",
+      "question": "How do you motivate your team?",
+      "hint": "Show empathy and concrete habits: recognition, support and growth. Include how you kept people engaged in a hard moment.",
+      "example": "I motivate my team by recognizing wins and supporting each person's growth. On a project with a tight deadline, I ran quick check-ins to track progress and celebrate small victories, which kept everyone engaged, and we delivered early. I also encouraged training, so people felt valued and prepared.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Developing people",
+      "question": "Give an example of how you helped a team member develop their skills.",
+      "hint": "Briefly describe the need, then focus on what you did (mentoring, feedback, practice) and the visible result for them and the team.",
+      "example": "I noticed a team member struggled to present ideas in meetings. I worked with him on his communication, giving feedback and running practice presentations together. Within a few months he was leading important presentations, which boosted his confidence and his impact on the team.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Delegation",
+      "question": "What is your approach to delegating tasks?",
+      "hint": "Explain how you match tasks to people's strengths, how you follow up without micromanaging, and the result.",
+      "example": "Before delegating, I look at each person's skills so the tasks match their strengths. Recently I trusted a colleague to lead an important sprint. I stayed available for support along the way, and the project was delivered on time, which strengthened the team's confidence and autonomy.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Decision making",
+      "question": "How do you handle difficult decisions?",
+      "hint": "Walk through a real decision: the context, how you used data and involved the right people, what you chose and what happened.",
+      "example": "On one project I had to decide between spending more time on testing or launching quickly. I consulted the team and we looked at the impact data together. We decided to launch with a clear plan for continuous improvements. We met the deadline without compromising quality, and the product was well received.",
+      "source": "50-questions"
+    },
+    {
+      "category": "Developing people",
+      "question": "Tell me about a time you had to manage an underperforming team member.",
+      "hint": "Show you acted early and fairly: clear expectations, support and follow-up, and what the outcome was."
+    },
+    {
+      "category": "Remote teams",
+      "question": "How do you build trust in a remote team?",
+      "hint": "Talk about concrete habits: clear written communication, reliability, one-on-ones, and making space for people in other time zones."
+    },
+    {
+      "category": "Decision making",
+      "question": "Tell me about a time you had to implement a decision you disagreed with.",
+      "hint": "Show you raised your concerns with arguments, then committed fully and supported the team. \"Disagree and commit.\""
+    },
+    {
+      "category": "Feedback",
+      "question": "How do you give difficult feedback to someone on your team?",
+      "hint": "Be specific, timely and private. Focus on behavior and impact, not personality, and agree on next steps together."
+    },
+    {
+      "category": "Hiring",
+      "question": "Tell me about a time you hired someone for your team.",
+      "hint": "Explain what the team needed, how you evaluated candidates and how the hire worked out. Mention what you would do differently."
+    },
+    {
+      "category": "Vision",
+      "question": "How do you turn a company goal into a team plan?",
+      "hint": "Connect the strategy to a small number of priorities, owners and measurable outcomes. Explain how you keep the plan visible."
+    },
+    {
+      "category": "Vision",
+      "question": "Tell me about a time you changed your team's direction.",
+      "hint": "Describe the signal that triggered the change, how you explained it and how you protected the team's focus during the transition."
+    },
+    {
+      "category": "Performance",
+      "question": "How do you define and review team performance?",
+      "hint": "Balance delivery, quality, collaboration and growth. Show how you use metrics without reducing people to numbers."
+    },
+    {
+      "category": "Performance",
+      "question": "What do you do when a strong performer starts disengaging?",
+      "hint": "Start with curiosity, identify the cause and agree on a concrete change. Include how you follow up."
+    },
+    {
+      "category": "Communication",
+      "question": "How do you communicate bad news to your team?",
+      "hint": "Be direct about what happened, what is known and what happens next. Leave room for questions and avoid false certainty."
+    },
+    {
+      "category": "Communication",
+      "question": "Tell me about a time your communication prevented a problem.",
+      "hint": "Explain what risk you noticed, who needed context and what changed because you communicated early."
+    },
+    {
+      "category": "Conflict",
+      "question": "Tell me about a conflict between two people on your team.",
+      "hint": "Stay neutral, hear both perspectives, set expectations for the conversation and help them own the resolution."
+    },
+    {
+      "category": "Change",
+      "question": "How do you lead a team through uncertainty?",
+      "hint": "Separate what is known from what is not, keep priorities stable where possible and create a regular communication rhythm."
+    },
+    {
+      "category": "Delegation",
+      "question": "What work do you find hardest to delegate?",
+      "hint": "Be honest about the pattern, then explain the system you use to transfer context and ownership."
+    },
+    {
+      "category": "Growth",
+      "question": "What is the best lesson you learned from a manager?",
+      "hint": "Name a specific behavior you adopted and how it changed the way you lead others."
+    },
+    { "category": "Vision", "question": "How do you create clarity when priorities compete?", "hint": "Make the decision criteria visible, choose a small number of outcomes and explain what will wait." },
+    { "category": "Vision", "question": "Tell me about a vision your team did not initially believe in.", "hint": "Show how you connected it to evidence, invited challenge and built commitment over time." },
+    { "category": "Performance", "question": "How do you run an effective one-on-one?", "hint": "Balance the person's agenda, feedback, growth and current work without turning it into a status meeting." },
+    { "category": "Performance", "question": "Tell me about improving a team's performance.", "hint": "Identify the bottleneck, the intervention and the evidence that the team became more effective." },
+    { "category": "Performance", "question": "How do you recognize good work?", "hint": "Make recognition specific, fair and connected to the behaviors or outcomes you want repeated." },
+    { "category": "Performance", "question": "Tell me about a time you had to reset expectations.", "hint": "Explain what changed, how you communicated it and how you protected trust." },
+    { "category": "Communication", "question": "How do you keep leadership informed without creating noise?", "hint": "Use a predictable rhythm, highlight decisions and risks and make the needed action clear." },
+    { "category": "Communication", "question": "Tell me about a time you communicated a sensitive change.", "hint": "Be direct, empathetic and precise about what people could expect next." },
+    { "category": "Communication", "question": "How do you handle a team member who dominates meetings?", "hint": "Address it respectfully, create balanced participation and follow up privately if needed." },
+    { "category": "Conflict", "question": "Tell me about a conflict you escalated.", "hint": "Explain why escalation was necessary, what you prepared and how you kept ownership of the situation." },
+    { "category": "Conflict", "question": "How do you respond when someone challenges your leadership?", "hint": "Listen for useful information, defend the decision only when needed and change course when evidence warrants it." },
+    { "category": "Change", "question": "Tell me about leading through a reorganization.", "hint": "Discuss uncertainty, role clarity, communication and how you kept the team productive." },
+    { "category": "Change", "question": "How do you decide what to preserve during change?", "hint": "Protect the principles and practices that create value while questioning habits that no longer fit." },
+    { "category": "Delegation", "question": "How do you delegate a high-risk project?", "hint": "Transfer context and decision rights, define checkpoints and make support available without taking control back." },
+    { "category": "Delegation", "question": "Tell me about a time delegation went wrong.", "hint": "Explain the missing context or boundary, how you repaired it and what your system changed." },
+    { "category": "Hiring", "question": "What do you look for beyond technical skill when hiring?", "hint": "Choose behaviors relevant to the role and explain how you assess them fairly." },
+    { "category": "Hiring", "question": "Tell me about a hiring decision you changed.", "hint": "Show what new evidence appeared and how you avoided anchoring on the first impression." },
+    { "category": "Hiring", "question": "How do you make interviews consistent across a panel?", "hint": "Use a shared rubric, calibrated questions and independent evidence before discussion." },
+    { "category": "Developing people", "question": "How do you identify someone's growth goal?", "hint": "Combine their aspirations, observed strengths, business needs and a concrete opportunity to practice." },
+    { "category": "Developing people", "question": "Tell me about a time you sponsored someone's opportunity.", "hint": "Explain why you trusted them, what support you provided and how you gave them visibility." },
+    { "category": "Developing people", "question": "How do you coach someone who keeps repeating a mistake?", "hint": "Clarify the pattern, its impact, the root cause and a measurable plan for improvement." },
+    { "category": "Remote teams", "question": "How do you create connection in a distributed team?", "hint": "Combine purposeful synchronous time, informal connection and inclusive written practices." },
+    { "category": "Remote teams", "question": "Tell me about a remote collaboration problem you fixed.", "hint": "Identify the friction, the change in process or tooling and the result." },
+    { "category": "Decision making", "question": "How do you make a decision with incomplete information?", "hint": "State the reversible and irreversible parts, reduce the highest risks and set a review point." },
+    { "category": "Decision making", "question": "Tell me about a decision you delayed too long.", "hint": "Own the cost, explain what blocked you and how you make similar decisions now." },
+    { "category": "Feedback", "question": "How do you create a culture of feedback?", "hint": "Model it yourself, make it timely and safe, and connect it to growth rather than punishment." },
+    { "category": "Feedback", "question": "Tell me about feedback your team gave you.", "hint": "Describe what you heard, what you changed and how the team experienced the change." },
+    { "category": "Leadership style", "question": "What leadership behavior are you still developing?", "hint": "Name a real edge and the practice, feedback or support you use to improve it." },
+    { "category": "Leadership style", "question": "How do you balance empathy with accountability?", "hint": "Show that understanding context and holding a clear standard can happen together." },
+    { "category": "Leadership style", "question": "What do you want your team to say about working with you?", "hint": "Choose a few observable behaviors and explain how you create them consistently." }
+  ]
+}

@@ -2,7 +2,8 @@
   <component
     :is="tag"
     :class="[
-      'relative flex w-full max-w-(--size-card-max) flex-col rounded-card p-6 md:p-10',
+      'relative flex w-full max-w-(--size-card-max) flex-col rounded-card',
+      size === 'sm' ? 'p-6' : 'p-6 md:p-10',
       face === 'front'
         ? 'border border-border bg-surface text-ink shadow-card'
         : 'bg-focus-bg text-focus-ink shadow-stack',
@@ -34,7 +35,10 @@ withDefaults(defineProps<{
   tag?: 'article' | 'div' | 'section'
   /** Stretch to the parent's height instead of using the minimum card height. */
   fill?: boolean
+  /** `sm` keeps the compact padding on every screen (e.g. the deck cover). */
+  size?: 'sm' | 'md'
 }>(), {
+  size: 'md',
   face: 'front',
   tag: 'article',
 })
