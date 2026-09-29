@@ -8,16 +8,16 @@
         />
         {{ card.category }}
       </span>
+      <CardAudio
+        v-if="audioSource"
+        :card="card"
+        @finished="$emit('audioFinished')"
+      />
     </template>
 
     <h1 class="card-face-question">
       {{ card.question }}
     </h1>
-    <CardAudio
-      v-if="audioSource"
-      :card="card"
-      @finished="$emit('audioFinished')"
-    />
     <UiAccentBar />
     <CardHint
       v-if="card.hint"

@@ -148,6 +148,17 @@ test.describe('free practice', () => {
     await expect(question(page)).toHaveText(first)
   })
 
+  test('previous card button, disabled on the first card', async ({ page }) => {
+    await page.goto('/play/general?shuffle=1')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    const previous = page.getByRole('button', { name: 'Previous card' })
+    await expect(previous).toBeDisabled()
+    await nextCard(page)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    await previous.click()
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+  })
+
   test('a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'trackpad')
     await page.goto('/play/general?shuffle=1')

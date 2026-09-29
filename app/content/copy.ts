@@ -27,6 +27,7 @@ export const copy = {
   card: {
     close: 'Back to the deck',
     next: 'Next card',
+    previous: 'Previous card',
     counter: (position: number, total: number) => `${position} of ${total}`,
     stages: { 'opening': 'Warm-up', 'intro': 'Intro', 'follow-up': 'Follow-up', 'closing': 'Wrap-up' },
     hint: 'Hint',

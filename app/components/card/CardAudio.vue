@@ -133,8 +133,7 @@ watch(autoplay, (enabled) => {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  justify-content: flex-start;
-  margin-top: var(--space-2);
+  justify-content: flex-end;
 }
 
 .card-audio-voice-picker {
@@ -167,8 +166,8 @@ watch(autoplay, (enabled) => {
 .card-audio-voice-menu {
   position: absolute;
   z-index: 1;
-  bottom: calc(100% + var(--space-2));
-  left: 0;
+  top: calc(100% + var(--space-2));
+  right: 0;
   display: flex;
   gap: var(--space-2);
   padding: var(--space-2);
