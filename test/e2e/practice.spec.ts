@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test'
 
 const question = (page: Page) => page.getByRole('heading', { level: 1 })
 // The timer status line (the route announcer is also a status region).
-const status = (page: Page) => page.getByRole('status').filter({ hasText: /Speak now|Paused|Time is up/ })
+const status = (page: Page) => page.getByRole('status').filter({ hasText: /Speak now|Paused|Time is up|Starting in|Listen to the question/ })
 const counter = (page: Page, text: string) => page.getByText(new RegExp(`^${text}$`))
 
 /** Clicks "Next card" and waits for the card animation to show a different question. */
@@ -39,12 +39,10 @@ test.describe('free practice', () => {
     await page.getByRole('button', { name: 'Shuffle & draw' }).click()
     await expect(page).toHaveURL(/\/play\/general$/)
     await expect(counter(page, 'Warm-up')).toBeVisible()
-    await expect(page.getByRole('button', { name: /Answer out loud · 0:30/ })).toBeVisible()
     await page.screenshot({ path: testInfo.outputPath('02-warm-up.png'), fullPage: true })
 
     await nextCard(page)
     await expect(counter(page, 'Intro')).toBeVisible()
-    await expect(page.getByRole('button', { name: /Answer out loud · 2:00/ })).toBeVisible()
     await nextCard(page)
 
     const seen = new Set<string>()
@@ -58,14 +56,13 @@ test.describe('free practice', () => {
     await page.screenshot({ path: testInfo.outputPath('02-card.png'), fullPage: true })
   })
 
-  test('answer out loud: timer, pause with Space, done goes to the next card', async ({ page }, testInfo) => {
+  test('the timer starts by itself after 3, 2, 1; Space pauses; next card resets it', async ({ page }, testInfo) => {
     await page.goto('/play/general')
     await skipToCore(page)
     const text = await question(page).innerText()
 
-    await page.getByRole('button', { name: /Answer out loud/ }).click()
-    await expect(status(page)).toHaveText(/Speak now/)
-    await expect(question(page)).toHaveText(text)
+    // The question is read aloud, then 3, 2, 1.
+    await expect(status(page)).toHaveText(/Speak now/, { timeout: 15_000 })
     await expect(page.getByRole('timer')).toHaveText(/^(2:00|1:5\d)$/)
     await page.screenshot({ path: testInfo.outputPath('03-answering.png'), fullPage: true })
 
@@ -74,24 +71,23 @@ test.describe('free practice', () => {
     await page.keyboard.press('Space')
     await expect(status(page)).toHaveText(/Speak now/)
 
-    await page.getByRole('button', { name: 'I\'m done' }).click()
+    await nextCard(page)
     await expect(counter(page, '2 of \\d+')).toBeVisible()
     await expect(question(page)).not.toHaveText(text)
+    await expect(status(page)).toHaveText(/Speak now/, { timeout: 15_000 })
+    await expect(page.getByRole('timer')).toHaveText(/^(2:00|1:5\d)$/)
   })
 
   test('the warm-up uses a 30 second timer', async ({ page }) => {
     await page.goto('/play/general')
     await expect(counter(page, 'Warm-up')).toBeVisible()
-    await page.getByRole('button', { name: /Answer out loud/ }).click()
-    await expect(page.getByRole('timer')).toHaveText(/^0:(30|29|28)$/)
+    await expect(page.getByRole('timer')).toHaveText(/^0:(30|29|28)$/, { timeout: 15_000 })
   })
 
-  test('keyboard: → next card, Space starts the timer', async ({ page }) => {
+  test('tapping the timer before it starts skips the countdown', async ({ page }) => {
     await page.goto('/play/general')
     await expect(counter(page, 'Warm-up')).toBeVisible()
-    await page.keyboard.press('ArrowRight')
-    await expect(counter(page, 'Intro')).toBeVisible()
-    await page.keyboard.press('Space')
+    await page.getByRole('button', { name: 'Start the timer now' }).click()
     await expect(status(page)).toHaveText(/Speak now/)
   })
 

@@ -46,8 +46,8 @@
       class="card-audio-player"
       :src="src ?? undefined"
       preload="none"
-      @ended="playing = false"
-      @pause="playing = false"
+      @ended="onStop"
+      @pause="onStop"
     />
   </div>
 </template>
@@ -59,6 +59,8 @@ import { copy } from '~/content/copy'
 import { audioSourceForCard } from '~/utils/audio'
 
 const props = defineProps<{ card: Card }>()
+/** `finished`: the question was read (or skipped, or could not play), so the answer can start. Once per card. */
+const emit = defineEmits<{ finished: [] }>()
 const { features } = useLevel()
 const { choice, autoplay, voice } = useAudioPreference()
 const src = computed(() => audioSourceForCard(props.card, voice.value))
@@ -73,14 +75,27 @@ const selectedOption = computed(() => voiceOptions.find(option => option.value =
 const player = ref<HTMLAudioElement | null>(null)
 const playing = ref(false)
 
+let finished = false
+function finish() {
+  if (finished) return
+  finished = true
+  emit('finished')
+}
+
+function onStop() {
+  playing.value = false
+  finish()
+}
+
 async function playAudio() {
-  if (!player.value) return
+  if (!player.value) return finish()
   try {
     await player.value.play()
     playing.value = true
   }
   catch {
-    playing.value = false
+    // Blocked autoplay (no tap yet) or missing file: do not hold the timer.
+    onStop()
   }
 }
 
@@ -100,13 +115,16 @@ function selectChoice(value: AudioChoice) {
 
 onMounted(() => {
   if (autoplay.value) void playAudio()
+  else finish()
 })
 watch(src, () => {
   playing.value = false
   if (autoplay.value) void nextTick(playAudio)
 })
 watch(autoplay, (enabled) => {
-  if (!enabled) player.value?.pause()
+  if (enabled) return
+  player.value?.pause()
+  finish()
 })
 </script>
 

@@ -1,13 +1,10 @@
 <template>
   <div class="card-actions">
-    <UiButton
-      icon="lucide:timer"
-      icon-tone="accent"
-      block
-      @click="$emit('answer')"
-    >
-      {{ copy.card.answer(duration) }}
-    </UiButton>
+    <CardTimer
+      ref="timer"
+      :duration-seconds="durationSeconds"
+      :ready="ready"
+    />
     <UiIconButton
       icon="lucide:arrow-right"
       :label="copy.card.next"
@@ -20,8 +17,11 @@
 <script setup lang="ts">
 import { copy } from '~/content/copy'
 
-defineProps<{ duration: string }>()
-defineEmits<{ answer: [], next: [] }>()
+defineProps<{ durationSeconds: number, ready: boolean }>()
+defineEmits<{ next: [] }>()
+
+const timer = useTemplateRef<{ toggle: () => void }>('timer')
+defineExpose({ toggle: () => timer.value?.toggle() })
 </script>
 
 <style scoped>
