@@ -27,10 +27,14 @@
       v-if="card.example"
       :example="card.example"
     />
+    <CardRecorder
+      :category="card.category"
+      :question="card.question"
+    />
 
     <template #footer>
       <UiOverline tag="span">
-        {{ copy.card.wordmark }}
+        {{ copy.brand.by }}
       </UiOverline>
     </template>
   </UiPlayingCard>
