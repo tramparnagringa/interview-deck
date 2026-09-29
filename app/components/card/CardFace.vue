@@ -27,6 +27,11 @@
       v-if="card.example"
       :example="card.example"
     />
+    <CardRecorder
+      v-if="features.recording"
+      :category="card.category"
+      :question="card.question"
+    />
 
     <template #footer>
       <UiOverline tag="span">
@@ -46,6 +51,7 @@ const props = defineProps<{ card: Card }>()
 /** `audioFinished`: the question was read aloud (or skipped); cards without audio emit it right away. */
 const emit = defineEmits<{ audioFinished: [] }>()
 const audioSource = computed(() => audioSourceForCard(props.card))
+const { features } = useLevel()
 onMounted(() => {
   if (!audioSource.value) emit('audioFinished')
 })

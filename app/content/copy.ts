@@ -40,6 +40,16 @@ export const copy = {
       voices: { female: 'Female voice', male: 'Male voice', off: 'No audio' },
     },
     wordmark: 'Interview Deck',
+    recorder: {
+      label: 'Record your answer',
+      start: 'Record your answer',
+      stop: 'Stop recording',
+      save: 'Save video',
+      discard: 'Discard video',
+      error: 'Could not open the camera. Check the browser permission and try again.',
+      privacy: 'The video stays on your device.',
+      brand: 'Interview Deck · by Trampar na Gringa',
+    },
     timer: {
       waiting: 'Listen to the question',
       startingIn: (seconds: number) => `Starting in ${seconds}…`,

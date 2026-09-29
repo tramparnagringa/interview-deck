@@ -174,6 +174,12 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Warm-up')).toBeVisible()
   })
 
+  test('no video recorder on the free level', async ({ page }) => {
+    await page.goto('/play/general')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Record your answer' })).toHaveCount(0)
+  })
+
   test('unknown deck shows a way back', async ({ page }) => {
     await page.goto('/play/does-not-exist')
     await expect(page.getByText('This deck does not exist.')).toBeVisible()
@@ -213,6 +219,19 @@ test.describe('premium', () => {
     await expect(page.getByRole('option', { name: 'Female voice' })).toBeVisible()
     await page.getByRole('option', { name: 'No audio' }).click()
     await expect(page.getByRole('button', { name: 'Question voice' })).toHaveText('🔇')
+  })
+
+  test('record a video of the answer and save it', async ({ page }) => {
+    await page.goto('/premium/play/general')
+    await page.getByRole('button', { name: 'Record your answer' }).click()
+    const stop = page.getByRole('button', { name: 'Stop recording' })
+    await expect(stop).toBeEnabled()
+    await page.waitForTimeout(1500)
+    await stop.click()
+    await expect(page.getByRole('button', { name: 'Save video' })).toBeVisible()
+    await expect(page.locator('.card-recorder video[controls]')).toHaveAttribute('src', /^blob:/)
+    await page.getByRole('button', { name: 'Discard video' }).click()
+    await expect(page.getByRole('button', { name: 'Record your answer' })).toBeVisible()
   })
 
   test('mock interview: warm-up, intro, 4 questions, one follow-up, wrap-up, then the end', async ({ page }, testInfo) => {
