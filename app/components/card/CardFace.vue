@@ -34,7 +34,7 @@
 
     <template #footer>
       <UiOverline tag="span">
-        {{ copy.card.wordmark }}
+        {{ copy.brand.by }}
       </UiOverline>
     </template>
   </UiPlayingCard>

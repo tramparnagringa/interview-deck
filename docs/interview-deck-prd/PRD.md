@@ -10,7 +10,7 @@ Conceito: **Pick a card. Answer out loud. Get better.**
 
 O app gratuito é a porta de entrada. O produto pago (Premium) é a preparação completa: hints, feedback de IA e prática com outras pessoas. A comunidade e a venda do Premium acontecem no Skool.
 
-Marca própria. "Trampar na Gringa" não aparece no app (no máximo em "About").
+Marca própria, assinada pela Trampar na Gringa (decidido em 29/09/2026): "by Trampar na Gringa" embaixo do logo e no rodapé da carta, que é o que aparece quando alguém compartilha a tela. Nunca como banner nem ao lado do CTA do Skool.
 
 ## 2. Objetivo do produto
 
