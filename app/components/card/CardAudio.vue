@@ -1,6 +1,9 @@
 <template>
   <div class="card-audio">
-    <div class="card-audio-voice-picker">
+    <div
+      v-if="features.voicePicker"
+      class="card-audio-voice-picker"
+    >
       <button
         type="button"
         class="card-audio-voice-trigger"
@@ -56,6 +59,7 @@ import { copy } from '~/content/copy'
 import { audioSourceForCard } from '~/utils/audio'
 
 const props = defineProps<{ card: Card }>()
+const { features } = useLevel()
 const { choice, autoplay, voice } = useAudioPreference()
 const src = computed(() => audioSourceForCard(props.card, voice.value))
 const menuOpen = ref(false)

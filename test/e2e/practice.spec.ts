@@ -118,6 +118,13 @@ test.describe('free practice', () => {
     expect(response?.status()).toBe(404)
   })
 
+  test('question audio plays the main voice, with no voice picker', async ({ page }) => {
+    await page.goto('/play/general')
+    await expect(page.getByRole('button', { name: 'Play question' }).or(page.getByRole('button', { name: 'Pause question' }))).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Question voice' })).toHaveCount(0)
+    await expect(page.locator('audio')).toHaveAttribute('src', /\/hale-v3-expressive\//)
+  })
+
   test('unknown deck shows a way back', async ({ page }) => {
     await page.goto('/play/does-not-exist')
     await expect(page.getByText('This deck does not exist.')).toBeVisible()
@@ -149,6 +156,14 @@ test.describe('premium', () => {
 
     await page.getByRole('link', { name: 'Back to the deck' }).click()
     await expect(page).toHaveURL(/\/premium$/)
+  })
+
+  test('question voice can be changed or turned off (group practice)', async ({ page }) => {
+    await page.goto('/premium/play/general')
+    await page.getByRole('button', { name: 'Question voice' }).click()
+    await expect(page.getByRole('option', { name: 'Female voice' })).toBeVisible()
+    await page.getByRole('option', { name: 'No audio' }).click()
+    await expect(page.getByRole('button', { name: 'Question voice' })).toHaveText('🔇')
   })
 
   test('mock interview: warm-up, intro, 4 questions, one follow-up, wrap-up, then the end', async ({ page }, testInfo) => {
