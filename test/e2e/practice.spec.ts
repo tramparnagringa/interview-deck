@@ -159,12 +159,20 @@ test.describe('premium', () => {
     await expect(page).toHaveURL(/\/premium\/mock\/general$/)
 
     await skipToCore(page)
+    const followUp = counter(page, 'Follow-up')
+    let sawFollowUp = await followUp.isVisible()
     for (const step of ['2 of 4', '3 of 4', '4 of 4']) {
       await nextCard(page)
+      if (await followUp.isVisible()) {
+        sawFollowUp = true
+        await nextCard(page)
+      }
       await expect(counter(page, step)).toBeVisible()
     }
-    await page.getByRole('button', { name: 'Next card' }).click()
-    await expect(counter(page, 'Follow-up')).toBeVisible()
+    if (!sawFollowUp) {
+      await page.getByRole('button', { name: 'Next card' }).click()
+      await expect(followUp).toBeVisible()
+    }
     await page.getByRole('button', { name: 'Next card' }).click()
     await expect(counter(page, 'Wrap-up')).toBeVisible()
     await page.getByRole('button', { name: 'Next card' }).click()

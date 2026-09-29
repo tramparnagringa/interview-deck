@@ -18,6 +18,7 @@ describe('CardFace', () => {
     expect(wrapper.get('h1').text()).toBe(card.question)
     expect(wrapper.text()).toContain('Behavioral')
     expect(wrapper.text()).not.toContain('No.')
+    expect(wrapper.find('button').exists()).toBe(true)
     expect(wrapper.find('aside').exists()).toBe(false)
   })
 

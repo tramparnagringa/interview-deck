@@ -13,6 +13,10 @@
     <h1 class="card-face-question">
       {{ card.question }}
     </h1>
+    <CardAudio
+      v-if="audioSource"
+      :card="card"
+    />
     <UiAccentBar />
     <CardHint
       v-if="card.hint"
@@ -34,9 +38,11 @@
 <script setup lang="ts">
 import type { Card } from '#shared/schemas/deck'
 import { copy } from '~/content/copy'
+import { audioSourceForCard } from '~/utils/audio'
 
 /** The white question card (screens 02 and 05). Hint and example answer only exist on Premium pages. */
-defineProps<{ card: Card }>()
+const props = defineProps<{ card: Card }>()
+const audioSource = computed(() => audioSourceForCard(props.card))
 </script>
 
 <style scoped>

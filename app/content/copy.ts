@@ -32,6 +32,12 @@ export const copy = {
     hint: 'Hint',
     example: 'See an example answer',
     exampleNote: 'Use it as a model, not a script. Your own story always works better.',
+    audio: {
+      voiceLabel: 'Question voice',
+      play: 'Play question',
+      stop: 'Pause question',
+      voices: { female: 'Female voice', male: 'Male voice', off: 'No audio' },
+    },
     wordmark: 'Interview Deck',
     answer: (duration: string) => `Answer out loud · ${duration}`,
     notFound: 'This deck does not exist.',
