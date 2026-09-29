@@ -92,11 +92,11 @@
   --size-ring-stroke: 0.375rem;
   --size-card-max: 38.75rem;
   --size-card-min-h: 28rem;
+  --size-card-min-h-sm: 20rem;
   --size-stack-w: 15.5rem;
   --size-stack-h: 21.75rem;
   --size-page-max: 38.75rem;
   --size-logo: 1.75rem;
-  --size-audio-select: 8rem;
   --size-blur: 0.375rem;
   --size-screen: 100dvh;
 
