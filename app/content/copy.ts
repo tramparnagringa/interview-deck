@@ -3,6 +3,7 @@ export const copy = {
   brand: {
     name: 'Interview Deck',
     wordmark: 'Interview Deck',
+    by: 'by Trampar na Gringa',
     tagline: 'Pick a card. Answer out loud. Get better.',
     premium: 'Premium',
   },
@@ -39,7 +40,6 @@ export const copy = {
       stop: 'Pause question',
       voices: { female: 'Female voice', male: 'Male voice', off: 'No audio' },
     },
-    wordmark: 'Interview Deck',
     recorder: {
       label: 'Record your answer',
       start: 'Record your answer',
