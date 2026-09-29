@@ -125,6 +125,48 @@ test.describe('free practice', () => {
     await expect(page.locator('audio')).toHaveAttribute('src', /\/hale-v3-expressive\//)
   })
 
+  test('swipe left for the next card, right for the previous one', async ({ page }, testInfo) => {
+    await page.goto('/play/general?shuffle=1')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    const first = await question(page).innerText()
+
+    const swipe = async (dx: number) => {
+      const area = page.locator('.play-screen-swipe')
+      const box = (await area.boundingBox())!
+      const x = box.x + box.width / 2
+      const y = box.y + box.height / 2
+      const pointerType = testInfo.project.name === 'mobile' ? 'touch' : 'mouse'
+      const init = { pointerType, pointerId: 1, button: 0, isPrimary: true, clientY: y }
+      await area.dispatchEvent('pointerdown', { ...init, clientX: x })
+      await area.dispatchEvent('pointermove', { ...init, clientX: x + dx / 2 })
+      await area.dispatchEvent('pointerup', { ...init, clientX: x + dx })
+    }
+
+    await swipe(-150)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    await swipe(150)
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    await expect(question(page)).toHaveText(first)
+    // Nothing before the first card.
+    await swipe(150)
+    await expect(question(page)).toHaveText(first)
+  })
+
+  test('a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'trackpad')
+    await page.goto('/play/general?shuffle=1')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    const box = (await page.locator('.play-screen-swipe').boundingBox())!
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+    // One gesture with inertia: many small events, a single card change.
+    for (let i = 0; i < 10; i++) await page.mouse.wheel(40, 0)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    await page.waitForTimeout(300)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    for (let i = 0; i < 10; i++) await page.mouse.wheel(-40, 0)
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+  })
+
   test('unknown deck shows a way back', async ({ page }) => {
     await page.goto('/play/does-not-exist')
     await expect(page.getByText('This deck does not exist.')).toBeVisible()

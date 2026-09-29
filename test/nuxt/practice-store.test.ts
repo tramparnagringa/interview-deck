@@ -56,6 +56,23 @@ describe('practice store', () => {
     expect(store.currentCard?.stage).toBe('opening')
   })
 
+  it('goes back to the previous card, but not before the first one', () => {
+    const store = usePracticeStore()
+    store.openDeck('general')
+    const first = store.currentCard?.id
+    store.previous()
+    expect(store.currentCard?.id).toBe(first)
+    store.next()
+    store.next()
+    const third = store.currentCard?.id
+    store.previous()
+    store.next()
+    expect(store.currentCard?.id).toBe(third)
+    store.previous()
+    store.previous()
+    expect(store.currentCard?.id).toBe(first)
+  })
+
   it('keeps the session for the same deck and mode; a new mode starts a new session', () => {
     const store = usePracticeStore()
     store.openDeck('general')

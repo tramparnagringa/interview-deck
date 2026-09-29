@@ -117,6 +117,7 @@
   --ease-card: cubic-bezier(0.2, 0.8, 0.2, 1);
   --rotate-stack-left: -4deg;
   --rotate-stack-right: 3deg;
+  --rotate-swipe-max: 10deg;
 }
 
 @layer base {

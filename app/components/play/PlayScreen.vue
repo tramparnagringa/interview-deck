@@ -41,24 +41,31 @@
       />
 
       <template v-else>
-        <Transition
-          name="play-screen-card"
-          mode="out-in"
+        <div
+          ref="swipeArea"
+          class="play-screen-swipe"
+          :class="{ 'play-screen-swipe-dragging': dragging }"
+          :style="{ '--play-screen-drag': `${offset}px`, '--play-screen-tilt': tilt }"
         >
-          <div
-            :key="card?.id ?? 'empty'"
-            class="play-screen-card"
+          <Transition
+            :name="direction === 'back' ? 'play-screen-card-back' : 'play-screen-card'"
+            mode="out-in"
           >
-            <CardFace
-              v-if="card"
-              :card="cardWithPremium ?? card"
-            />
-          </div>
-        </Transition>
+            <div
+              :key="card?.id ?? 'empty'"
+              class="play-screen-card"
+            >
+              <CardFace
+                v-if="card"
+                :card="cardWithPremium ?? card"
+              />
+            </div>
+          </Transition>
+        </div>
         <CardActions
           :duration="formatDuration(duration)"
           @answer="startAnswer"
-          @next="practice.next"
+          @next="goNext"
         />
       </template>
 
@@ -107,11 +114,31 @@ function startAnswer() {
   answering.value = true
 }
 
+/** Which way the last card change went, so the card animation matches it. */
+const direction = ref<'forward' | 'back'>('forward')
+
+function goNext() {
+  direction.value = 'forward'
+  practice.next()
+}
+
+function goPrevious() {
+  if (practice.position === 0) return false
+  direction.value = 'back'
+  practice.previous()
+}
+
 /** "I'm done" or time is up: next card (PRD screen 03). */
 function finishAnswer() {
   answering.value = false
-  practice.next()
+  goNext()
 }
+
+// Swipe left for the next card, right for the previous one (touch, mouse drag or trackpad).
+const swipeArea = useTemplateRef<HTMLElement>('swipeArea')
+const { offset, dragging } = useSwipe(swipeArea, { onLeft: goNext, onRight: goPrevious })
+/** -1…1: how far the card is tilted while dragged, like a card pivoting on its bottom edge. */
+const tilt = computed(() => Math.max(-1, Math.min(1, offset.value / (swipeArea.value?.offsetWidth || 1))))
 
 // While answering, the answering screen owns the keyboard.
 useKeyboardShortcuts({
@@ -121,7 +148,11 @@ useKeyboardShortcuts({
   },
   onNext: () => {
     if (answering.value || practice.finished) return false
-    practice.next()
+    goNext()
+  },
+  onPrevious: () => {
+    if (answering.value || practice.finished) return false
+    return goPrevious()
   },
 })
 
@@ -154,6 +185,24 @@ onMounted(async () => {
   font-variant-numeric: tabular-nums;
 }
 
+.play-screen-swipe {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  touch-action: pan-y;
+  transform:
+    translateX(var(--play-screen-drag, 0))
+    rotate(calc(var(--play-screen-tilt, 0) * var(--rotate-swipe-max)));
+  transform-origin: center bottom;
+  transition: transform var(--duration-card) var(--ease-card);
+}
+
+.play-screen-swipe-dragging {
+  cursor: grabbing;
+  transition: none;
+  user-select: none;
+}
+
 .play-screen-card {
   display: flex;
   flex: 1;
@@ -162,7 +211,9 @@ onMounted(async () => {
 }
 
 .play-screen-card-enter-active,
-.play-screen-card-leave-active {
+.play-screen-card-leave-active,
+.play-screen-card-back-enter-active,
+.play-screen-card-back-leave-active {
   transition:
     opacity var(--duration-card) var(--ease-card),
     transform var(--duration-card) var(--ease-card);
@@ -178,9 +229,22 @@ onMounted(async () => {
   transform: translateX(calc(var(--space-12) * -1)) rotate(var(--rotate-stack-left));
 }
 
+.play-screen-card-back-enter-from {
+  opacity: 0;
+  transform: translateX(calc(var(--space-12) * -1)) rotate(var(--rotate-stack-left));
+}
+
+.play-screen-card-back-leave-to {
+  opacity: 0;
+  transform: translateX(var(--space-12)) rotate(var(--rotate-stack-right));
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .play-screen-swipe,
   .play-screen-card-enter-from,
-  .play-screen-card-leave-to {
+  .play-screen-card-leave-to,
+  .play-screen-card-back-enter-from,
+  .play-screen-card-back-leave-to {
     transform: none;
   }
 }

@@ -115,6 +115,11 @@ export const usePracticeStore = defineStore('practice', () => {
     }
   }
 
+  /** Previous card in this session. Does nothing on the first card. */
+  function previous() {
+    if (position.value > 0) position.value -= 1
+  }
+
   /**
    * Restores the session saved in this tab. Called lazily from `openDeck` (client only):
    * restoring during store setup would be overwritten by the prerendered (empty) Pinia state.
@@ -148,5 +153,5 @@ export const usePracticeStore = defineStore('practice', () => {
     })
   }
 
-  return { deck, mode, order, position, finished, currentCard, total, questionNumber, openDeck, startSession, next }
+  return { deck, mode, order, position, finished, currentCard, total, questionNumber, openDeck, startSession, next, previous }
 })

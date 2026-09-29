@@ -6,6 +6,8 @@ export interface KeyboardShortcutHandlers {
   onToggle?: ShortcutHandler
   /** `→`: next card. */
   onNext?: ShortcutHandler
+  /** `←`: previous card. */
+  onPrevious?: ShortcutHandler
 }
 
 /** True when the key event should be left to the focused element (typing, native controls). */
@@ -28,6 +30,9 @@ export function useKeyboardShortcuts(handlers: KeyboardShortcutHandlers) {
     }
     else if (event.key === 'ArrowRight' && handlers.onNext) {
       if (handlers.onNext() !== false) event.preventDefault()
+    }
+    else if (event.key === 'ArrowLeft' && handlers.onPrevious) {
+      if (handlers.onPrevious() !== false) event.preventDefault()
     }
   }
 
