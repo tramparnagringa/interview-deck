@@ -75,7 +75,7 @@
 <script setup lang="ts">
 import { copy } from '~/content/copy'
 
-/** Premium: record a video of the answer, with the question on it, to watch back or post. */
+/** Every level: record a video of the answer, with the question on it, to watch back or post. */
 const props = defineProps<{ category: string, question: string }>()
 
 const recorder = useAnswerRecorder()

@@ -44,13 +44,11 @@ export interface LevelFeatures {
   modes: readonly Mode[]
   /** Pick the question voice or turn the audio off (group practice). Without it, the main voice always plays. */
   voicePicker: boolean
-  /** Record a video of the answer, with the question on it (stays on the device). */
-  recording: boolean
 }
 
 export const LEVEL_FEATURES: Record<Level, LevelFeatures> = {
-  free: { hints: false, modes: ['practice'], voicePicker: false, recording: false },
-  premium: { hints: true, modes: ['practice', 'mock'], voicePicker: true, recording: true },
+  free: { hints: false, modes: ['practice'], voicePicker: false },
+  premium: { hints: true, modes: ['practice', 'mock'], voicePicker: true },
 }
 
 /** Deck questions in a mock interview, between the intro and the closing. */
