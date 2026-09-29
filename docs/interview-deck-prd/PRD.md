@@ -45,10 +45,10 @@ Sem gamificação (XP, níveis, badges) nesta versão.
 **02 — Carta** (`02-free-card.png`)
 - Topo: fechar (volta à Home), contador "14 of N".
 - Carta grande, centralizada: categoria com ponto colorido, número da carta, pergunta, traço azul, rodapé "INTERVIEW DECK".
-- Botão "Answer out loud · 2:00" → tela 03. Botão circular "próxima carta".
+- Timer na própria carta (desde 29/09/2026, substitui a tela 03): a pergunta é lida em voz alta, conta "3, 2, 1" e o timer começa sozinho. Tocar no timer (ou `Space`) pausa e retoma; antes de começar, inicia na hora; no fim mostra "Time is up" e fica na carta, sem avançar. Botão circular "próxima carta" (também serve como "terminei").
 - Alert amarelo no rodapé: "Not sure how to answer? Get hints and AI feedback with Premium." → link Skool.
 
-**03 — Respondendo** (`03-free-answering.png`)
+**03 — Respondendo** (`03-free-answering.png`) — *substituída pelo timer na carta (tela 02). Mantida como referência para a versão com IA.*
 - Fundo preto (modo foco).
 - Pergunta em versão compacta no topo.
 - Ring de contagem regressiva (padrão 2:00) com o tempo no centro e "ANSWER OUT LOUD".
@@ -85,9 +85,9 @@ Sem gamificação (XP, níveis, badges) nesta versão.
 
 ## 5. Fluxos
 
-- **Free:** Home → Carta → Respondendo → próxima carta.
+- **Free:** Home → Carta (pergunta lida, 3-2-1, timer) → próxima carta.
 - **Premium (com IA):** Home → Carta com hint → gravação → AI feedback → Try again / follow-up / próxima.
-- **Premium (só timer):** Carta → Respondendo → próxima carta.
+- **Premium (só timer):** Carta (timer na carta) → próxima carta.
 
 ## 6. Regras
 

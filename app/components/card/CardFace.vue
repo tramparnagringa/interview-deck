@@ -16,6 +16,7 @@
     <CardAudio
       v-if="audioSource"
       :card="card"
+      @finished="$emit('audioFinished')"
     />
     <UiAccentBar />
     <CardHint
@@ -42,7 +43,12 @@ import { audioSourceForCard } from '~/utils/audio'
 
 /** The white question card (screens 02 and 05). Hint and example answer only exist on Premium pages. */
 const props = defineProps<{ card: Card }>()
+/** `audioFinished`: the question was read aloud (or skipped); cards without audio emit it right away. */
+const emit = defineEmits<{ audioFinished: [] }>()
 const audioSource = computed(() => audioSourceForCard(props.card))
+onMounted(() => {
+  if (!audioSource.value) emit('audioFinished')
+})
 </script>
 
 <style scoped>

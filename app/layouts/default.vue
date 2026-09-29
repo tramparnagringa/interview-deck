@@ -1,29 +1,16 @@
 <template>
-  <div
-    class="layout-default"
-    :class="{ 'layout-default-focus': focus }"
-  >
+  <div class="layout-default">
     <div class="layout-default-page">
       <slot />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-const focus = useState('focus-mode', () => false)
-</script>
-
 <style scoped>
 .layout-default {
   min-height: var(--size-screen);
   background: var(--color-bg);
   color: var(--color-ink);
-  transition: background-color var(--duration-card) var(--ease-card);
-}
-
-.layout-default-focus {
-  background: var(--color-focus-bg);
-  color: var(--color-focus-ink);
 }
 
 .layout-default-page {

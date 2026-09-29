@@ -3,85 +3,76 @@
     class="play-screen"
     :style="deckAccentStyle(practice.deck?.color)"
   >
-    <AnswerFocus
-      v-if="answering && card"
-      :key="answerCount"
-      :question="card.question"
-      :meta="`${card.category} · ${progress}`"
-      :duration-seconds="duration"
-      @finish="finishAnswer"
-      @cancel="answering = false"
+    <CardTopBar
+      :close-label="copy.card.close"
+      :close-to="basePath || '/'"
+    >
+      <p
+        v-if="card && !practice.finished"
+        class="play-screen-counter"
+      >
+        {{ progress }}
+      </p>
+    </CardTopBar>
+
+    <AppNotice
+      v-if="notFound"
+      :message="copy.card.notFound"
+      :action-label="copy.errors.home"
+      action-to="/"
+    />
+
+    <PlayMockComplete
+      v-else-if="practice.finished"
+      :answered="practice.order.length"
+      :home-to="basePath || '/'"
+      @again="practice.startSession"
     />
 
     <template v-else>
-      <CardTopBar
-        :close-label="copy.card.close"
-        :close-to="basePath || '/'"
+      <div
+        ref="swipeArea"
+        class="play-screen-swipe"
+        :class="{ 'play-screen-swipe-dragging': dragging }"
+        :style="{ '--play-screen-drag': `${offset}px`, '--play-screen-tilt': tilt }"
       >
-        <p
-          v-if="card && !practice.finished"
-          class="play-screen-counter"
+        <Transition
+          :name="direction === 'back' ? 'play-screen-card-back' : 'play-screen-card'"
+          mode="out-in"
         >
-          {{ progress }}
-        </p>
-      </CardTopBar>
-
-      <AppNotice
-        v-if="notFound"
-        :message="copy.card.notFound"
-        :action-label="copy.errors.home"
-        action-to="/"
-      />
-
-      <PlayMockComplete
-        v-else-if="practice.finished"
-        :answered="practice.order.length"
-        :home-to="basePath || '/'"
-        @again="practice.startSession"
-      />
-
-      <template v-else>
-        <div
-          ref="swipeArea"
-          class="play-screen-swipe"
-          :class="{ 'play-screen-swipe-dragging': dragging }"
-          :style="{ '--play-screen-drag': `${offset}px`, '--play-screen-tilt': tilt }"
-        >
-          <Transition
-            :name="direction === 'back' ? 'play-screen-card-back' : 'play-screen-card'"
-            mode="out-in"
+          <div
+            :key="card?.id ?? 'empty'"
+            class="play-screen-card"
           >
-            <div
-              :key="card?.id ?? 'empty'"
-              class="play-screen-card"
-            >
-              <CardFace
-                v-if="card"
-                :card="cardWithPremium ?? card"
-              />
-            </div>
-          </Transition>
-        </div>
-        <CardActions
-          :duration="formatDuration(duration)"
-          @answer="startAnswer"
-          @next="goNext"
-        />
-      </template>
-
-      <CtaSkool context="card" />
+            <CardFace
+              v-if="card"
+              :card="cardWithPremium ?? card"
+              @audio-finished="audioFinished = true"
+            />
+          </div>
+        </Transition>
+      </div>
+      <CardActions
+        :key="card?.id ?? 'empty'"
+        ref="actions"
+        :duration-seconds="duration"
+        :ready="audioFinished"
+        @next="goNext"
+      />
     </template>
+
+    <CtaSkool context="card" />
   </main>
 </template>
 
 <script setup lang="ts">
 /**
- * Card, answering and next card (screens 02, 03 and 05). Mounted by `/play/:deck` and
+ * Card with its answer timer, and next card (screens 02 and 05). Mounted by `/play/:deck` and
  * `/premium/play/:deck` (practice) and by `/premium/mock/:deck` (mock interview).
  */
 import { isDeckAvailable, type Mode, type PremiumContent } from '#shared/schemas/deck'
 import { copy } from '~/content/copy'
-import { deckAccentStyle, formatDuration } from '~/utils/deck'
+import { deckAccentStyle } from '~/utils/deck'
 
 const props = withDefaults(defineProps<{ mode?: Mode }>(), { mode: 'practice' })
 
@@ -105,14 +96,13 @@ const cardWithPremium = computed(() => {
 })
 const duration = computed(() => card.value?.durationSeconds ?? DEFAULT_ANSWER_SECONDS)
 const notFound = ref(false)
-const answering = useFocusMode()
-const answerCount = ref(0)
 
-function startAnswer() {
-  if (!card.value) return
-  answerCount.value += 1
-  answering.value = true
-}
+// The answer timer starts once the question has been read aloud (CardTimer counts 3, 2, 1 first).
+const audioFinished = ref(false)
+watch(() => card.value?.id, () => {
+  audioFinished.value = false
+})
+const actions = useTemplateRef<{ toggle: () => void }>('actions')
 
 /** Which way the last card change went, so the card animation matches it. */
 const direction = ref<'forward' | 'back'>('forward')
@@ -128,30 +118,23 @@ function goPrevious() {
   practice.previous()
 }
 
-/** "I'm done" or time is up: next card (PRD screen 03). */
-function finishAnswer() {
-  answering.value = false
-  goNext()
-}
-
 // Swipe left for the next card, right for the previous one (touch, mouse drag or trackpad).
 const swipeArea = useTemplateRef<HTMLElement>('swipeArea')
 const { offset, dragging } = useSwipe(swipeArea, { onLeft: goNext, onRight: goPrevious })
 /** -1…1: how far the card is tilted while dragged, like a card pivoting on its bottom edge. */
 const tilt = computed(() => Math.max(-1, Math.min(1, offset.value / (swipeArea.value?.offsetWidth || 1))))
 
-// While answering, the answering screen owns the keyboard.
 useKeyboardShortcuts({
   onToggle: () => {
-    if (answering.value || practice.finished) return false
-    startAnswer()
+    if (practice.finished || !actions.value) return false
+    actions.value.toggle()
   },
   onNext: () => {
-    if (answering.value || practice.finished) return false
+    if (practice.finished) return false
     goNext()
   },
   onPrevious: () => {
-    if (answering.value || practice.finished) return false
+    if (practice.finished) return false
     return goPrevious()
   },
 })
