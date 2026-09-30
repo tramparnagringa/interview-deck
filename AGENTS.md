@@ -61,8 +61,7 @@ test/                     # unit/, nuxt/ (vitest) e e2e/ (playwright)
 docs/
 ```
 
-No branch `premium-ai` existem também `server/` (API, IA, créditos), `supabase/` (migrations e seed) e as telas de gravação e feedback de IA.
-```
+No branch `premium-ai` existem também `server/` (API, IA, créditos), `supabase/` (migrations e seed) e as telas de gravação de áudio e feedback de IA.
 
 ## Regra de estilo: design system vs. componentes do produto
 
