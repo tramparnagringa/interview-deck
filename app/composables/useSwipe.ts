@@ -31,6 +31,8 @@ export function useSwipe(target: MaybeRefOrGetter<HTMLElement | null | undefined
 
   function onDown(event: PointerEvent) {
     if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return
+    // Areas like the video recorder opt out, so a stray swipe does not throw a recording away.
+    if (event.target instanceof Element && event.target.closest('[data-no-swipe]')) return
     start = { id: event.pointerId, x: event.clientX, y: event.clientY }
   }
 

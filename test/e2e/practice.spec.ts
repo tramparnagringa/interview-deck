@@ -148,6 +148,17 @@ test.describe('free practice', () => {
     await expect(question(page)).toHaveText(first)
   })
 
+  test('previous card button, disabled on the first card', async ({ page }) => {
+    await page.goto('/play/general?shuffle=1')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    const previous = page.getByRole('button', { name: 'Previous card' })
+    await expect(previous).toBeDisabled()
+    await nextCard(page)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    await previous.click()
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+  })
+
   test('a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'trackpad')
     await page.goto('/play/general?shuffle=1')
@@ -161,6 +172,19 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Intro')).toBeVisible()
     for (let i = 0; i < 10; i++) await page.mouse.wheel(-40, 0)
     await expect(counter(page, 'Warm-up')).toBeVisible()
+  })
+
+  test('record a video of the answer and save it (every level, to share the app)', async ({ page }) => {
+    await page.goto('/play/general')
+    await page.getByRole('button', { name: 'Record your answer' }).click()
+    const stop = page.getByRole('button', { name: 'Stop recording' })
+    await expect(stop).toBeEnabled()
+    await page.waitForTimeout(1500)
+    await stop.click()
+    await expect(page.getByRole('button', { name: 'Save video' })).toBeVisible()
+    await expect(page.locator('.card-recorder video[controls]')).toHaveAttribute('src', /^blob:/)
+    await page.getByRole('button', { name: 'Discard video' }).click()
+    await expect(page.getByRole('button', { name: 'Record your answer' })).toBeVisible()
   })
 
   test('unknown deck shows a way back', async ({ page }) => {

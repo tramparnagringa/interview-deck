@@ -4,7 +4,7 @@ Complementa o [PRD](interview-deck-prd/PRD.md). As regras do dia a dia estão em
 
 ## Fase 1 (atual): site estático, só o deck
 
-Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um site estático (`nuxt generate`) com todos os decks abertos, timer e CTA do Skool.
+Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um site estático (`nuxt generate`) com os decks, timer e CTA do Skool, sem login: o Free abre só o General e o Premium (`/premium`) abre todos.
 
 - **Conteúdo no repositório.** `app/content/decks/*.json` e `app/content/stages/*.json` são a fonte editorial (revisada em PR). O módulo `modules/decks/` valida com Zod e gera no build, **escolhendo campo a campo**, dois arquivos: `#build/decks` (decks e etapas, sem conteúdo Premium) e `#build/premium` (hint e resposta modelo por id de carta). A base do conteúdo é o ebook "As 50 Perguntas Mais Comuns em Entrevistas" (TNG), traduzido e adaptado para o mercado internacional (USD, "company" em vez de "startup"); as cartas vindas dele têm `"source": "50-questions"`.
 - **Níveis por página, um app só.** `/` é Free e `/premium` é Premium: as páginas só montam as telas (`HomeScreen`, `PlayScreen`) com `definePageMeta({ level })`, e `useLevel()` entrega o nível, o que ele libera e o prefixo dos links. O Free expõe apenas o General; decks específicos são Premium. Premium hoje = hints + follow-ups + selo PREMIUM + CTA do Skool apontando para as salas ao vivo. Um build, um deploy.
@@ -13,6 +13,7 @@ Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um si
 - **Modos por nível.** Treino livre (todos): o deck inteiro, com follow-up Premium ocasional, e ao fim do closing começa outra sessão. Mock interview (Premium, rota própria `/premium/mock/:deck`): opening → intro → 4 perguntas core → 1 follow-up contextual → closing e uma tela de fim. O mock é Premium por decisão de produto (28/09/2026); como o resto do Premium, não há bloqueio técnico sem login.
 - **Estado só no navegador.** Ordem embaralhada e posição no `sessionStorage` (D7). A restauração acontece em `openDeck` (no `onMounted`), porque a página é pré-renderizada e o Pinia sobrescreveria na hidratação um estado lido durante o setup.
 - **Timer na carta.** Não há mais tela de resposta separada (29/09/2026): `CardTimer` é montado uma vez por carta (`:key` do id), espera o áudio da pergunta (`CardAudio` emite `finished` quando termina, falha ou está desligado), conta 3-2-1 (`useCountdown`) e inicia o `useTimer`. Trocar de carta zera tudo pela remontagem.
+- **Vídeo da resposta (todos os níveis, 29/09/2026).** Aberto no Free de propósito: o vídeo leva a assinatura da TNG e serve para divulgar o app. `useAnswerRecorder` grava câmera e microfone no navegador (`MediaRecorder`), desenhando num canvas 720×1280 a pergunta, a pessoa e a assinatura da TNG. Nada é enviado a servidor: o arquivo fica no aparelho e "Save video" abre o menu de compartilhar (iOS: "Salvar vídeo") ou baixa o arquivo. MP4 quando o navegador grava, senão WebM. A gravação some ao trocar de carta; a área do gravador não aceita swipe (`data-no-swipe`) para não descartar por acidente.
 - **Deploy.** `vercel.json` usa `pnpm generate` e publica `.output/public`. Os links do Skool entram no build (validados em `modules/skool-links.ts`).
 - **Versão completa guardada** no branch `premium-ai` (D4–D6 abaixo, com Supabase, ElevenLabs Scribe e Claude). Para voltar: reaproveitar `server/`, `supabase/` e as telas de feedback desse branch.
 
@@ -79,7 +80,7 @@ Hints e feedback de IA são o que o Premium vende. Se forem para o cliente Free 
 O follow-up ("Answer follow-up") reusa o mesmo endpoint, com o `follow_up` anterior como pergunta.
 
 ### D7. Estado da sessão no cliente
-Pinia `usePracticeStore`: deck atual, ordem embaralhada (Fisher–Yates, sem repetir até o fim), posição, carta atual. Persistido em `sessionStorage` para sobreviver a um refresh. O timer (`useTimer`) e a gravação (`useRecorder`) são composables separados, testáveis sem UI.
+Pinia `usePracticeStore`: deck atual, ordem embaralhada (Fisher–Yates, sem repetir até o fim), posição, carta atual. Persistido em `sessionStorage` para sobreviver a um refresh. O timer (`useTimer`) e a gravação (`useAnswerRecorder` hoje; `useRecorder` de áudio no premium-ai) são composables separados, testáveis sem UI.
 
 ### D8. Rotas (proposta)
 | Rota | Tela |

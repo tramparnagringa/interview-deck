@@ -3,6 +3,7 @@ export const copy = {
   brand: {
     name: 'Interview Deck',
     wordmark: 'Interview Deck',
+    by: 'by Trampar na Gringa',
     tagline: 'Pick a card. Answer out loud. Get better.',
     premium: 'Premium',
   },
@@ -27,6 +28,7 @@ export const copy = {
   card: {
     close: 'Back to the deck',
     next: 'Next card',
+    previous: 'Previous card',
     counter: (position: number, total: number) => `${position} of ${total}`,
     stages: { 'opening': 'Warm-up', 'intro': 'Intro', 'follow-up': 'Follow-up', 'closing': 'Wrap-up' },
     hint: 'Hint',
@@ -38,7 +40,16 @@ export const copy = {
       stop: 'Pause question',
       voices: { female: 'Female voice', male: 'Male voice', off: 'No audio' },
     },
-    wordmark: 'Interview Deck',
+    recorder: {
+      label: 'Record your answer',
+      start: 'Record your answer',
+      stop: 'Stop recording',
+      save: 'Save video',
+      discard: 'Discard video',
+      error: 'Could not open the camera. Check the browser permission and try again.',
+      privacy: 'The video stays on your device.',
+      brand: 'Interview Deck · by Trampar na Gringa',
+    },
     timer: {
       waiting: 'Listen to the question',
       startingIn: (seconds: number) => `Starting in ${seconds}…`,

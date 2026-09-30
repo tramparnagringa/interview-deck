@@ -57,7 +57,9 @@
         ref="actions"
         :duration-seconds="duration"
         :ready="audioFinished"
+        :can-go-back="practice.position > 0"
         @next="goNext"
+        @previous="goPrevious"
       />
     </template>
 
@@ -158,7 +160,13 @@ onMounted(async () => {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  .play-screen {
+    gap: var(--space-6);
+  }
 }
 
 .play-screen-counter {

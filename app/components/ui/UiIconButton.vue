@@ -5,6 +5,7 @@
     :aria-label="label"
     :title="label"
     :aria-pressed="pressed"
+    :disabled="to ? undefined : disabled"
     :class="classes"
   >
     <Icon
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<{
   tone?: 'light' | 'dark'
   size?: 'md' | 'lg'
   pressed?: boolean
+  disabled?: boolean
 }>(), {
   tone: 'light',
   size: 'md',
@@ -34,7 +36,7 @@ const props = withDefaults(defineProps<{
 
 const classes = computed(() => [
   'inline-flex shrink-0 items-center justify-center rounded-pill border cursor-pointer',
-  'transition-colors duration-(--duration-fast)',
+  'transition-colors duration-(--duration-fast) disabled:cursor-not-allowed disabled:opacity-40',
   props.size === 'lg' ? 'size-(--size-button)' : 'size-(--size-touch)',
   props.tone === 'dark'
     ? 'border-focus-border bg-transparent text-focus-ink hover:bg-focus-surface'
