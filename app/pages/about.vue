@@ -15,6 +15,7 @@
       {{ paragraph }}
     </p>
     <p class="about-credit">
+      <AppTngMark size="sm" />
       {{ copy.about.madeBy }}
     </p>
   </main>
@@ -46,6 +47,9 @@ useHead({ title: `${copy.about.title} · ${copy.brand.name}` })
 }
 
 .about-credit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   margin: var(--space-4) 0 0;
   color: var(--color-ink-muted);
 }

@@ -28,7 +28,7 @@ test.describe('free practice', () => {
     await expect(page.getByRole('button', { name: 'Draw a card from the deck' })).toBeVisible()
     await expect(page.getByRole('radiogroup', { name: 'Mode' })).toHaveCount(0)
     const cta = page.getByRole('link', { name: /Go further with Premium/ })
-    await expect(cta).toHaveAttribute('href', 'https://www.skool.com/test')
+    await expect(cta).toHaveAttribute('href', 'https://www.skool.com/test/plans')
     // One CTA per screen (the menu's community link is hidden until the menu opens).
     await expect(page.locator('a[href*="skool.com"]:visible')).toHaveCount(1)
     await page.screenshot({ path: testInfo.outputPath('01-home.png'), fullPage: true })
@@ -197,8 +197,13 @@ test.describe('premium', () => {
   test('premium pages mount the same screens with hints', async ({ page }, testInfo) => {
     await page.goto('/premium')
     await expect(page.getByText('Premium', { exact: true })).toBeVisible()
-    await expect(page.locator('a[href*="skool.com"]:visible')).toHaveAttribute('href', 'https://www.skool.com/test')
+    await expect(page.getByRole('link', { name: /Share your answer/ })).toHaveAttribute('href', 'https://www.skool.com/test')
 
+    // Premium starts on mock interview, first in the switch.
+    const modes = page.getByRole('radio')
+    await expect(modes.first()).toHaveAccessibleName('Mock interview')
+    await expect(modes.first()).toBeChecked()
+    await page.getByRole('radio', { name: 'Free practice' }).click()
     await page.getByRole('button', { name: 'Shuffle & draw' }).click()
     await expect(page).toHaveURL(/\/premium\/play\/general$/)
     await expect(counter(page, 'Warm-up')).toBeVisible()
@@ -230,7 +235,7 @@ test.describe('premium', () => {
 
   test('mock interview: warm-up, intro, 4 questions, one follow-up, wrap-up, then the end', async ({ page }, testInfo) => {
     await page.goto('/premium')
-    await page.getByRole('radio', { name: 'Mock interview' }).click()
+    await expect(page.getByRole('radio', { name: 'Mock interview' })).toBeChecked()
     await page.screenshot({ path: testInfo.outputPath('04-premium-home-mock.png'), fullPage: true })
     await page.getByRole('button', { name: 'Start mock interview' }).click()
     await expect(page).toHaveURL(/\/premium\/mock\/general$/)

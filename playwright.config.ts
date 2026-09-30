@@ -25,6 +25,7 @@ export default defineConfig({
     timeout: 180_000,
     env: {
       NUXT_PUBLIC_SKOOL_URL: 'https://www.skool.com/test',
+      NUXT_PUBLIC_SKOOL_PLANS_URL: 'https://www.skool.com/test/plans',
     },
   },
 })

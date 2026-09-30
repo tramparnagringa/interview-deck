@@ -3,13 +3,7 @@
     :to="basePath || '/'"
     class="app-logo"
   >
-    <span
-      class="app-logo-mark"
-      aria-hidden="true"
-    >
-      <span class="app-logo-card app-logo-card-back" />
-      <span class="app-logo-card app-logo-card-front" />
-    </span>
+    <AppTngMark />
     <span class="app-logo-text">
       <span class="app-logo-name">{{ copy.brand.wordmark }}</span>
       <span class="app-logo-by">{{ copy.brand.by }}</span>
@@ -31,32 +25,6 @@ const { basePath } = useLevel()
   min-height: var(--size-touch);
   color: var(--color-ink);
   text-decoration: none;
-}
-
-.app-logo-mark {
-  position: relative;
-  width: var(--size-logo);
-  height: var(--size-logo);
-}
-
-.app-logo-card {
-  position: absolute;
-  top: 0;
-  width: calc(var(--size-logo) * 0.62);
-  height: 100%;
-  border-radius: var(--radius-sm);
-}
-
-.app-logo-card-back {
-  left: 0;
-  background: var(--color-ink);
-  transform: rotate(var(--rotate-stack-left));
-}
-
-.app-logo-card-front {
-  right: 0;
-  background: var(--color-accent);
-  transform: rotate(var(--rotate-stack-right));
 }
 
 .app-logo-text {

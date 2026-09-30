@@ -48,7 +48,10 @@ export const copy = {
       discard: 'Discard video',
       error: 'Could not open the camera. Check the browser permission and try again.',
       privacy: 'The video stays on your device.',
-      brand: 'Interview Deck · by Trampar na Gringa',
+      brand: {
+        product: 'Interview Deck',
+        by: 'by Trampar na Gringa',
+      },
     },
     timer: {
       waiting: 'Listen to the question',
@@ -72,8 +75,8 @@ export const copy = {
   },
   cta: {
     home: { lead: 'Go further with Premium:', body: ' hints, mock interviews and live practice.' },
-    card: { lead: 'Not sure how to answer?', body: ' Get hints and mock interviews with Premium.' },
-    live: { lead: 'Practice with people:', body: ' join a live practice room on Skool.' },
+    card: { lead: 'Go further with Premium:', body: ' a hint for every question and full mock interviews.' },
+    share: { lead: 'Share your answer:', body: (link: string) => ` get feedback from the community at ${link}` },
   },
   about: {
     title: 'About',

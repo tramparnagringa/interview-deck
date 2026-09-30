@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import data from '#build/decks'
-import { MOCK_CORE_QUESTIONS, type Card, type Deck, type Mode } from '#shared/schemas/deck'
+import { MOCK_CORE_QUESTIONS, MOCK_INTRO_CATEGORY, type Card, type Deck, type Mode } from '#shared/schemas/deck'
 import { shuffle } from '#shared/utils/shuffle'
 
 const STORAGE_KEY = 'interview-deck:practice'
@@ -18,7 +18,8 @@ const PRACTICE_FOLLOW_UP_CHANCE = 0.25
 
 /**
  * Card ids for one session, in interview order (opening → intro → core → closing).
- * Practice uses the whole deck; a mock interview uses a few deck questions.
+ * Practice uses the whole deck; a mock interview opens with a "tell me about yourself" question
+ * and uses a few deck questions.
  */
 export function buildSessionOrder(deck: Deck, mode: Mode, includeFollowUps = false): string[] {
   const shuffledCore = shuffle(deck.cards)
@@ -41,7 +42,8 @@ export function buildSessionOrder(deck: Deck, mode: Mode, includeFollowUps = fal
   }
 
   const followUpByParent = new Map(deck.followUps.map(card => [card.followUpFor, card]))
-  const cards: Array<Card | undefined> = [pick(data.stages.opening), pick(data.stages.intro)]
+  const intro = mode === 'mock' ? data.stages.intro.filter(card => card.category === MOCK_INTRO_CATEGORY) : data.stages.intro
+  const cards: Array<Card | undefined> = [pick(data.stages.opening), pick(intro)]
   for (const card of core) {
     cards.push(card)
     if (card.id === followUpParent?.id) cards.push(followUpByParent.get(card.id))

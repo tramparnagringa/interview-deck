@@ -35,7 +35,7 @@ defineProps<{ hint: string }>()
   align-items: center;
   gap: var(--space-2);
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-weight: var(--font-weight-semibold);
 }
 

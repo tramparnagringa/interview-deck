@@ -1,14 +1,15 @@
-import type { AudioVoice } from '~/utils/audio'
+import { AUDIO_VOICES, type AudioVoice } from '~/utils/audio'
 
 export type AudioChoice = AudioVoice | 'off'
 
 /**
- * Voice and autoplay preference for the current browser session. It resets on reload.
+ * Voice and autoplay preference, remembered across visits.
  * Levels without the voice picker always play the main voice.
  */
 export function useAudioPreference() {
   const { features } = useLevel()
-  const picked = useState<AudioChoice>('practice-audio-choice', () => DEFAULT_AUDIO_VOICE)
+  const isChoice = (value: unknown): value is AudioChoice => value === 'off' || AUDIO_VOICES.includes(value as AudioVoice)
+  const picked = useStoredState<AudioChoice>('practice-audio-choice', () => DEFAULT_AUDIO_VOICE, isChoice)
   const choice = computed<AudioChoice>({
     get: () => (features.value.voicePicker ? picked.value : DEFAULT_AUDIO_VOICE),
     set: (value) => { picked.value = value },

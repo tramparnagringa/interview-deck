@@ -15,6 +15,7 @@
   --color-ink-muted: #5F6368;
   --color-ink-inverse: #FFFFFF;
   --color-accent: #2D5BE3;
+  --color-accent-ink: #2D5BE3;
   --color-accent-soft: #F2F5FE;
   --color-accent-on-dark: #4A74F0;
   --color-accent-soft-on-dark: #8FA8F5;
@@ -32,6 +33,14 @@
   /* Skool CTA */
   --color-cta-bg: #FFF4CC;
   --color-cta-ink: #111111;
+
+  /* Trampar na Gringa mark. Brand colors: the same in every theme. */
+  --color-tng-disc: #430049;
+  --color-tng-ring: #5A1F62;
+  --color-tng-arrow: #FF6B35;
+  --color-tng-arrow-soft: #FF8C66;
+  --color-tng-ink: #FFFFFF;
+  --color-tng-shade: #14030F;
 
   /* Deck colors (screenshot 08). Components read them through --deck-accent. */
   --color-deck-general: #2D5BE3;
@@ -121,6 +130,48 @@
   --rotate-swipe-max: 10deg;
 }
 
+/*
+ * Themes. The values above are the default "blue" theme. Other themes override only
+ * the colors, keyed by `data-theme` on <html> (chosen by `theme` in app/app.config.ts).
+ * --color-accent is for fills and strokes; --color-accent-ink is accent used as text
+ * or outline on light surfaces, where a bright accent would not be readable.
+ */
+@layer theme {
+  :root[data-theme="plum"] {
+    --color-bg: #F4EFE6;
+    --color-surface: #FBF8F2;
+    --color-surface-muted: #EFE8DC;
+    --color-border: #E2D8C8;
+    --color-ink: #2A0724;
+    --color-ink-muted: #5B4A57;
+    --color-ink-inverse: #FBF8F2;
+    --color-accent: #C2E52C;
+    --color-accent-ink: #2A0724;
+    --color-accent-soft: #EDE4F0;
+    --color-accent-on-dark: #C2E52C;
+    --color-accent-soft-on-dark: #C2E52C;
+    --color-highlight: #E9F4B9;
+    --color-scrim: rgb(42 7 36 / 0.04);
+
+    --color-focus-bg: #2A0724;
+    --color-focus-surface: #3A1233;
+    --color-focus-border: #5A2A52;
+    --color-focus-ink: #FBF8F2;
+    --color-focus-ink-muted: #CBBBC8;
+
+    --color-cta-bg: #E9F4B9;
+    --color-cta-ink: #2A0724;
+
+    --color-deck-general: #2A0724;
+    --color-deck-behavioral: #8B6FE8;
+    --color-deck-software-engineering: #2FA57A;
+    --color-deck-product: #E08A3A;
+
+    --shadow-card: 0 1px 2px rgb(42 7 36 / 0.04), 0 16px 40px rgb(42 7 36 / 0.06);
+    --shadow-stack: 0 24px 48px rgb(42 7 36 / 0.18);
+  }
+}
+
 @layer base {
   :root {
     /* Overridden per deck on a container: style="--deck-accent: var(--color-deck-behavioral)". */
@@ -142,7 +193,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-accent-ink);
     outline-offset: 2px;
   }
 

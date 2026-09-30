@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { coverFit, pickRecordingMimeType, recordingExtension, wrapText } from '../../app/utils/recording'
+import { coverFit, mix, pickRecordingMimeType, recordingExtension, withAlpha, wrapText } from '../../app/utils/recording'
 
 describe('recording helpers', () => {
   it('prefers MP4 and falls back to WebM', () => {
@@ -18,5 +18,14 @@ describe('recording helpers', () => {
 
   it('covers the box like object-fit: cover', () => {
     expect(coverFit({ width: 1280, height: 720 }, { width: 720, height: 720 })).toEqual({ x: -280, y: 0, width: 1280, height: 720 })
+  })
+
+  it('adds an alpha to a hex color', () => {
+    expect(withAlpha('#430049', 0.5)).toBe('rgb(67 0 73 / 0.5)')
+  })
+
+  it('blends two colors', () => {
+    expect(mix('#000000', '#FFFFFF', 0.5)).toBe('#808080')
+    expect(mix('#430049', '#FFFFFF', 0)).toBe('#430049')
   })
 })

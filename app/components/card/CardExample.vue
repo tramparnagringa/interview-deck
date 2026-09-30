@@ -39,7 +39,7 @@ defineProps<{ example: string }>()
   align-items: center;
   gap: var(--space-2);
   min-height: var(--size-touch);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-weight: var(--font-weight-semibold);
   list-style: none;
   cursor: pointer;

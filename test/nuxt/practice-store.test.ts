@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import data from '#build/decks'
-import { MOCK_CORE_QUESTIONS } from '#shared/schemas/deck'
+import { MOCK_CORE_QUESTIONS, MOCK_INTRO_CATEGORY } from '#shared/schemas/deck'
 import { usePracticeStore } from '~/stores/practice'
 
 const general = data.decks.find(deck => deck.slug === 'general')!
@@ -42,6 +42,7 @@ describe('practice store', () => {
     store.openDeck('general', { mode: 'mock', premium: true })
     const stages: string[] = []
     while (!store.finished) {
+      if (store.currentCard!.stage === 'intro') expect(store.currentCard!.category).toBe(MOCK_INTRO_CATEGORY)
       stages.push(store.currentCard!.stage)
       store.next()
     }
@@ -54,6 +55,15 @@ describe('practice store', () => {
     store.startSession()
     expect(store.finished).toBe(false)
     expect(store.currentCard?.stage).toBe('opening')
+  })
+
+  it('mock: the intro is always a "tell me about yourself" question', () => {
+    const store = usePracticeStore()
+    for (let i = 0; i < 20; i++) {
+      store.openDeck('general', { mode: 'mock', fresh: true })
+      store.next()
+      expect(store.currentCard).toMatchObject({ stage: 'intro', category: MOCK_INTRO_CATEGORY })
+    }
   })
 
   it('goes back to the previous card, but not before the first one', () => {

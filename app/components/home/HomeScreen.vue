@@ -38,7 +38,7 @@
 <script setup lang="ts">
 /** Home (screens 01 and 04). Mounted by `/` and `/premium`; Premium also chooses the mode. */
 import data from '#build/decks'
-import { isDeckAvailable, type Mode } from '#shared/schemas/deck'
+import { isDeckAvailable, MODES, type Mode } from '#shared/schemas/deck'
 import { copy } from '~/content/copy'
 import { deckAccentStyle } from '~/utils/deck'
 
@@ -46,17 +46,22 @@ const DRAW_ANIMATION_MS = 300
 const { features, basePath, level } = useLevel()
 const decks = computed(() => data.decks.filter(deck => isDeckAvailable(level.value, deck.slug)))
 
-const selectedSlug = useState('selected-deck', () => decks.value[0]?.slug ?? 'general')
-const selected = computed(() => decks.value.find(deck => deck.slug === selectedSlug.value) ?? decks.value[0])
-watch(selected, (deck) => {
-  if (deck && deck.slug !== selectedSlug.value) selectedSlug.value = deck.slug
-}, { immediate: true })
+const isString = (value: unknown): value is string => typeof value === 'string'
+/** Remembered across visits. A deck the level doesn't have falls back to the first one, without forgetting the choice. */
+const chosenSlug = useStoredState('selected-deck', () => decks.value[0]?.slug ?? 'general', isString)
+const selected = computed(() => decks.value.find(deck => deck.slug === chosenSlug.value) ?? decks.value[0])
+const selectedSlug = computed({
+  get: () => selected.value?.slug ?? '',
+  set: (slug: string) => { chosenSlug.value = slug },
+})
 
 const modeOptions = computed(() => features.value.modes.map(value => ({ value, label: copy.home.modes[value] })))
-const chosenMode = useState<Mode>('practice-mode', () => 'practice')
-/** Falls back to practice on levels without the chosen mode. */
+const isMode = (value: unknown): value is Mode | null => value === null || MODES.includes(value as Mode)
+/** Null until the user picks one, so each level starts on its own default. */
+const chosenMode = useStoredState<Mode | null>('practice-mode', () => null, isMode)
+/** The chosen mode, or the level's first one (Premium: mock interview; Free: practice). */
 const mode = computed<Mode>({
-  get: () => (features.value.modes.includes(chosenMode.value) ? chosenMode.value : 'practice'),
+  get: () => (chosenMode.value && features.value.modes.includes(chosenMode.value) ? chosenMode.value : features.value.modes[0]!),
   set: (value) => {
     chosenMode.value = value
   },

@@ -40,7 +40,7 @@ export type Mode = (typeof MODES)[number]
 export interface LevelFeatures {
   /** Load and show Premium content (hints, example answers): a separate file only these pages download. */
   hints: boolean
-  /** Modes this level can choose from. */
+  /** Modes this level can choose from, in the order shown; the first one is the default. */
   modes: readonly Mode[]
   /** Pick the question voice or turn the audio off (group practice). Without it, the main voice always plays. */
   voicePicker: boolean
@@ -48,11 +48,17 @@ export interface LevelFeatures {
 
 export const LEVEL_FEATURES: Record<Level, LevelFeatures> = {
   free: { hints: false, modes: ['practice'], voicePicker: false },
-  premium: { hints: true, modes: ['practice', 'mock'], voicePicker: true },
+  premium: { hints: true, modes: ['mock', 'practice'], voicePicker: true },
 }
 
 /** Deck questions in a mock interview, between the intro and the closing. */
 export const MOCK_CORE_QUESTIONS = 4
+
+/**
+ * Category of the intro question in a mock interview: right after the small talk, a real
+ * interview almost always asks some form of "tell me about yourself" (app/content/stages/intro.json).
+ */
+export const MOCK_INTRO_CATEGORY = 'Tell me about yourself'
 
 /**
  * Moments of an interview, in order. Opening, intro and closing questions are shared by every

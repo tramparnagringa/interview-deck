@@ -34,3 +34,19 @@ export function coverFit(source: { width: number, height: number }, box: { width
   const height = source.height * scale
   return { x: (box.width - width) / 2, y: (box.height - height) / 2, width, height }
 }
+
+/** A `#rrggbb` color with an alpha, for canvas gradients (which can't mix a CSS var with opacity). */
+export function withAlpha(hex: string, alpha: number): string {
+  const value = Number.parseInt(hex.replace('#', ''), 16)
+  return `rgb(${(value >> 16) & 255} ${(value >> 8) & 255} ${value & 255} / ${alpha})`
+}
+
+/** Blends two `#rrggbb` colors: `amount` 0 is `a`, 1 is `b`. */
+export function mix(a: string, b: string, amount: number): string {
+  const channels = (hex: string) => {
+    const value = Number.parseInt(hex.replace('#', ''), 16)
+    return [value >> 16, value >> 8, value].map(channel => channel & 255)
+  }
+  const [from, to] = [channels(a), channels(b)]
+  return `#${from.map((channel, index) => Math.round(channel + (to[index]! - channel) * amount).toString(16).padStart(2, '0')).join('')}`
+}

@@ -1,6 +1,6 @@
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { SHARED_STAGES } from '../../shared/schemas/deck'
+import { MOCK_INTRO_CATEGORY, SHARED_STAGES } from '../../shared/schemas/deck'
 import { loadDeckFiles, loadStageFiles, toDeckData, toPremiumContent } from '../../modules/decks/content'
 
 const contentDir = join(import.meta.dirname, '../../app/content')
@@ -14,6 +14,10 @@ describe('content', () => {
   it('loads the decks sorted, starting with General', () => {
     expect(files[0]!.slug).toBe('general')
     expect(files.map(deck => deck.sort)).toEqual([...files.map(deck => deck.sort)].sort((a, b) => a - b))
+  })
+
+  it('has "tell me about yourself" intros for mock interviews', () => {
+    expect(stages.intro.cards.filter(card => card.category === MOCK_INTRO_CATEGORY).length).toBeGreaterThan(0)
   })
 
   it('never repeats a question, across decks and stages', () => {

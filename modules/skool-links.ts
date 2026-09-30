@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 const linksSchema = z.object({
   NUXT_PUBLIC_SKOOL_URL: z.string().url(),
+  NUXT_PUBLIC_SKOOL_PLANS_URL: z.string().url(),
 })
 
 /**

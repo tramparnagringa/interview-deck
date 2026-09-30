@@ -76,6 +76,6 @@ const classes = computed(() => [
 
 const iconClasses = computed(() => {
   if (props.iconTone !== 'accent') return ''
-  return props.variant === 'primary' ? 'text-accent-soft-on-dark' : 'text-accent'
+  return props.variant === 'primary' ? 'text-accent-soft-on-dark' : 'text-accent-ink'
 })
 </script>

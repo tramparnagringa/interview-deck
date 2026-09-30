@@ -33,9 +33,12 @@
     />
 
     <template #footer>
-      <UiOverline tag="span">
-        {{ copy.brand.by }}
-      </UiOverline>
+      <span class="card-face-brand">
+        <AppTngMark size="sm" />
+        <UiOverline tag="span">
+          {{ copy.brand.by }}
+        </UiOverline>
+      </span>
     </template>
   </UiPlayingCard>
 </template>
@@ -56,6 +59,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.card-face-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 .card-face-category {
   display: inline-flex;
   align-items: center;

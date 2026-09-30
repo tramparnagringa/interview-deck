@@ -107,7 +107,8 @@ saved_cards      (user_id, card_id, created_at)   -- opcional v1
 
 | Variável | Onde |
 |---|---|
-| `NUXT_PUBLIC_SKOOL_URL` | público |
+| `NUXT_PUBLIC_SKOOL_URL` (comunidade) | público |
+| `NUXT_PUBLIC_SKOOL_PLANS_URL` (planos, upgrade do Free) | público |
 | `SUPABASE_URL`, `SUPABASE_KEY` (anon) | público via módulo |
 | `SUPABASE_SERVICE_KEY` | só servidor |
 | `NUXT_AI_*` (chaves de transcrição e LLM) | só servidor |

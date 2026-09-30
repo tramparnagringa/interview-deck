@@ -8,7 +8,7 @@
     </UiMenuItem>
     <UiMenuItem
       icon="lucide:users"
-      :href="skool"
+      :href="skool.community"
     >
       {{ copy.menu.community }}
     </UiMenuItem>
