@@ -80,7 +80,7 @@ Hints e feedback de IA são o que o Premium vende. Se forem para o cliente Free 
 O follow-up ("Answer follow-up") reusa o mesmo endpoint, com o `follow_up` anterior como pergunta.
 
 ### D7. Estado da sessão no cliente
-Pinia `usePracticeStore`: deck atual, ordem embaralhada (Fisher–Yates, sem repetir até o fim), posição, carta atual. Persistido em `sessionStorage` para sobreviver a um refresh. O timer (`useTimer`) e a gravação (`useRecorder`) são composables separados, testáveis sem UI.
+Pinia `usePracticeStore`: deck atual, ordem embaralhada (Fisher–Yates, sem repetir até o fim), posição, carta atual. Persistido em `sessionStorage` para sobreviver a um refresh. O timer (`useTimer`) e a gravação (`useAnswerRecorder` hoje; `useRecorder` de áudio no premium-ai) são composables separados, testáveis sem UI.
 
 ### D8. Rotas (proposta)
 | Rota | Tela |

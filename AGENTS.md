@@ -17,6 +17,7 @@ A primeira versão é só o baralho: tirar carta, responder com o timer, próxim
 - Componentes auto-importados levam o nome da pasta como prefixo (`components/play/PlayMockComplete.vue` → `<PlayMockComplete>`). Nomeie o arquivo com o nome completo, senão o componente não resolve.
 - **Níveis de acesso:** um app só, as mesmas telas montadas por páginas diferentes. `/` e `/play/:deck` são Free; `/premium`, `/premium/play/:deck` e `/premium/mock/:deck` montam `HomeScreen`/`PlayScreen` com `definePageMeta({ level: 'premium' })`. Quais decks cada nível vê é decidido por `isDeckAvailable()`; um deck fora do nível dá "not found". `useLevel()` dá o nível, o que ele libera (`LEVEL_FEATURES` em `shared/schemas/deck.ts`) e o `basePath` para os links. Páginas são finas: a lógica fica nas telas.
 - **Conteúdo Premium:** hint e resposta modelo (`example`) ficam em `#build/premium`, um arquivo separado que só as páginas de nível Premium carregam (`import()` dinâmico no `PlayScreen`). Nunca importe `#build/premium` estaticamente. O campo `source` do JSON é editorial (ex.: `"50-questions"` = ebook da TNG) e nunca vai para o app. Limite aceito: sem login, os hints estão publicados no site e quem achar `/premium` vê.
+- **Vídeo da resposta** (todos os níveis): `CardRecorder` + `useAnswerRecorder` gravam câmera e microfone no navegador e compõem um vídeo vertical (pergunta, pessoa, assinatura da TNG). Nada vai para servidor; "Save video" compartilha ou baixa o arquivo.
 - A versão completa (Supabase, feedback de IA, Premium por magic link) está no branch `premium-ai`. As regras marcadas como *(premium-ai)* abaixo valem só quando ela voltar.
 
 ## Stack
@@ -41,15 +42,15 @@ app/
     home/                 # HomeScreen: tela inicial (Free e Premium)
     play/                 # PlayScreen (treino e mock), PlayMockComplete (fim do mock)
     deck/                 # Pilha de cartas, capa, seletor de decks
-    card/                 # Carta da pergunta, timer na carta, áudio, hint, resposta modelo, ações
+    card/                 # Carta da pergunta, timer na carta, áudio, gravador de vídeo, hint, resposta modelo, ações
     cta/                  # CTA para o Skool
     app/                  # Header, menu, logo, avisos
-  composables/            # useLevel, useTimer, useCountdown, useSwipe, useKeyboardShortcuts, useAudioPreference, useSkoolLinks
+  composables/            # useLevel, useTimer, useCountdown, useSwipe, useKeyboardShortcuts, useAudioPreference, useAnswerRecorder, useSkoolLinks
   content/                # copy.ts (textos de UI), decks/*.json, stages/*.json
   stores/                 # Pinia: sessão de prática (deck atual, ordem da sessão, posição)
   layouts/                # default (único layout)
   pages/                  # rotas finas: montam as telas com o nível, sem lógica de negócio
-  utils/                  # helpers do cliente (deck, áudio)
+  utils/                  # helpers do cliente (deck, áudio, gravação)
 modules/
   decks/                  # valida os JSON e gera #build/decks e #build/premium
   skool-links.ts          # valida os links do Skool no build
