@@ -4,7 +4,7 @@ Complementa o [PRD](interview-deck-prd/PRD.md). As regras do dia a dia estão em
 
 ## Fase 1 (atual): site estático, só o deck
 
-Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um site estático (`nuxt generate`) com todos os decks abertos, timer e CTA do Skool.
+Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um site estático (`nuxt generate`) com os decks, timer e CTA do Skool, sem login: o Free abre só o General e o Premium (`/premium`) abre todos.
 
 - **Conteúdo no repositório.** `app/content/decks/*.json` e `app/content/stages/*.json` são a fonte editorial (revisada em PR). O módulo `modules/decks/` valida com Zod e gera no build, **escolhendo campo a campo**, dois arquivos: `#build/decks` (decks e etapas, sem conteúdo Premium) e `#build/premium` (hint e resposta modelo por id de carta). A base do conteúdo é o ebook "As 50 Perguntas Mais Comuns em Entrevistas" (TNG), traduzido e adaptado para o mercado internacional (USD, "company" em vez de "startup"); as cartas vindas dele têm `"source": "50-questions"`.
 - **Níveis por página, um app só.** `/` é Free e `/premium` é Premium: as páginas só montam as telas (`HomeScreen`, `PlayScreen`) com `definePageMeta({ level })`, e `useLevel()` entrega o nível, o que ele libera e o prefixo dos links. O Free expõe apenas o General; decks específicos são Premium. Premium hoje = hints + follow-ups + selo PREMIUM + CTA do Skool apontando para as salas ao vivo. Um build, um deploy.
