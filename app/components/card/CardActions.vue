@@ -1,6 +1,7 @@
 <template>
   <div class="card-actions">
     <UiIconButton
+      v-if="showBack"
       icon="lucide:arrow-left"
       :label="copy.card.previous"
       size="lg"
@@ -24,8 +25,11 @@
 <script setup lang="ts">
 import { copy } from '~/content/copy'
 
-/** ‹ previous · answer timer · next ›, one per thumb. Stays at the bottom of the screen on phones. */
-defineProps<{ durationSeconds: number, ready: boolean, canGoBack: boolean }>()
+/**
+ * ‹ previous · answer timer · next ›, one per thumb. Stays at the bottom of the screen on phones.
+ * Levels that can't go back (`showBack` false) get only the timer and next.
+ */
+defineProps<{ durationSeconds: number, ready: boolean, showBack: boolean, canGoBack: boolean }>()
 defineEmits<{ next: [], previous: [] }>()
 
 const timer = useTemplateRef<{ toggle: () => void }>('timer')

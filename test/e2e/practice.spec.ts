@@ -121,8 +121,26 @@ test.describe('free practice', () => {
     await expect(page.locator('audio')).toHaveAttribute('src', /\/hale-v3-expressive\//)
   })
 
-  test('swipe left for the next card, right for the previous one', async ({ page }, testInfo) => {
+  test('free only moves forward: no previous button, no swipe or key back', async ({ page }, testInfo) => {
     await page.goto('/play/general?shuffle=1')
+    await expect(counter(page, 'Warm-up')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Previous card' })).toHaveCount(0)
+    await nextCard(page)
+    await expect(counter(page, 'Intro')).toBeVisible()
+    await page.keyboard.press('ArrowLeft')
+    const area = page.locator('.play-screen-swipe')
+    const box = (await area.boundingBox())!
+    const pointerType = testInfo.project.name === 'mobile' ? 'touch' : 'mouse'
+    const init = { pointerType, pointerId: 1, button: 0, isPrimary: true, clientY: box.y + box.height / 2 }
+    await area.dispatchEvent('pointerdown', { ...init, clientX: box.x + box.width / 2 })
+    await area.dispatchEvent('pointermove', { ...init, clientX: box.x + box.width / 2 + 75 })
+    await area.dispatchEvent('pointerup', { ...init, clientX: box.x + box.width / 2 + 150 })
+    await page.waitForTimeout(300)
+    await expect(counter(page, 'Intro')).toBeVisible()
+  })
+
+  test('premium: swipe left for the next card, right for the previous one', async ({ page }, testInfo) => {
+    await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
     const first = await question(page).innerText()
 
@@ -148,8 +166,8 @@ test.describe('free practice', () => {
     await expect(question(page)).toHaveText(first)
   })
 
-  test('previous card button, disabled on the first card', async ({ page }) => {
-    await page.goto('/play/general?shuffle=1')
+  test('premium: previous card button, disabled on the first card', async ({ page }) => {
+    await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
     const previous = page.getByRole('button', { name: 'Previous card' })
     await expect(previous).toBeDisabled()
@@ -159,9 +177,9 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Warm-up')).toBeVisible()
   })
 
-  test('a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
+  test('premium: a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'trackpad')
-    await page.goto('/play/general?shuffle=1')
+    await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
     const box = (await page.locator('.play-screen-swipe').boundingBox())!
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)

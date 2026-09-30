@@ -57,6 +57,7 @@
         ref="actions"
         :duration-seconds="duration"
         :ready="audioFinished"
+        :show-back="features.goBack"
         :can-go-back="practice.position > 0"
         @next="goNext"
         @previous="goPrevious"
@@ -114,13 +115,14 @@ function goNext() {
   practice.next()
 }
 
+/** Premium only (`goBack`): on Free a session only moves forward. */
 function goPrevious() {
-  if (practice.position === 0) return false
+  if (!features.value.goBack || practice.position === 0) return false
   direction.value = 'back'
   practice.previous()
 }
 
-// Swipe left for the next card, right for the previous one (touch, mouse drag or trackpad).
+// Swipe left for the next card, right for the previous one where the level allows it (touch, mouse drag or trackpad).
 const swipeArea = useTemplateRef<HTMLElement>('swipeArea')
 const { offset, dragging } = useSwipe(swipeArea, { onLeft: goNext, onRight: goPrevious })
 /** -1…1: how far the card is tilted while dragged, like a card pivoting on its bottom edge. */

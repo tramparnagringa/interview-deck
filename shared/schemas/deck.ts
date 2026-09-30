@@ -44,11 +44,13 @@ export interface LevelFeatures {
   modes: readonly Mode[]
   /** Pick the question voice or turn the audio off (group practice). Without it, the main voice always plays. */
   voicePicker: boolean
+  /** Go back to the previous card (button, swipe right, `←`). Without it, a session only moves forward. */
+  goBack: boolean
 }
 
 export const LEVEL_FEATURES: Record<Level, LevelFeatures> = {
-  free: { hints: false, modes: ['practice'], voicePicker: false },
-  premium: { hints: true, modes: ['mock', 'practice'], voicePicker: true },
+  free: { hints: false, modes: ['practice'], voicePicker: false, goBack: false },
+  premium: { hints: true, modes: ['mock', 'practice'], voicePicker: true, goBack: true },
 }
 
 /** Deck questions in a mock interview, between the intro and the closing. */
