@@ -7,7 +7,7 @@
       face === 'front'
         ? 'border border-border bg-surface text-ink shadow-card'
         : 'bg-focus-bg text-focus-ink shadow-stack',
-      fill ? 'h-full' : 'min-h-(--size-card-min-h)',
+      fill ? 'h-full' : 'min-h-(--size-card-min-h-sm) md:min-h-(--size-card-min-h)',
     ]"
   >
     <header
@@ -16,7 +16,7 @@
     >
       <slot name="header" />
     </header>
-    <div class="flex flex-1 flex-col justify-center gap-6 py-6">
+    <div class="flex flex-1 flex-col justify-center gap-4 py-5 md:gap-6 md:py-6">
       <slot />
     </div>
     <footer

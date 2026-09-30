@@ -8,16 +8,16 @@
         />
         {{ card.category }}
       </span>
+      <CardAudio
+        v-if="audioSource"
+        :card="card"
+        @finished="$emit('audioFinished')"
+      />
     </template>
 
     <h1 class="card-face-question">
       {{ card.question }}
     </h1>
-    <CardAudio
-      v-if="audioSource"
-      :card="card"
-      @finished="$emit('audioFinished')"
-    />
     <UiAccentBar />
     <CardHint
       v-if="card.hint"
@@ -27,10 +27,14 @@
       v-if="card.example"
       :example="card.example"
     />
+    <CardRecorder
+      :category="card.category"
+      :question="card.question"
+    />
 
     <template #footer>
       <UiOverline tag="span">
-        {{ copy.card.wordmark }}
+        {{ copy.brand.by }}
       </UiOverline>
     </template>
   </UiPlayingCard>

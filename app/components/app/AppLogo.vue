@@ -10,7 +10,10 @@
       <span class="app-logo-card app-logo-card-back" />
       <span class="app-logo-card app-logo-card-front" />
     </span>
-    <span class="app-logo-name">{{ copy.brand.wordmark }}</span>
+    <span class="app-logo-text">
+      <span class="app-logo-name">{{ copy.brand.wordmark }}</span>
+      <span class="app-logo-by">{{ copy.brand.by }}</span>
+    </span>
   </NuxtLink>
 </template>
 
@@ -56,9 +59,20 @@ const { basePath } = useLevel()
   transform: rotate(var(--rotate-stack-right));
 }
 
+.app-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
 .app-logo-name {
+  line-height: var(--leading-tight);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-tight);
+}
+.app-logo-by {
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
 }
 </style>
