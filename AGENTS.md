@@ -4,19 +4,22 @@ Instruções para qualquer agente de código (Claude Code, Codex, Cursor etc.) e
 
 - **O que é o produto:** [docs/interview-deck-prd/PRD.md](docs/interview-deck-prd/PRD.md) (telas de referência em `docs/interview-deck-prd/screenshots/`).
 - **Decisões de arquitetura e o porquê:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+- **Login e acesso Premium (configuração e operação):** [docs/AUTH.md](docs/AUTH.md).
 
 Leia o PRD antes de construir qualquer tela. Em caso de conflito, o PRD manda no *o quê*; este arquivo manda no *como*.
 
 ## Fase atual: só o deck (site estático)
 
-A primeira versão é só o baralho: tirar carta, responder com o timer, próxima carta, CTA do Skool. O Free abre só o General Deck (`FREE_DECKS`); o Premium abre todos. **Sem IA, sem banco, sem login.** O site é gerado estático (`pnpm generate`) e publicado na Vercel.
+A primeira versão é só o baralho: tirar carta, responder com o timer, próxima carta, CTA do Skool. O Free abre só o General Deck (`FREE_DECKS`); o Premium abre todos. **Sem IA.** O site é gerado estático (`pnpm generate`) e publicado na Vercel. Login com Google é obrigatório (Supabase Auth, só no navegador).
+
+- **Login e acesso:** toda página menos `/login` e `/about` exige conta; Premium vai para `/premium`, o resto para `/`. As regras ficam em `app/utils/access.ts` (função pura, testada) e são aplicadas por `middleware/access.global.ts`. A sessão e o flag Premium são lidos por `plugins/supabase.client.ts` antes da primeira rota (`useViewer()`). Páginas protegidas só renderizam no navegador (`<ClientOnly>` no layout), para ninguém ver uma página antes do redirecionamento. Premium = e-mail na lista (`premium_allowlist`): `premium`/`vip` do Skool, substituídos a cada `pnpm skool:import`, e a equipe (`admin`), que a importação não toca; quem decide é `is_premium()` no banco. Mudança de banco = nova migration em `supabase/migrations/` com RLS. Nos e2e, `test/e2e/auth.ts` simula o Supabase: use `signIn(page, { premium })` antes do `goto`.
 
 - Conteúdo: `app/content/decks/<slug>.json` (perguntas do miolo, por tema/função) e `app/content/stages/{opening,intro,closing}.json` (momentos da entrevista, comuns a todos os decks, cada um com seu timer). O módulo local `modules/decks/` valida os arquivos (Zod) e gera `#build/decks`. Nunca importe os JSON direto no app. Um teste barra pergunta repetida em qualquer arquivo.
 - **Etapas:** toda sessão segue uma entrevista: opening (small talk, 30s) → intro ("Tell me about yourself"…) → core (o deck) → closing (salário, contrato, fuso, "questions for us?").
 - **Modos:** treino livre (`practice`, todos os níveis) passa pelo deck inteiro e recomeça; mock interview (`mock`, só Premium, `/premium/mock/:deck`) tem opening, intro (sempre uma do tipo "Tell me about yourself", `MOCK_INTRO_CATEGORY`), `MOCK_CORE_QUESTIONS` perguntas e closing, e termina. Os modos de cada nível estão em `LEVEL_FEATURES`.
 - Componentes auto-importados levam o nome da pasta como prefixo (`components/play/PlayMockComplete.vue` → `<PlayMockComplete>`). Nomeie o arquivo com o nome completo, senão o componente não resolve.
 - **Níveis de acesso:** um app só, as mesmas telas montadas por páginas diferentes. `/` e `/play/:deck` são Free; `/premium`, `/premium/play/:deck` e `/premium/mock/:deck` montam `HomeScreen`/`PlayScreen` com `definePageMeta({ level: 'premium' })`. Quais decks cada nível vê é decidido por `isDeckAvailable()`; um deck fora do nível dá "not found". `useLevel()` dá o nível, o que ele libera (`LEVEL_FEATURES` em `shared/schemas/deck.ts`) e o `basePath` para os links. Páginas são finas: a lógica fica nas telas.
-- **Conteúdo Premium:** hint e resposta modelo (`example`) ficam em `#build/premium`, um arquivo separado que só as páginas de nível Premium carregam (`import()` dinâmico no `PlayScreen`). Nunca importe `#build/premium` estaticamente. O campo `source` do JSON é editorial (ex.: `"50-questions"` = ebook da TNG) e nunca vai para o app. Limite aceito: sem login, os hints estão publicados no site e quem achar `/premium` vê.
+- **Conteúdo Premium:** hint e resposta modelo (`example`) ficam em `#build/premium`, um arquivo separado que só as páginas de nível Premium carregam (`import()` dinâmico no `PlayScreen`). Nunca importe `#build/premium` estaticamente. O campo `source` do JSON é editorial (ex.: `"50-questions"` = ebook da TNG) e nunca vai para o app. Limite aceito: o login controla a navegação, mas os hints continuam publicados no build.
 - **Vídeo da resposta** (todos os níveis): `CardRecorder` + `useAnswerRecorder` gravam câmera e microfone no navegador e compõem um vídeo vertical (pergunta, pessoa, assinatura da TNG). Nada vai para servidor; "Save video" compartilha ou baixa o arquivo.
 - A versão completa (Supabase, feedback de IA, Premium por magic link) está no branch `premium-ai`. As regras marcadas como *(premium-ai)* abaixo valem só quando ela voltar.
 
@@ -25,7 +28,7 @@ A primeira versão é só o baralho: tirar carta, responder com o timer, próxim
 - **Nuxt 4+** (Vue 3, `<script setup lang="ts">`, Composition API). Nada de Options API.
 - **TypeScript** em modo strict. Sem `any` sem justificativa em comentário.
 - **Tailwind CSS v4** (via `@tailwindcss/vite`), usado **só** dentro do design system (ver abaixo).
-- *(premium-ai)* **Supabase** (Postgres + Auth + RLS) via `@nuxtjs/supabase`. Não está instalado nesta fase.
+- **Supabase** (Auth com Google + Postgres com RLS) via `@supabase/supabase-js`, só no navegador (o site é estático, não há sessão no servidor). *(premium-ai)* usava `@nuxtjs/supabase` com servidor.
 - **Pinia** para o estado da sessão de prática; composables para comportamento reutilizável.
 - **Zod** para validar tudo que cruza fronteira (conteúdo dos decks, env; no premium-ai, body de API e resposta da IA).
 - `@nuxt/fonts` (Figtree), `@nuxt/icon` (Lucide), `@nuxt/eslint`.
@@ -50,10 +53,12 @@ app/
   stores/                 # Pinia: sessão de prática (deck atual, ordem da sessão, posição)
   layouts/                # default (único layout)
   pages/                  # rotas finas: montam as telas com o nível, sem lógica de negócio
-  utils/                  # helpers do cliente (deck, áudio, gravação)
+  utils/                  # helpers do cliente (deck, áudio, gravação, regras de acesso)
+  middleware/             # access.global.ts: login obrigatório e páginas Free/Premium
+  plugins/                # supabase.client.ts: sessão e flag Premium
 modules/
   decks/                  # valida os JSON e gera #build/decks e #build/premium
-  skool-links.ts          # valida os links do Skool no build
+  public-env.ts           # valida no build os links do Skool e o projeto Supabase
 shared/
   schemas/ utils/         # Schemas Zod, níveis (LEVEL_FEATURES), embaralhamento
 eslint/                   # plugin com as regras de estilo do projeto

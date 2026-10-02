@@ -14,7 +14,9 @@ Decidido em 28/09/2026: a primeira versão não tem IA nem banco. O app é um si
 - **Estado só no navegador.** Ordem embaralhada e posição no `sessionStorage` (D7). A restauração acontece em `openDeck` (no `onMounted`), porque a página é pré-renderizada e o Pinia sobrescreveria na hidratação um estado lido durante o setup.
 - **Timer na carta.** Não há mais tela de resposta separada (29/09/2026): `CardTimer` é montado uma vez por carta (`:key` do id), espera o áudio da pergunta (`CardAudio` emite `finished` quando termina, falha ou está desligado), conta 3-2-1 (`useCountdown`) e inicia o `useTimer`. Trocar de carta zera tudo pela remontagem.
 - **Vídeo da resposta (todos os níveis, 29/09/2026).** Aberto no Free de propósito: o vídeo leva a assinatura da TNG e serve para divulgar o app. `useAnswerRecorder` grava câmera e microfone no navegador (`MediaRecorder`), desenhando num canvas 720×1280 a pergunta, a pessoa e a assinatura da TNG. Nada é enviado a servidor: o arquivo fica no aparelho e "Save video" abre o menu de compartilhar (iOS: "Salvar vídeo") ou baixa o arquivo. MP4 quando o navegador grava, senão WebM. A gravação some ao trocar de carta; a área do gravador não aceita swipe (`data-no-swipe`) para não descartar por acidente.
-- **Deploy.** `vercel.json` usa `pnpm generate` e publica `.output/public`. Os links do Skool entram no build (validados em `modules/skool-links.ts`).
+- **Login com Google (30/09/2026).** Todo mundo entra com conta (Supabase Auth); o e-mail é o contato que a TNG ganha. Google em vez de código por e-mail: o envio de e-mail padrão do Supabase só entrega para a equipe do projeto e 2 por hora, então OTP exigiria SMTP próprio desde o primeiro dia. Google em vez de LinkedIn: um toque no celular, onde a maioria já está logada. Custo aceito: o Google bloqueia login dentro do navegador embutido de apps (LinkedIn, Instagram), e a tela de login pede para abrir no navegador (`utils/browser.ts`). Tudo roda no navegador: o site continua estático, a sessão fica no `localStorage` (supabase-js, PKCE) e as páginas protegidas só renderizam no cliente.
+- **Premium pela lista do Skool (02/10/2026).** Sem API do Skool: a exportação de membros (CSV) é importada com `pnpm skool:import`, que guarda os e-mails dos tiers `premium` e `vip` e substitui a lista inteira, então quem cancela perde o acesso na importação seguinte. O app compara o e-mail do Google com a lista (`is_premium`). Escolhido por ser simples de operar; o custo aceito é que quem entra com um e-mail diferente do Skool não é reconhecido. Uma versão anterior com links de convite foi descartada por complexidade. Configuração e rotina em [AUTH.md](AUTH.md).
+- **Deploy.** `vercel.json` usa `pnpm generate` e publica `.output/public`. Os links do Skool e o projeto Supabase entram no build (validados em `modules/public-env.ts`).
 - **Versão completa guardada** no branch `premium-ai` (D4–D6 abaixo, com Supabase, ElevenLabs Scribe e Claude). Para voltar: reaproveitar `server/`, `supabase/` e as telas de feedback desse branch.
 
 ### Próximos passos (ideias, não decididas)
@@ -109,7 +111,7 @@ saved_cards      (user_id, card_id, created_at)   -- opcional v1
 |---|---|
 | `NUXT_PUBLIC_SKOOL_URL` (comunidade) | público |
 | `NUXT_PUBLIC_SKOOL_PLANS_URL` (planos, upgrade do Free) | público |
-| `SUPABASE_URL`, `SUPABASE_KEY` (anon) | público via módulo |
+| `NUXT_PUBLIC_SUPABASE_URL`, `NUXT_PUBLIC_SUPABASE_KEY` (publishable) | público |
 | `SUPABASE_SERVICE_KEY` | só servidor |
 | `NUXT_AI_*` (chaves de transcrição e LLM) | só servidor |
 

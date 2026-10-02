@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { signIn } from './auth'
 
 const question = (page: Page) => page.getByRole('heading', { level: 1 })
 // The timer status line (the route announcer is also a status region).
@@ -22,6 +23,10 @@ async function skipToCore(page: Page) {
 }
 
 test.describe('free practice', () => {
+  test.beforeEach(async ({ page }) => {
+    await signIn(page)
+  })
+
   test('home shows the free deck and one Skool CTA, without modes', async ({ page }, testInfo) => {
     await page.goto('/')
     await expect(page.getByRole('group', { name: 'Decks' }).getByRole('button')).toHaveCount(1)
@@ -139,7 +144,31 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Intro')).toBeVisible()
   })
 
-  test('premium: swipe left for the next card, right for the previous one', async ({ page }, testInfo) => {
+  test('record a video of the answer and save it (every level, to share the app)', async ({ page }) => {
+    await page.goto('/play/general')
+    await page.getByRole('button', { name: 'Record your answer' }).click()
+    const stop = page.getByRole('button', { name: 'Stop recording' })
+    await expect(stop).toBeEnabled()
+    await page.waitForTimeout(1500)
+    await stop.click()
+    await expect(page.getByRole('button', { name: 'Save video' })).toBeVisible()
+    await expect(page.locator('.card-recorder video[controls]')).toHaveAttribute('src', /^blob:/)
+    await page.getByRole('button', { name: 'Discard video' }).click()
+    await expect(page.getByRole('button', { name: 'Record your answer' })).toBeVisible()
+  })
+
+  test('unknown deck shows a way back', async ({ page }) => {
+    await page.goto('/play/does-not-exist')
+    await expect(page.getByText('This deck does not exist.')).toBeVisible()
+  })
+})
+
+test.describe('premium', () => {
+  test.beforeEach(async ({ page }) => {
+    await signIn(page, { premium: true })
+  })
+
+  test('swipe left for the next card, right for the previous one', async ({ page }, testInfo) => {
     await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
     const first = await question(page).innerText()
@@ -166,7 +195,7 @@ test.describe('free practice', () => {
     await expect(question(page)).toHaveText(first)
   })
 
-  test('premium: previous card button, disabled on the first card', async ({ page }) => {
+  test('previous card button, disabled on the first card', async ({ page }) => {
     await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
     const previous = page.getByRole('button', { name: 'Previous card' })
@@ -177,7 +206,7 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Warm-up')).toBeVisible()
   })
 
-  test('premium: a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
+  test('a sideways trackpad scroll changes one card', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'trackpad')
     await page.goto('/premium/play/general?shuffle=1')
     await expect(counter(page, 'Warm-up')).toBeVisible()
@@ -192,26 +221,6 @@ test.describe('free practice', () => {
     await expect(counter(page, 'Warm-up')).toBeVisible()
   })
 
-  test('record a video of the answer and save it (every level, to share the app)', async ({ page }) => {
-    await page.goto('/play/general')
-    await page.getByRole('button', { name: 'Record your answer' }).click()
-    const stop = page.getByRole('button', { name: 'Stop recording' })
-    await expect(stop).toBeEnabled()
-    await page.waitForTimeout(1500)
-    await stop.click()
-    await expect(page.getByRole('button', { name: 'Save video' })).toBeVisible()
-    await expect(page.locator('.card-recorder video[controls]')).toHaveAttribute('src', /^blob:/)
-    await page.getByRole('button', { name: 'Discard video' }).click()
-    await expect(page.getByRole('button', { name: 'Record your answer' })).toBeVisible()
-  })
-
-  test('unknown deck shows a way back', async ({ page }) => {
-    await page.goto('/play/does-not-exist')
-    await expect(page.getByText('This deck does not exist.')).toBeVisible()
-  })
-})
-
-test.describe('premium', () => {
   test('premium pages mount the same screens with hints', async ({ page }, testInfo) => {
     await page.goto('/premium')
     await expect(page.getByText('Premium', { exact: true })).toBeVisible()
@@ -282,8 +291,12 @@ test.describe('premium', () => {
     await page.getByRole('button', { name: 'Start another mock interview' }).click()
     await expect(counter(page, 'Warm-up')).toBeVisible()
   })
+})
 
+// Starts as a Free account, then becomes Premium.
+test.describe('premium content', () => {
   test('only premium pages download the hints file', async ({ page }) => {
+    const account = await signIn(page)
     const downloaded: string[] = []
     page.on('response', async (response) => {
       if (/\.(js|json|html)(\?|$)/.test(response.url())) downloaded.push(await response.text().catch(() => ''))
@@ -298,7 +311,8 @@ test.describe('premium', () => {
     expect(downloaded.join('\n')).not.toContain(hintText)
     expect(downloaded.join('\n')).not.toContain(exampleText)
 
-    // Control: the same capture does see the hints on a premium page.
+    // Control: the same capture does see the hints once the account is Premium.
+    account.premium = true
     await page.goto('/premium/play/general')
     await expect(page.getByRole('complementary')).toContainText('Hint')
     await expect.poll(() => downloaded.join('\n')).toContain(hintText)

@@ -26,6 +26,9 @@ export default defineConfig({
     env: {
       NUXT_PUBLIC_SKOOL_URL: 'https://www.skool.com/test',
       NUXT_PUBLIC_SKOOL_PLANS_URL: 'https://www.skool.com/test/plans',
+      // A fake project: the tests answer its requests themselves (test/e2e/auth.ts).
+      NUXT_PUBLIC_SUPABASE_URL: 'https://supabase.test',
+      NUXT_PUBLIC_SUPABASE_KEY: 'test-key',
     },
   },
 })

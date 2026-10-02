@@ -13,13 +13,15 @@
     "typecheck": "nuxt typecheck",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "skool:import": "node --env-file-if-exists=.env scripts/skool-import.mjs"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.137",
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/icon": "^2.5.1",
     "@pinia/nuxt": "^1.0.2",
+    "@supabase/supabase-js": "^2.117.2",
     "@tailwindcss/vite": "^4.3.3",
     "nuxt": "^4.5.2",
     "pinia": "^4.0.3",
@@ -37,6 +39,7 @@
     "eslint": "^10.11.0",
     "happy-dom": "^20.14.5",
     "serve": "^14.2.6",
+    "supabase": "^2.119.0",
     "typescript": "^6.0.3",
     "vitest": "^5.0.2",
     "vue-eslint-parser": "^10.4.1",

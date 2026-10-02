@@ -12,6 +12,12 @@
     >
       {{ copy.menu.community }}
     </UiMenuItem>
+    <UiMenuItem
+      icon="lucide:log-out"
+      @click="signOut"
+    >
+      {{ copy.menu.signOut }}
+    </UiMenuItem>
   </UiMenu>
 </template>
 
@@ -19,4 +25,9 @@
 import { copy } from '~/content/copy'
 
 const skool = useSkoolLinks()
+
+async function signOut() {
+  await useNuxtApp().$supabase.auth.signOut()
+  await navigateTo('/login')
+}
 </script>

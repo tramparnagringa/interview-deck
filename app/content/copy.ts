@@ -11,6 +11,17 @@ export const copy = {
     label: 'Menu',
     about: 'About',
     community: 'Community on Skool',
+    signOut: 'Sign out',
+  },
+  login: {
+    title: 'Practice interviews out loud.',
+    intro: 'Sign in to pick a card and start practicing.',
+    google: 'Continue with Google',
+    privacy: 'We only use your email to keep your account.',
+    error: 'Could not sign you in. Try again.',
+    inApp: 'Google sign-in does not work inside this app. Open this page in your browser (Safari or Chrome) to continue.',
+    copyLink: 'Copy link',
+    copied: 'Link copied',
   },
   home: {
     coverTitle: 'Pick a card.',

@@ -38,6 +38,12 @@ export default defineNuxtConfig({
         url: '',
         plansUrl: '',
       },
+      // NUXT_PUBLIC_SUPABASE_URL / NUXT_PUBLIC_SUPABASE_KEY: the project's URL and publishable (anon) key.
+      // Public by design: what a signed-in account can read is decided by RLS (supabase/migrations).
+      supabase: {
+        url: '',
+        key: '',
+      },
     },
   },
   compatibilityDate: '2025-07-15',
